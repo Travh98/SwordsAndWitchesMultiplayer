@@ -90,7 +90,7 @@ func add_player_character(peer_id):
 	var player_character = player_character_scene.instantiate()
 	# Set the player character's name to the peer_id of the Player who owns it
 	player_character.name = str(peer_id)
-	GameMgr.game_tree.add_child(player_character)
+	GameMgr.game_tree.add_child(player_character, true) # Forcing readable name to help with RPCs
 	player_character.player_name = GameMgr.player_name
 
 

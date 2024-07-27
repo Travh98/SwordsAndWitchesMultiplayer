@@ -31,7 +31,7 @@ func damage_body(body: Node3D):
 	
 	if body.has_node("HealthComponent"):
 		var health_component: HealthComponent = body.get_node("HealthComponent")
-		health_component.take_damage(damage, mob_owner)
+		health_component.take_damage.rpc(damage, mob_owner)
 
 
 func on_body_entered(body: Node3D):

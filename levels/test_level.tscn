@@ -161,23 +161,29 @@ text = "Hurtbox"
 [node name="PunchingBags" type="Node3D" parent="Entities"]
 
 [node name="PunchingBag" parent="Entities/PunchingBags" instance=ExtResource("4_u5ghu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -29)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25188, 0, -1.04767)
 
 [node name="GreenSmokeParticles" parent="Entities/PunchingBags/PunchingBag" instance=ExtResource("5_radsc")]
 transform = Transform3D(1, 1.36832e-05, -3.14988e-06, -1.36832e-05, 1, 1.03665e-05, 3.15002e-06, -1.03665e-05, 1, 0, 2, 0)
 
 [node name="PunchingBag2" parent="Entities/PunchingBags" instance=ExtResource("4_u5ghu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -31)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25188, 0, -3.04767)
 
 [node name="DebugLabel3D" parent="Entities/PunchingBags/PunchingBag2" instance=ExtResource("4_eqwnx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.31008, 0)
 text = "Punching Bag"
 
 [node name="PunchingBag3" parent="Entities/PunchingBags" instance=ExtResource("4_u5ghu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -27)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25188, 0, 0.95233)
 
 [node name="PunchingBag4" parent="Entities/PunchingBags" instance=ExtResource("4_u5ghu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25188, 0, 2.95233)
+
+[node name="PunchingBag6" parent="Entities/PunchingBags" instance=ExtResource("4_u5ghu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25188, 0, 4.97893)
+
+[node name="PunchingBag7" parent="Entities/PunchingBags" instance=ExtResource("4_u5ghu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25188, 0, 6.97893)
 
 [node name="PunchingBag5" parent="Entities/PunchingBags" instance=ExtResource("4_u5ghu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -14)

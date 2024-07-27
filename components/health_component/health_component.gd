@@ -18,24 +18,26 @@ func _ready():
 	pass
 
 
+@rpc("any_peer", "call_local", "reliable")
 func take_damage(damage: int, damager: Mob = null):
 	if invincible:
 		return
 	if damager:
 		last_damaged_by = damager
 		damaged_by.emit(damager)
-	update_health(get_health() - damage)
+	_update_health(get_health() - damage)
 
 
 func get_health() -> int:
 	return health
 
 
+@rpc("any_peer", "call_local", "reliable")
 func full_heal():
-	update_health(max_health)
+	_update_health(max_health)
 
 
-func update_health(new_health: int):
+func _update_health(new_health: int):
 	if new_health > max_health:
 		health = max_health
 	else:
