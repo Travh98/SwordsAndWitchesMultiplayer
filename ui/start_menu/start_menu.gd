@@ -28,9 +28,6 @@ func _ready():
 	settings_button.disabled = true
 	credits.close_credits.connect(on_credits_closed)
 	
-	# Hide the UI while in start menu
-	#UserInterfaceMgr.disable_ui()
-	
 
 
 func on_join_server():
@@ -61,3 +58,7 @@ func on_credits_closed():
 
 func quit():
 	get_tree().quit()
+
+
+func get_player_name() -> String:
+	return name_edit.text

@@ -98,6 +98,8 @@ func set_random_name():
 
 func on_name_selected(n: String):
 	if n.is_empty():
+		print("Selected name is empty, defaulting to: ", player_name)
+		name_changed.emit(player_name)
 		return
 	player_name = n
 	print("Setting name to: ", player_name, " for client: ", str(get_multiplayer_authority()))
