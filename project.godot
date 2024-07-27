@@ -173,3 +173,7 @@ pause={
 
 3d_physics/layer_1="World"
 3d_physics/layer_2="Players"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
