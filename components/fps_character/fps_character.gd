@@ -90,7 +90,8 @@ func _enter_tree():
 
 func _ready():
 	peer_name_label.text = str(get_multiplayer_authority())
-	print("Created character for peer: ", get_multiplayer_authority())
+	faction = FactionMgr.Factions.PLAYER
+	
 	if not is_multiplayer_authority(): return
 	
 	hide_self_body.hide()

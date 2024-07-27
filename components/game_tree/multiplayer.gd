@@ -82,7 +82,7 @@ func on_connection_failed():
 func on_connection_success():
 	# Delay the updating of the name so that the player can spawn probably
 	await get_tree().create_timer(1).timeout
-	print("COnnection success, getting name from start menu. Name: ", start_menu.get_player_name())
+	
 	on_name_change(start_menu.get_player_name())
 
 

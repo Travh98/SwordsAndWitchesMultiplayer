@@ -18,13 +18,16 @@ func _ready():
 	pass
 
 
-@rpc("any_peer", "call_local", "reliable")
-func take_damage(damage: int, damager: Mob = null):
+@rpc("any_peer", "call_remote", "reliable")
+func take_damage(damage: int, damager_path: NodePath = ""):
 	if invincible:
 		return
-	if damager:
-		last_damaged_by = damager
-		damaged_by.emit(damager)
+	print(get_parent().name, " took damage from nodepath: ", damager_path, " and is owned by: ", get_multiplayer_authority())
+	if has_node(damager_path):
+		var damager: Node3D = get_node(damager_path)
+		if damager:
+			last_damaged_by = damager
+			damaged_by.emit(damager)
 	_update_health(get_health() - damage)
 
 

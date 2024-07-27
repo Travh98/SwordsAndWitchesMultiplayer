@@ -10,7 +10,7 @@ func add_player_entry(peer_id: int, user_name: String):
 			existing.text = user_name + " id: " + str(peer_id)
 			return
 	
-	print("Adding player entry ", peer_id, " name: ", user_name)
+	#print("Adding player entry ", peer_id, " name: ", user_name)
 	
 	# Create new listing
 	var player_label: Label = Label.new()

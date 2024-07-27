@@ -17,6 +17,7 @@ func get_hostile_factions(my_faction: Factions):
 			pass
 		Factions.RED:
 			hostile_array.append(Factions.BLUE)
+			hostile_array.append(Factions.PLAYER)
 		Factions.BLUE:
 			hostile_array.append(Factions.RED)
 		Factions.UNDEAD:
@@ -35,6 +36,7 @@ func get_friendly_factions(my_faction: Factions):
 			friendly_array.append(Factions.RED)
 		Factions.BLUE:
 			friendly_array.append(Factions.BLUE)
+			friendly_array.append(Factions.PLAYER)
 		Factions.UNDEAD:
 			pass
 	

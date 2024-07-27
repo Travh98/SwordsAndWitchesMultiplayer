@@ -17,7 +17,14 @@ var attack_target: Mob
 var angular_speed: float = 8.0
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+
+func _enter_tree():
+	set_multiplayer_authority(1)
+
+
 func _ready():
+	if not is_multiplayer_authority(): return
+	
 	rescan_timer.timeout.connect(on_rescan)
 	health_component.health_died.connect(on_death)
 	
@@ -41,9 +48,15 @@ func on_rescan():
 
 
 func _physics_process(delta: float):
+	if not is_multiplayer_authority(): return
+	
 	if attack_target == null:
+		apply_gravity(delta)
+		move_and_slide()
 		return
 	if health_component.is_dead:
+		apply_gravity(delta)
+		move_and_slide()
 		return
 	
 	if attack_target.global_position.distance_to(navigation_agent_3d.target_position) > 2.0:
@@ -69,12 +82,14 @@ func _physics_process(delta: float):
 						sword.alt2_use()
 				velocity = Vector3.ZERO
 	
-	if !is_on_floor():
-		velocity.y -= gravity * delta
+	apply_gravity(delta)
 	
 	move_and_slide()
-	
 
+
+func apply_gravity(delta: float):
+	if !is_on_floor():
+		velocity.y -= gravity * delta
 
 
 func on_death():
@@ -88,6 +103,3 @@ func on_death():
 			child.set_faction(faction)
 	queue_free.call_deferred()
 	pass
-
-
-

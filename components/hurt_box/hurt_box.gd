@@ -31,7 +31,13 @@ func damage_body(body: Node3D):
 	
 	if body.has_node("HealthComponent"):
 		var health_component: HealthComponent = body.get_node("HealthComponent")
-		health_component.take_damage.rpc(damage, mob_owner)
+		
+		if health_component.get_multiplayer_authority() == get_multiplayer_authority():
+			print("Server damaging body: ", body.name, " from peer: ", get_multiplayer_authority())
+			health_component.take_damage(damage, mob_owner.get_path())
+		else:
+			health_component.take_damage.rpc(damage, mob_owner.get_path())
+			print("Client damaging body: ", body.name, " from peer: ", get_multiplayer_authority())
 
 
 func on_body_entered(body: Node3D):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b3pu1tvl7wlnn"]
+[gd_scene load_steps=25 format=3 uid="uid://b3pu1tvl7wlnn"]
 
 [ext_resource type="MeshLibrary" uid="uid://dfj7cvhte3dsn" path="res://assets/gridmap/dev_meshlib.meshlib" id="1_3j1fv"]
 [ext_resource type="Texture2D" uid="uid://cvi4bsih01rwp" path="res://assets/sky/kloofendal_48d_partly_cloudy_puresky_1k.exr" id="1_8elnh"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="7_7utg6"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_jtbt0"]
 [ext_resource type="PackedScene" uid="uid://rigxamrjiutd" path="res://assets/particles/falling_leaves_particles.tscn" id="10_1d8j4"]
+[ext_resource type="PackedScene" uid="uid://f6kwmpdxk8sd" path="res://entities/test_enemies/enemy_knight.tscn" id="16_xbyjg"]
 [ext_resource type="PackedScene" uid="uid://cbf86ogudnhaq" path="res://components/location_indicator/location_indicator.tscn" id="18_rt2b4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7rnda"]
@@ -205,3 +206,12 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 
 [node name="ZeroMarker" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.113276, 0)
 mesh = SubResource("BoxMesh_3prtq")
+
+[node name="RedKnight" parent="." instance=ExtResource("16_xbyjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+
+[node name="RedKnight2" parent="." instance=ExtResource("16_xbyjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.1335)
+
+[node name="RedKnight3" parent="." instance=ExtResource("16_xbyjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.5589)
