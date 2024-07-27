@@ -9,7 +9,7 @@ signal connection_failed()
 signal server_disconnected()
 
 # Avoid opening the UPNP system and just run locally
-const local_testing_quick_start: bool = true
+const local_testing_quick_start: bool = false
 const player_character_scene = preload("res://components/fps_character/fps_character.tscn")
 
 # Multiplayer Settings

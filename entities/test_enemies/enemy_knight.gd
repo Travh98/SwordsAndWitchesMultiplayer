@@ -101,5 +101,14 @@ func on_death():
 	for child in ragdoll.get_children():
 		if child is FactionMeshColor:
 			child.set_faction(faction)
-	queue_free.call_deferred()
-	pass
+	visible = false
+	
+	await get_tree().create_timer(2).timeout
+	
+	health_component.full_heal()
+	if faction == FactionMgr.Factions.RED:
+		global_position = GameMgr.game_tree.level.npc_respawn_spot.global_position
+	else:
+		global_position = GameMgr.game_tree.level.blue_respawn_spot.global_position
+	visible = true
+	

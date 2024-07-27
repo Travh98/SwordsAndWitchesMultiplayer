@@ -43,23 +43,68 @@ replication_config = SubResource("SceneReplicationConfig_ky85u")
 [node name="Knight" parent="." node_paths=PackedStringArray("mesh") instance=ExtResource("2_4hle6")]
 mesh = NodePath("KnightRig/Skeleton3D/Cape")
 
+[node name="Head_002" parent="Knight/KnightRig/Skeleton3D" index="0"]
+transform = Transform3D(1.11114, 9.25676e-09, 3.12099e-08, -9.25678e-09, 1.11114, 7.0408e-07, -3.12099e-08, -6.55651e-07, 1.11114, 7.70319e-10, 1.5687, -0.00510037)
+
+[node name="Neck_002" parent="Knight/KnightRig/Skeleton3D" index="1"]
+transform = Transform3D(1.11114, 3.91623e-09, 7.90531e-09, -3.91625e-09, 1.11114, 7.00355e-07, -7.90531e-09, -6.4075e-07, 1.11114, -1.5855e-09, 1.4876, 0.0104997)
+
+[node name="LHand_001" parent="Knight/KnightRig/Skeleton3D" index="2"]
+transform = Transform3D(1.11114, -1.5533e-06, 5.19423e-07, 1.36646e-06, 1.11114, 8.9407e-07, -4.44732e-07, -9.08971e-07, 1.11114, -0.7389, 1.4408, 0.0079962)
+
+[node name="LForearm_001" parent="Knight/KnightRig/Skeleton3D" index="3"]
+transform = Transform3D(1.11114, -9.56177e-07, 5.19678e-07, 1.02201e-06, 1.11114, 9.90927e-07, -4.54485e-07, -9.72301e-07, 1.11114, -0.4663, 1.4408, 0.0126962)
+
+[node name="LUpperArm_001" parent="Knight/KnightRig/Skeleton3D" index="4"]
+transform = Transform3D(1.11114, -2.48839e-06, 4.39584e-07, 2.42885e-06, 1.11114, 1.05472e-06, -3.68804e-07, -1.03586e-06, 1.11114, -0.1919, 1.4408, 0.00799613)
+
+[node name="RHand_001" parent="Knight/KnightRig/Skeleton3D" index="5"]
+transform = Transform3D(1.11114, 1.63247e-06, -3.47614e-07, -1.35201e-06, 1.11114, 1.05053e-06, 3.06358e-07, -1.08033e-06, 1.11114, 0.7389, 1.4408, 0.00799641)
+
+[node name="RForearm_001" parent="Knight/KnightRig/Skeleton3D" index="6"]
+transform = Transform3D(1.11114, 9.67237e-07, -2.92435e-07, -1.05216e-06, 1.11114, 1.10269e-06, 2.66358e-07, -1.08406e-06, 1.11114, 0.4663, 1.4408, 0.0126963)
+
+[node name="RUpperArm_001" parent="Knight/KnightRig/Skeleton3D" index="7"]
+transform = Transform3D(1.11114, 2.48862e-06, -2.96161e-07, -2.42851e-06, 1.11114, 1.08569e-06, 2.6077e-07, -1.06811e-06, 1.11114, 0.1919, 1.4408, 0.0079962)
+
+[node name="LFoot_001" parent="Knight/KnightRig/Skeleton3D" index="8"]
+transform = Transform3D(1.11114, 1.14332e-07, -2.46355e-08, -1.14332e-07, 1.11114, 4.82798e-06, 2.46358e-08, -4.67896e-06, 1.11115, -0.0890001, 0.1037, 0.0358012)
+
+[node name="LShin_001" parent="Knight/KnightRig/Skeleton3D" index="9"]
+transform = Transform3D(1.11114, 1.68801e-08, 5.63926e-08, -1.68802e-08, 1.11114, 1.89245e-06, -5.6392e-08, -1.84774e-06, 1.11115, -0.089, 0.5318, 0.00140063)
+
+[node name="LThigh_001" parent="Knight/KnightRig/Skeleton3D" index="10"]
+transform = Transform3D(1.11114, 2.09367e-08, 3.64928e-08, -2.09368e-08, 1.11114, 2.53785e-06, -3.64923e-08, -2.4857e-06, 1.11115, -0.089, 0.9321, -0.00140002)
+
+[node name="RFoot_001" parent="Knight/KnightRig/Skeleton3D" index="11"]
+transform = Transform3D(1.11114, 1.14332e-07, -2.46352e-08, -1.14332e-07, 1.11114, -2.98023e-08, 2.46366e-08, 5.96046e-08, 1.11114, 0.089, 0.1037, 0.0357996)
+
+[node name="RShin_001" parent="Knight/KnightRig/Skeleton3D" index="12"]
+transform = Transform3D(1.11114, 1.68799e-08, 5.63929e-08, -1.68799e-08, 1.11114, 5.96046e-08, -5.63905e-08, -9.68575e-08, 1.11114, 0.089, 0.5318, 0.00139979)
+
+[node name="RThigh_001" parent="Knight/KnightRig/Skeleton3D" index="13"]
+transform = Transform3D(1.11114, 2.09364e-08, 3.64931e-08, -2.09364e-08, 1.11114, 6.84522e-08, -3.6491e-08, -7.17118e-08, 1.11114, 0.089, 0.9321, -0.00139999)
+
+[node name="Hips_002" parent="Knight/KnightRig/Skeleton3D" index="14"]
+transform = Transform3D(1.11114, 3.55271e-15, 1.42109e-14, 0, 1.11114, 2.98023e-08, 0, 2.98023e-08, 1.11114, -7.56519e-09, 0.9167, 0.0501)
+
 [node name="FootMesh" parent="Knight/KnightIkLeg2/KnightIkLeg/Skeleton3D" index="0"]
-transform = Transform3D(1.10951, -0.026312, 0.0541822, -0.0601948, -0.448678, 1.01474, -0.00215046, -1.01618, -0.449444, -0.00822815, 0.252224, -0.443717)
+transform = Transform3D(1.11114, 2.55795e-13, -1.10134e-12, -2.70006e-13, 1.11107, -0.0122984, 1.08002e-12, 0.0122984, 1.11107, -0.00633889, 0.1037, 0.0358)
 
 [node name="ShinMesh" parent="Knight/KnightIkLeg2/KnightIkLeg/Skeleton3D" index="1"]
-transform = Transform3D(1.11109, 0.00936506, -0.00295975, -0.00971742, 0.999583, -0.485156, -0.00142644, 0.485158, 0.999635, -0.00822819, 0.252224, -0.443717)
+transform = Transform3D(1.11114, 1.68799e-08, 5.63924e-08, -1.68799e-08, 1.11114, 3.42727e-07, -5.63919e-08, -3.42727e-07, 1.11115, -0.0063389, 0.1037, 0.0358)
 
 [node name="ThighMesh" parent="Knight/KnightIkLeg2/KnightIkLeg/Skeleton3D" index="2"]
-transform = Transform3D(1.11113, -0.00500419, 0.00218607, 0.00504028, 0.768619, -0.802398, 0.00210151, 0.802391, 0.76864, -0.00452838, 0.652363, -0.287742)
+transform = Transform3D(1.11114, 8.25793e-09, 3.65812e-08, -8.15435e-09, 1.11114, -0.00314544, -3.66042e-08, 0.00314542, 1.11115, -0.00633889, 0.5318, 0.00140001)
 
 [node name="FootMesh" parent="Knight/KnightIkLeg3/KnightIkLeg/Skeleton3D" index="0"]
-transform = Transform3D(0.904261, -0.307482, 0.5678, -0.645687, -0.438915, 0.790615, 0.00550411, -0.973365, -0.535875, -0.225837, 0.226238, 0.23667)
+transform = Transform3D(1.11114, 2.55795e-13, -1.10134e-12, -2.70006e-13, 1.11107, -0.0122984, 1.08002e-12, 0.0122984, 1.11107, -0.00633889, 0.1037, 0.0358)
 
 [node name="ShinMesh" parent="Knight/KnightIkLeg3/KnightIkLeg/Skeleton3D" index="1"]
-transform = Transform3D(1.05075, 0.352954, 0.0772715, -0.336087, 0.867542, 0.607493, 0.132639, -0.597845, 0.927162, -0.225836, 0.226239, 0.236669)
+transform = Transform3D(1.11114, 1.68799e-08, 5.63924e-08, -1.68799e-08, 1.11114, 3.42727e-07, -5.63919e-08, -3.42727e-07, 1.11115, -0.0063389, 0.1037, 0.0358)
 
 [node name="ThighMesh" parent="Knight/KnightIkLeg3/KnightIkLeg/Skeleton3D" index="2"]
-transform = Transform3D(1.08523, 0.238361, -0.00949145, -0.238487, 1.08307, -0.0686778, -0.00548101, 0.069113, 1.10898, -0.0922425, 0.541679, -0.0223726)
+transform = Transform3D(1.11114, 8.25793e-09, 3.65812e-08, -8.15435e-09, 1.11114, -0.00314544, -3.66042e-08, 0.00314542, 1.11115, -0.00633889, 0.5318, 0.00140001)
 
 [node name="bodyMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)

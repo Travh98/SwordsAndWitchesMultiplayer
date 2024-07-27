@@ -3,6 +3,10 @@ extends Node3D
 
 @export var respawn_pos: LocationIndicator
 @onready var spawn_locations = $SpawnLocations
+@onready var npc_respawn_spot = $KnightRespawnSpot
+@onready var blue_respawn_spot = $KnightRespawnSpot2
+@onready var teleport_area: Area3D = $TeleportArea
+
 var player: FpsCharacter
 
 const COLLISION_CHECKER = preload("res://components/utils/collision_checker.tscn")
@@ -17,6 +21,8 @@ func _ready():
 	for node in all_nodes:
 		if node is FpsCharacter:
 			player = node
+	
+	teleport_area.body_entered.connect(on_teleport_area_entered)
 
 
 func _input(_event):
@@ -40,3 +46,13 @@ func place_at_spawn_point(n: Node3D):
 	n.global_position = spot.global_position
 	n.global_rotation = spot.global_rotation
 	print("Spawned node ", n.name, " at spot: ", spot.name)
+
+
+func on_teleport_area_entered(body: Node3D):
+	
+	if body is Mob:
+		body.velocity = Vector3.ZERO
+		if body.faction == FactionMgr.Factions.RED:
+			body.global_position = npc_respawn_spot.global_position
+			return
+	body.global_position = blue_respawn_spot.global_position

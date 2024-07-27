@@ -32,7 +32,7 @@ func alt2_use():
 	super()
 	if animation_player.is_playing():
 		return
-	animation_player.play("test_hold_swing")
+	animation_player.play("stab")
 
 
 func register_user(user: Mob):
