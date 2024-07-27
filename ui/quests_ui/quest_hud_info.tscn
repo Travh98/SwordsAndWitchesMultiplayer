@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbxh713lj7flm"]
+
+[ext_resource type="Script" path="res://ui/quests_ui/quest_hud_info.gd" id="1_p0jkr"]
+[ext_resource type="PackedScene" uid="uid://du38b5soobc08" path="res://ui/quests_ui/quest_task_checkbox.tscn" id="2_ugrtd"]
+
+
+[node name="QuestHudInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_p0jkr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="QuestTitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "quest title"
+
+[node name="QuestDescription" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "quest description"
+
+[node name="TasksContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="QuestTaskCheckbox" parent="VBoxContainer/TasksContainer" instance=ExtResource("2_ugrtd")]
+layout_mode = 2

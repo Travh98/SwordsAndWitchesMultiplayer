@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjd7axckjkpa3"]
+
+[ext_resource type="Script" path="res://components/muzzle_flashes/casing_ejector_rb.gd" id="1_uag8c"]
+
+[node name="CasingEjectorRb" type="Node3D"]
+script = ExtResource("1_uag8c")

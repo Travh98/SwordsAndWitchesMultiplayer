@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4m2ie88syali"]
+
+[ext_resource type="PackedScene" uid="uid://c2t004cm3y1g2" path="res://assets/wave_function_collapse_test/wfc_curvedRoad.glb" id="1_y5mgt"]
+[ext_resource type="Script" path="res://components/wave_function_collapse/wfc_tile.gd" id="2_5c6g5"]
+
+[node name="wfc_curvedRoad" instance=ExtResource("1_y5mgt")]
+script = ExtResource("2_5c6g5")

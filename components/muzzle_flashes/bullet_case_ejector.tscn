@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbfklnil5bce8"]
+
+[ext_resource type="Script" path="res://components/muzzle_flashes/bullet_case_ejector.gd" id="1_5pa5k"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_53jci"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 0, 0)
+direction = Vector3(0, 1, 0)
+spread = 3.0
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fw1tt"]
+albedo_color = Color(0.72549, 0.666667, 0.211765, 1)
+metallic = 0.46
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rgqsf"]
+material = SubResource("StandardMaterial3D_fw1tt")
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.08
+radial_segments = 5
+rings = 2
+
+[node name="BulletCaseEjector" type="Node3D"]
+script = ExtResource("1_5pa5k")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 1
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_53jci")
+draw_pass_1 = SubResource("CylinderMesh_rgqsf")

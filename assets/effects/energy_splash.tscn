@@ -1,0 +1,227 @@
+[gd_scene load_steps=9 format=3 uid="uid://h4mss7vj8jia"]
+
+[ext_resource type="Texture2D" uid="uid://beqc3ory7yv3q" path="res://assets/effects/candle_splash.png" id="1_awg7h"]
+[ext_resource type="Texture2D" uid="uid://cbugf37lpukcm" path="res://assets/effects/star_twinkle.png" id="2_ibxfo"]
+
+[sub_resource type="Animation" id="Animation_en0gs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SideFlares:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SideFlares:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SideFlares:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainFlare:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.304879, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles3D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_52htb"]
+resource_name = "splash"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SideFlares:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.392699, 0), Vector3(0, 1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SideFlares:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, 1, 1), Vector3(0.75, 0.75, 0.75)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SideFlares:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.37, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -0.185, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainFlare:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.9, 1.3, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.32, 0), Vector3(0, 0.304879, 0), Vector3(0, 0.299, 0), Vector3(0, 0.304879, 0), Vector3(0, -0.26, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles3D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_doe0w"]
+_data = {
+"RESET": SubResource("Animation_en0gs"),
+"splash": SubResource("Animation_52htb")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4ko0s"]
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+radial_accel_min = 0.5
+radial_accel_max = 0.5
+tangential_accel_min = 2.0
+tangential_accel_max = 2.0
+color = Color(1, 1, 0.513726, 0.67451)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oduvp"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_ibxfo")
+texture_filter = 0
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_yhvji"]
+material = SubResource("StandardMaterial3D_oduvp")
+size = Vector2(0.1, 0.1)
+
+[node name="EnergySplash" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="MainFlare" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.304879, 0)
+modulate = Color(0.898039, 0.87451, 0, 0.392157)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("1_awg7h")
+
+[node name="SideFlares" type="Node3D" parent="."]
+
+[node name="Sprite3D2" type="Sprite3D" parent="SideFlares"]
+transform = Transform3D(2, 0, 0, 0, 1.73205, 1, 0, -1, 1.73205, 0, 0.0174871, -0.132247)
+modulate = Color(0.898039, 0.87451, 0, 0.392157)
+texture_filter = 0
+texture = ExtResource("1_awg7h")
+
+[node name="Sprite3D3" type="Sprite3D" parent="SideFlares"]
+transform = Transform3D(-2, 1.50996e-07, -2.61532e-07, 0, 1.73205, 1, 3.01992e-07, 1, -1.73205, 0, 0.0174871, 0.126822)
+modulate = Color(0.898039, 0.87451, 0, 0.392157)
+texture_filter = 0
+texture = ExtResource("1_awg7h")
+
+[node name="Sprite3D4" type="Sprite3D" parent="SideFlares"]
+transform = Transform3D(-8.74228e-08, -1, 1.73205, 0, 1.73205, 1, -2, 4.37114e-08, -7.57103e-08, -0.129535, 0.0174871, -0.00271239)
+modulate = Color(0.898039, 0.87451, 0, 0.392157)
+texture_filter = 0
+texture = ExtResource("1_awg7h")
+
+[node name="Sprite3D5" type="Sprite3D" parent="SideFlares"]
+transform = Transform3D(1.50996e-07, 1, -1.73205, 0, 1.73205, 1, 2, -7.54979e-08, 1.30766e-07, 0.129535, 0.0174871, -0.0027124)
+modulate = Color(0.898039, 0.87451, 0, 0.392157)
+texture_filter = 0
+texture = ExtResource("1_awg7h")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.901961, 0.882353, 0, 1)
+light_energy = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "splash"
+libraries = {
+"": SubResource("AnimationLibrary_doe0w")
+}
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_4ko0s")
+draw_pass_1 = SubResource("QuadMesh_yhvji")

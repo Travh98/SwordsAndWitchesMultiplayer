@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bscrhv22ji7c4"]
+
+[ext_resource type="Script" path="res://components/wave_function_collapse/wave_function_collapse.gd" id="1_fseuh"]
+
+[node name="WaveFunctionGenerator" type="Node3D"]
+script = ExtResource("1_fseuh")

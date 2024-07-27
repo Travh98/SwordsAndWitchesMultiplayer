@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://2ivjx5vohpup"]
+
+[ext_resource type="Script" path="res://components/effects/blood_puddle_mgr.gd" id="1_av7k1"]
+
+[node name="BloodPuddleMgr" type="Node3D"]
+script = ExtResource("1_av7k1")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://rdculu48txeb"]
+
+[ext_resource type="Script" path="res://components/interactions/auto_interact_cast.gd" id="1_pknak"]
+
+[node name="AutoInteractCast" type="RayCast3D"]
+collide_with_areas = true
+script = ExtResource("1_pknak")

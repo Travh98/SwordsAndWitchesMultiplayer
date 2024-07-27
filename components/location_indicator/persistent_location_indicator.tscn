@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://llky0ij5ifni"]
+
+[ext_resource type="Material" uid="uid://dpp05os7snqg5" path="res://assets/materials/light_blue_transparent.tres" id="1_xh2cj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xdygj"]
+material = ExtResource("1_xh2cj")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0u0ji"]
+material = ExtResource("1_xh2cj")
+top_radius = 0.01
+bottom_radius = 0.1
+height = 0.5
+radial_segments = 8
+rings = 2
+
+[node name="PersistentLocationIndicator" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_xdygj")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 0, 0, -0.400593)
+mesh = SubResource("CylinderMesh_0u0ji")

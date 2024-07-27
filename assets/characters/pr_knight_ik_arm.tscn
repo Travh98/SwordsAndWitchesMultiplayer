@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwr6178bwd3ri"]
+
+[ext_resource type="PackedScene" uid="uid://2f525o02bpsu" path="res://assets/characters/KnightIkArm.glb" id="1_qgxeo"]
+[ext_resource type="Script" path="res://components/inverse_kinematics/start_ik.gd" id="2_ccifo"]
+[ext_resource type="Script" path="res://components/inverse_kinematics/ik_arm.gd" id="2_tt62v"]
+
+[node name="KnightIkArm" node_paths=PackedStringArray("skele_ik", "default_target") instance=ExtResource("1_qgxeo")]
+script = ExtResource("2_tt62v")
+skele_ik = NodePath("KnightRig_001/Skeleton3D/SkeletonIK3D")
+default_target = NodePath("DefaultTarget")
+
+[node name="LHand_002" parent="KnightRig_001/Skeleton3D" index="0"]
+transform = Transform3D(1.11114, 2.24564e-07, 3.52801e-07, -1.41958e-07, 1.11114, -4.47035e-07, -3.16455e-07, 5.21541e-07, 1.11114, -0.7189, 0.000800041, 0.00799645)
+
+[node name="LForearm_002" parent="KnightRig_001/Skeleton3D" index="1"]
+transform = Transform3D(1.11114, 9.40636e-08, 3.66941e-07, -9.06875e-08, 1.11114, -3.72529e-08, -3.241e-07, 1.2666e-07, 1.11114, -0.4463, 0.000800032, 0.0126964)
+
+[node name="LUpperArm_002" parent="KnightRig_001/Skeleton3D" index="2"]
+transform = Transform3D(1.11114, 5.74673e-08, 3.03611e-07, 1.84664e-08, 1.11114, 3.25381e-07, -2.62633e-07, -2.37953e-07, 1.11114, -0.10946, -0.00822521, 0.00352671)
+
+[node name="SkeletonIK3D" type="SkeletonIK3D" parent="KnightRig_001/Skeleton3D" index="3"]
+process_priority = 1
+root_bone = &"shoulder.L"
+tip_bone = &"hand.L"
+target_node = NodePath("../../../DefaultTarget")
+script = ExtResource("2_ccifo")
+
+[node name="DefaultTarget" type="Node3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.863808, 0, 0)

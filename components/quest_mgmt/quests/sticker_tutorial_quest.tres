@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=5 format=3 uid="uid://ds28ivm7fqkxr"]
+
+[ext_resource type="Script" path="res://components/quest_mgmt/quest_task.gd" id="1_m8mqq"]
+[ext_resource type="Script" path="res://components/quest_mgmt/quest.gd" id="1_u46d8"]
+
+[sub_resource type="Resource" id="Resource_q068p"]
+script = ExtResource("1_m8mqq")
+task_title = "Place stickers using the menu!"
+task_description = "Press TAB, find the sticker menu and start placing!"
+status = 0
+
+[sub_resource type="Resource" id="Resource_3c2n7"]
+script = ExtResource("1_m8mqq")
+task_title = "Place your first sticker!"
+task_description = "Use the sticker placer to place a sticker on something!"
+status = 0
+
+[resource]
+script = ExtResource("1_u46d8")
+quest_title = "Sticker Tutorial"
+quest_description = "Put stickers on things!"
+complete_in_order = true
+quest_status = 0
+quest_tasks = Array[ExtResource("1_m8mqq")]([SubResource("Resource_q068p"), SubResource("Resource_3c2n7")])

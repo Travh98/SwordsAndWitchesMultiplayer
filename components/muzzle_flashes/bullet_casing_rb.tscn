@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0jqsvby204d8"]
+
+[ext_resource type="PackedScene" uid="uid://6thr5hfpbygu" path="res://assets/weapons/pr_bullet_casing.tscn" id="1_l83e1"]
+[ext_resource type="AudioStream" uid="uid://17qixk108xak" path="res://assets/sfx/RifleSfx/brass_casing_dropped.wav" id="2_e8uev"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gg824"]
+height = 0.490432
+radius = 0.0969783
+
+[node name="BulletCasingRb" type="RigidBody3D"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.175082, 0, 0, 0, 0, -0.175082, 0, 0.175082, 0, 0, 0, 0)
+shape = SubResource("CylinderShape3D_gg824")
+
+[node name="bullet_casing" parent="." instance=ExtResource("1_l83e1")]
+
+[node name="BrassCasingDroppedSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_e8uev")
+autoplay = true
+
+[editable path="bullet_casing"]

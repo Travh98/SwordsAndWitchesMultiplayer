@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcwvkfruhfcd2"]
+
+[ext_resource type="Script" path="res://components/detection_area/detection_area.gd" id="1_3l4j1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8jeg1"]
+radius = 50.0
+
+[node name="DetectionArea" type="Area3D"]
+script = ExtResource("1_3l4j1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_8jeg1")

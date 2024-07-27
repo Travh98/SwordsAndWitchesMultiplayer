@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi4u7rhutrg7g"]
+
+[ext_resource type="PackedScene" uid="uid://cvvx2b5qgyioe" path="res://assets/locations/MoherCliffs.glb" id="1_15s66"]
+
+[node name="MoherCliffs" instance=ExtResource("1_15s66")]

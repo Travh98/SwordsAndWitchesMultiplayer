@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjvb6m32tpbvd"]
+
+[ext_resource type="PackedScene" uid="uid://cj5ynmmn06yqv" path="res://components/level_transition_area/level_transition_area.tscn" id="1_f3ctu"]
+[ext_resource type="PackedScene" uid="uid://cbf86ogudnhaq" path="res://components/location_indicator/location_indicator.tscn" id="2_7tvmi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4gqsx"]
+size = Vector3(0.305115, 2.01416, 1)
+
+[node name="SmallLevelTransition" type="Node3D"]
+
+[node name="LevelTransitionArea2" parent="." instance=ExtResource("1_f3ctu")]
+
+[node name="LocationIndicator" parent="LevelTransitionArea2" instance=ExtResource("2_7tvmi")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.968255, 0.189673, 0.0154978)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTransitionArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0260315, 0.997203, 0)
+shape = SubResource("BoxShape3D_4gqsx")

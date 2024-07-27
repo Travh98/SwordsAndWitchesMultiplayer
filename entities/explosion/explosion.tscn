@@ -1,0 +1,113 @@
+[gd_scene load_steps=8 format=3 uid="uid://2mf6drtrrffb"]
+
+[ext_resource type="Script" path="res://entities/explosion/explosion.gd" id="1_0ht7y"]
+[ext_resource type="Texture2D" uid="uid://dmvyj6wgq7fa7" path="res://assets/sprites/explosion.png" id="1_o62k4"]
+[ext_resource type="AudioStream" uid="uid://dg1h350bqi1d4" path="res://assets/sfx/explosion.wav" id="3_esfi3"]
+
+[sub_resource type="Animation" id="Animation_qm8nt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExplosionSfx:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_w2tpg"]
+resource_name = "explode"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExplosionSfx:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"register_explosion"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_463ca"]
+_data = {
+"RESET": SubResource("Animation_qm8nt"),
+"explode": SubResource("Animation_w2tpg")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gshi1"]
+radius = 3.0
+
+[node name="Explosion" type="Node3D"]
+script = ExtResource("1_0ht7y")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("1_o62k4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_463ca")
+}
+
+[node name="ExplodeArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplodeArea"]
+shape = SubResource("SphereShape3D_gshi1")
+
+[node name="ExplosionSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_esfi3")
+volume_db = -6.0
+unit_size = 100.0
+max_db = 0.0

@@ -1,0 +1,311 @@
+[gd_scene load_steps=19 format=3 uid="uid://cheoq2dxkgi7u"]
+
+[ext_resource type="Script" path="res://components/fps_character/fps_character.gd" id="1_1asp3"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="1_r0lxu"]
+[ext_resource type="PackedScene" uid="uid://c0u1u1w315lqq" path="res://ui/fps_char_state_info/fps_character_state_info.tscn" id="3_xcuqc"]
+[ext_resource type="PackedScene" uid="uid://dicawq3hlqp5e" path="res://components/locomotion_driver/locomotion_driver.tscn" id="4_2mgsi"]
+[ext_resource type="PackedScene" uid="uid://dexa6jq6wkuuy" path="res://components/step_checker/step_checker.tscn" id="4_a0504"]
+[ext_resource type="PackedScene" uid="uid://dfc8fb3pj77jl" path="res://components/interactions/interact_controller.tscn" id="7_p1veb"]
+[ext_resource type="Script" path="res://components/inventory/inventory.gd" id="8_c6u1s"]
+[ext_resource type="PackedScene" uid="uid://c8k2ucbty2xvc" path="res://entities/weapons/punching_arms.tscn" id="9_q017s"]
+[ext_resource type="PackedScene" uid="uid://bbm7284ux0w7j" path="res://entities/weapons/sword.tscn" id="10_6wrfn"]
+[ext_resource type="PackedScene" uid="uid://dcnnd5dfv234e" path="res://assets/characters/pr_knight.tscn" id="11_63vpc"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5j838"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("NameLabel:text")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ftsmo"]
+radius = 0.25
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a12wd"]
+radius = 0.25
+height = 1.3
+
+[sub_resource type="Animation" id="Animation_7g0d3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FpsCharPcam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FpsCharPcam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2fcpc"]
+resource_name = "heavy_landing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FpsCharPcam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.5, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FpsCharPcam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_phewf"]
+resource_name = "jump"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FpsCharPcam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FpsCharPcam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0523599, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l6rgd"]
+resource_name = "landing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FpsCharPcam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FpsCharPcam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bjicv"]
+_data = {
+"RESET": SubResource("Animation_7g0d3"),
+"heavy_landing": SubResource("Animation_2fcpc"),
+"jump": SubResource("Animation_phewf"),
+"landing": SubResource("Animation_l6rgd")
+}
+
+[node name="FpsCharacter" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_1asp3")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_5j838")
+
+[node name="StandingCol" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_ftsmo")
+
+[node name="CrouchingCol" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+shape = SubResource("CapsuleShape3D_a12wd")
+disabled = true
+
+[node name="Neck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="Head" type="Node3D" parent="Neck"]
+
+[node name="Eyes" type="Node3D" parent="Neck/Head"]
+
+[node name="FpsCharPcam" type="Node3D" parent="Neck/Head/Eyes"]
+script = ExtResource("1_r0lxu")
+priority_override = false
+priority = 0
+follow_mode = 0
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
+[node name="EyeRaycast" type="RayCast3D" parent="Neck/Head/Eyes/FpsCharPcam"]
+target_position = Vector3(0, 0, -1000)
+debug_shape_custom_color = Color(0, 0.945098, 0, 0.117647)
+
+[node name="InteractRaycast" type="RayCast3D" parent="Neck/Head/Eyes/FpsCharPcam"]
+target_position = Vector3(0, 0, -10)
+collide_with_areas = true
+debug_shape_custom_color = Color(0, 0.729412, 0, 0.117647)
+debug_shape_thickness = 3
+
+[node name="EyesAnimPlayer" type="AnimationPlayer" parent="Neck/Head/Eyes"]
+libraries = {
+"": SubResource("AnimationLibrary_bjicv")
+}
+
+[node name="StandingRoomCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 1.8, 0)
+
+[node name="ContinueSlideCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.137367, -0.448626)
+
+[node name="FpsCharacterStateInfo" parent="." instance=ExtResource("3_xcuqc")]
+visible = false
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+
+[node name="StepChecker" parent="." instance=ExtResource("4_a0504")]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="LocomotionDriver" parent="." instance=ExtResource("4_2mgsi")]
+ai_controlled = false
+
+[node name="InteractController" parent="." node_paths=PackedStringArray("interact_cast") instance=ExtResource("7_p1veb")]
+interact_cast = NodePath("../Neck/Head/Eyes/FpsCharPcam/InteractRaycast")
+
+[node name="BaseInventory" type="Node" parent="." node_paths=PackedStringArray("r_arm", "l_arm")]
+script = ExtResource("8_c6u1s")
+r_arm = NodePath("../Knight/KnightIkArmR")
+l_arm = NodePath("../Knight/KnightIkArmL")
+
+[node name="Arms" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24014, 0)
+
+[node name="PunchingArms" parent="Arms" instance=ExtResource("9_q017s")]
+
+[node name="Sword" parent="Arms" instance=ExtResource("10_6wrfn")]
+
+[node name="Knight" parent="." instance=ExtResource("11_63vpc")]
+
+[node name="Head_002" parent="Knight/KnightRig/Skeleton3D" index="0"]
+transform = Transform3D(1.11114, 9.25676e-09, 3.12099e-08, -9.25678e-09, 1.11114, 7.0408e-07, -3.12099e-08, -6.55651e-07, 1.11114, 7.70319e-10, 1.5687, -0.00510037)
+
+[node name="Neck_002" parent="Knight/KnightRig/Skeleton3D" index="1"]
+transform = Transform3D(1.11114, 3.91623e-09, 7.90531e-09, -3.91625e-09, 1.11114, 7.00355e-07, -7.90531e-09, -6.4075e-07, 1.11114, -1.5855e-09, 1.4876, 0.0104997)
+
+[node name="LHand_001" parent="Knight/KnightRig/Skeleton3D" index="2"]
+transform = Transform3D(1.11114, -1.5533e-06, 5.19423e-07, 1.36646e-06, 1.11114, 8.9407e-07, -4.44732e-07, -9.08971e-07, 1.11114, -0.7389, 1.4408, 0.0079962)
+
+[node name="LForearm_001" parent="Knight/KnightRig/Skeleton3D" index="3"]
+transform = Transform3D(1.11114, -9.56177e-07, 5.19678e-07, 1.02201e-06, 1.11114, 9.90927e-07, -4.54485e-07, -9.72301e-07, 1.11114, -0.4663, 1.4408, 0.0126962)
+
+[node name="LUpperArm_001" parent="Knight/KnightRig/Skeleton3D" index="4"]
+transform = Transform3D(1.11114, -2.48839e-06, 4.39584e-07, 2.42885e-06, 1.11114, 1.05472e-06, -3.68804e-07, -1.03586e-06, 1.11114, -0.1919, 1.4408, 0.00799613)
+
+[node name="RHand_001" parent="Knight/KnightRig/Skeleton3D" index="5"]
+transform = Transform3D(1.11114, 1.63247e-06, -3.47614e-07, -1.35201e-06, 1.11114, 1.05053e-06, 3.06358e-07, -1.08033e-06, 1.11114, 0.7389, 1.4408, 0.00799641)
+
+[node name="RForearm_001" parent="Knight/KnightRig/Skeleton3D" index="6"]
+transform = Transform3D(1.11114, 9.67237e-07, -2.92435e-07, -1.05216e-06, 1.11114, 1.10269e-06, 2.66358e-07, -1.08406e-06, 1.11114, 0.4663, 1.4408, 0.0126963)
+
+[node name="RUpperArm_001" parent="Knight/KnightRig/Skeleton3D" index="7"]
+transform = Transform3D(1.11114, 2.48862e-06, -2.96161e-07, -2.42851e-06, 1.11114, 1.08569e-06, 2.6077e-07, -1.06811e-06, 1.11114, 0.1919, 1.4408, 0.0079962)
+
+[node name="LFoot_001" parent="Knight/KnightRig/Skeleton3D" index="8"]
+transform = Transform3D(1.11114, 1.14332e-07, -2.46355e-08, -1.14332e-07, 1.11114, 4.82798e-06, 2.46358e-08, -4.67896e-06, 1.11115, -0.0890001, 0.1037, 0.0358012)
+
+[node name="LShin_001" parent="Knight/KnightRig/Skeleton3D" index="9"]
+transform = Transform3D(1.11114, 1.68801e-08, 5.63926e-08, -1.68802e-08, 1.11114, 1.89245e-06, -5.6392e-08, -1.84774e-06, 1.11115, -0.089, 0.5318, 0.00140063)
+
+[node name="LThigh_001" parent="Knight/KnightRig/Skeleton3D" index="10"]
+transform = Transform3D(1.11114, 2.09367e-08, 3.64928e-08, -2.09368e-08, 1.11114, 2.53785e-06, -3.64923e-08, -2.4857e-06, 1.11115, -0.089, 0.9321, -0.00140002)
+
+[node name="RFoot_001" parent="Knight/KnightRig/Skeleton3D" index="11"]
+transform = Transform3D(1.11114, 1.14332e-07, -2.46352e-08, -1.14332e-07, 1.11114, -2.98023e-08, 2.46366e-08, 5.96046e-08, 1.11114, 0.089, 0.1037, 0.0357996)
+
+[node name="RShin_001" parent="Knight/KnightRig/Skeleton3D" index="12"]
+transform = Transform3D(1.11114, 1.68799e-08, 5.63929e-08, -1.68799e-08, 1.11114, 5.96046e-08, -5.63905e-08, -9.68575e-08, 1.11114, 0.089, 0.5318, 0.00139979)
+
+[node name="RThigh_001" parent="Knight/KnightRig/Skeleton3D" index="13"]
+transform = Transform3D(1.11114, 2.09364e-08, 3.64931e-08, -2.09364e-08, 1.11114, 6.84522e-08, -3.6491e-08, -7.17118e-08, 1.11114, 0.089, 0.9321, -0.00139999)
+
+[node name="Hips_002" parent="Knight/KnightRig/Skeleton3D" index="14"]
+transform = Transform3D(1.11114, 3.55271e-15, 1.42109e-14, 0, 1.11114, 2.98023e-08, 0, 2.98023e-08, 1.11114, -7.56519e-09, 0.9167, 0.0501)
+
+[node name="FootMesh" parent="Knight/KnightIkLeg2/KnightIkLeg/Skeleton3D" index="0"]
+transform = Transform3D(1.11114, 2.55795e-13, -1.10134e-12, -2.70006e-13, 1.11107, -0.0122984, 1.08002e-12, 0.0122984, 1.11107, -0.00633889, 0.1037, 0.0358)
+
+[node name="ShinMesh" parent="Knight/KnightIkLeg2/KnightIkLeg/Skeleton3D" index="1"]
+transform = Transform3D(1.11114, 1.68799e-08, 5.63924e-08, -1.68799e-08, 1.11114, 3.42727e-07, -5.63919e-08, -3.42727e-07, 1.11115, -0.0063389, 0.1037, 0.0358)
+
+[node name="ThighMesh" parent="Knight/KnightIkLeg2/KnightIkLeg/Skeleton3D" index="2"]
+transform = Transform3D(1.11114, 8.25793e-09, 3.65812e-08, -8.15435e-09, 1.11114, -0.00314544, -3.66042e-08, 0.00314542, 1.11115, -0.00633889, 0.5318, 0.00140001)
+
+[node name="FootMesh" parent="Knight/KnightIkLeg3/KnightIkLeg/Skeleton3D" index="0"]
+transform = Transform3D(1.11114, 2.55795e-13, -1.10134e-12, -2.70006e-13, 1.11107, -0.0122984, 1.08002e-12, 0.0122984, 1.11107, -0.00633889, 0.1037, 0.0358)
+
+[node name="ShinMesh" parent="Knight/KnightIkLeg3/KnightIkLeg/Skeleton3D" index="1"]
+transform = Transform3D(1.11114, 1.68799e-08, 5.63924e-08, -1.68799e-08, 1.11114, 3.42727e-07, -5.63919e-08, -3.42727e-07, 1.11115, -0.0063389, 0.1037, 0.0358)
+
+[node name="ThighMesh" parent="Knight/KnightIkLeg3/KnightIkLeg/Skeleton3D" index="2"]
+transform = Transform3D(1.11114, 8.25793e-09, 3.65812e-08, -8.15435e-09, 1.11114, -0.00314544, -3.66042e-08, 0.00314542, 1.11115, -0.00633889, 0.5318, 0.00140001)
+
+[node name="PeerNameLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+text = "test"
+
+[node name="NameLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.20284, 0)
+billboard = 1
+text = "name"
+
+[editable path="Knight"]
+[editable path="Knight/KnightIkLeg2"]
+[editable path="Knight/KnightIkLeg3"]

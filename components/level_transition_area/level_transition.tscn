@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmgk03aaal2gm"]
+
+[ext_resource type="PackedScene" uid="uid://cj5ynmmn06yqv" path="res://components/level_transition_area/level_transition_area.tscn" id="1_7q8kt"]
+[ext_resource type="Material" path="res://assets/materials/green_transparent.tres" id="2_btfoa"]
+[ext_resource type="PackedScene" uid="uid://cbf86ogudnhaq" path="res://components/location_indicator/location_indicator.tscn" id="3_vtflu"]
+[ext_resource type="PackedScene" uid="uid://b1mputhdf02rc" path="res://components/debug_label_3d/debug_label_3d.tscn" id="4_mlq7k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ej5tc"]
+material = ExtResource("2_btfoa")
+size = Vector3(20, 3, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jk2rd"]
+size = Vector3(20, 3, 2)
+
+[node name="LevelTransition" type="Node3D"]
+
+[node name="LevelTransitionArea" parent="." instance=ExtResource("1_7q8kt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49515, 0)
+next_scene = "stroad_level"
+target_location = "enter1"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelTransitionArea"]
+mesh = SubResource("BoxMesh_ej5tc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTransitionArea"]
+shape = SubResource("BoxShape3D_jk2rd")
+
+[node name="LocationIndicator" parent="LevelTransitionArea" instance=ExtResource("3_vtflu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -1.20495, 1.60081)
+location_name = "exit1"
+
+[node name="DebugLabel3D" parent="LevelTransitionArea" instance=ExtResource("4_mlq7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+text = "Level Transition"

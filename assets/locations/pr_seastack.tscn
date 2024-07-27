@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb11g171183ro"]
+
+[ext_resource type="PackedScene" uid="uid://lnooc13pq1hg" path="res://assets/locations/Seastack.glb" id="1_sv26f"]
+
+[node name="Seastack" instance=ExtResource("1_sv26f")]

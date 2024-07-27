@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WfcTile" load_steps=6 format=3 uid="uid://dlh8n6palpc88"]
+
+[ext_resource type="PackedScene" uid="uid://vb8h14q8curb" path="res://assets/wave_function_collapse_test/pr_wfc_building.tscn" id="1_2opnp"]
+[ext_resource type="Resource" uid="uid://bpm70gue8khna" path="res://assets/wave_function_collapse_test/wfc_tiles/wfc_curved_road.tres" id="1_dnvkg"]
+[ext_resource type="Script" path="res://components/wave_function_collapse/wfc_tile.gd" id="2_4wgpq"]
+[ext_resource type="Resource" uid="uid://c8mdxwnt4rhqq" path="res://assets/wave_function_collapse_test/wfc_tiles/wfc_straight_road.tres" id="2_mamqf"]
+[ext_resource type="Resource" uid="uid://dwr2a7orri5g6" path="res://assets/wave_function_collapse_test/wfc_tiles/wfc_tall_building.tres" id="3_6cxk5"]
+
+[resource]
+script = ExtResource("2_4wgpq")
+up_neighbors = Array[ExtResource("2_4wgpq")]([null, ExtResource("1_dnvkg"), ExtResource("2_mamqf"), ExtResource("3_6cxk5")])
+right_neighbors = Array[ExtResource("2_4wgpq")]([null, ExtResource("1_dnvkg"), ExtResource("2_mamqf"), ExtResource("3_6cxk5")])
+left_neighbors = Array[ExtResource("2_4wgpq")]([null, ExtResource("1_dnvkg"), ExtResource("2_mamqf"), ExtResource("3_6cxk5")])
+down_neighbors = Array[ExtResource("2_4wgpq")]([null, ExtResource("1_dnvkg"), ExtResource("2_mamqf"), ExtResource("3_6cxk5")])
+model = ExtResource("1_2opnp")

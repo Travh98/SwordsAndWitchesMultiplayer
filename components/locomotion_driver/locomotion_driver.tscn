@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dicawq3hlqp5e"]
+
+[ext_resource type="Script" path="res://components/locomotion_driver/locomotion_driver.gd" id="1_cnesi"]
+
+[node name="LocomotionDriver" type="Node"]
+script = ExtResource("1_cnesi")

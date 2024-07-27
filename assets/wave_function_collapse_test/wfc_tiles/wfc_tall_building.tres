@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WfcTile" load_steps=4 format=3 uid="uid://dwr2a7orri5g6"]
+
+[ext_resource type="PackedScene" uid="uid://culmlask2gbv6" path="res://assets/wave_function_collapse_test/pr_wfc_tall_building.tscn" id="1_5y3um"]
+[ext_resource type="Script" path="res://components/wave_function_collapse/wfc_tile.gd" id="1_ppi7h"]
+[ext_resource type="Resource" uid="uid://dlh8n6palpc88" path="res://assets/wave_function_collapse_test/wfc_tiles/wfc_building.tres" id="1_raq2s"]
+
+[resource]
+script = ExtResource("1_ppi7h")
+up_neighbors = Array[ExtResource("1_ppi7h")]([ExtResource("1_raq2s")])
+right_neighbors = Array[ExtResource("1_ppi7h")]([ExtResource("1_raq2s")])
+left_neighbors = Array[ExtResource("1_ppi7h")]([ExtResource("1_raq2s")])
+down_neighbors = Array[ExtResource("1_ppi7h")]([ExtResource("1_raq2s")])
+model = ExtResource("1_5y3um")

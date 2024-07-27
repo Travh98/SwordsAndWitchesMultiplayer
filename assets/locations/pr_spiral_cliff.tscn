@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://chky3ijt2tpk8"]
+
+[ext_resource type="PackedScene" uid="uid://8p6uui5gist8" path="res://assets/locations/SpiralCliff.glb" id="1_wchs2"]
+
+[node name="SpiralCliff" instance=ExtResource("1_wchs2")]

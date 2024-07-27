@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://74n6ht5nu0c"]
+
+[ext_resource type="Material" uid="uid://bn6lu4kpvpr7w" path="res://assets/materials/emissive_bullet_trail.tres" id="1_kjsl1"]
+[ext_resource type="Script" path="res://components/muzzle_flashes/bullet_trail.gd" id="1_rvndr"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_63a12"]
+material = ExtResource("1_kjsl1")
+radius = 0.02
+
+[node name="BulletTrail" type="Node3D"]
+script = ExtResource("1_rvndr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 0, -1)
+mesh = SubResource("CapsuleMesh_63a12")

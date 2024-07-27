@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn0o072firg03"]
+
+[ext_resource type="Texture2D" uid="uid://qwmqe73hjr42" path="res://assets/gridmap/DevGridmap_texture_02.png" id="1_ryjko"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khw5y"]
+albedo_texture = ExtResource("1_ryjko")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ftbg6"]
+material = SubResource("StandardMaterial3D_khw5y")
+size = Vector3(0.5, 0.2, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rtnil"]
+size = Vector3(0.5, 0.2, 4)
+
+[node name="DevWoodPlank" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ftbg6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_rtnil")

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=5 format=3 uid="uid://b7dcy7k11cbud"]
+
+[ext_resource type="Script" path="res://components/quest_mgmt/quest.gd" id="1_mnug7"]
+[ext_resource type="Script" path="res://components/quest_mgmt/quest_task.gd" id="1_yku30"]
+
+[sub_resource type="Resource" id="Resource_s2wp5"]
+script = ExtResource("1_yku30")
+task_title = "Learn to walk again"
+task_description = "Use WASD or some controls to move."
+status = 0
+
+[sub_resource type="Resource" id="Resource_tldiy"]
+script = ExtResource("1_yku30")
+task_title = "Talk to your friend!"
+task_description = "Say hello using the F key."
+status = 0
+
+[resource]
+script = ExtResource("1_mnug7")
+quest_title = "Tutorial Quest"
+quest_description = "Good morning!"
+complete_in_order = true
+quest_status = 0
+quest_tasks = Array[ExtResource("1_yku30")]([SubResource("Resource_s2wp5"), SubResource("Resource_tldiy")])

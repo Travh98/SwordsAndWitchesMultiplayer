@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bd7qd7k703iji"]
+
+[ext_resource type="Script" path="res://components/player_trigger/player_trigger.gd" id="1_3tdv7"]
+[ext_resource type="Material" path="res://assets/materials/green_transparent.tres" id="1_8g2ia"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gj712"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sir7g"]
+material = ExtResource("1_8g2ia")
+
+[node name="PlayerTrigger" type="Area3D"]
+script = ExtResource("1_3tdv7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_gj712")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_sir7g")

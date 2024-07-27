@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://du38b5soobc08"]
+
+[ext_resource type="Script" path="res://ui/quests_ui/quest_task_checkbox.gd" id="1_d4m1a"]
+
+
+[node name="QuestTaskCheckbox" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_d4m1a")
+
+[node name="TaskTitleCheckbox" type="CheckBox" parent="."]
+layout_mode = 2
+mouse_filter = 2
+button_mask = 0
+text = "task_title"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TaskDescLabel" type="Label" parent="HBoxContainer"]
+modulate = Color(0.705882, 0.705882, 0.705882, 1)
+layout_mode = 2
+text = "task_desc
+"

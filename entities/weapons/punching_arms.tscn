@@ -1,0 +1,155 @@
+[gd_scene load_steps=11 format=3 uid="uid://c8k2ucbty2xvc"]
+
+[ext_resource type="Script" path="res://entities/weapons/punching_arm_test.gd" id="1_twjcu"]
+[ext_resource type="Script" path="res://components/fps_character/red_damage_mesh.gd" id="2_obs5c"]
+[ext_resource type="PackedScene" uid="uid://sboyc7632ei8" path="res://components/hurt_box/hurt_box.tscn" id="3_1rgyr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_op78k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j5ve2"]
+material = SubResource("StandardMaterial3D_op78k")
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i86ir"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="Animation" id="Animation_oibjy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0660694, 0, -0.421688)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pgik3"]
+resource_name = "punch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0660694, 0, -0.421688), Vector3(0.326318, 0.342719, -0.525896), Vector3(0.221403, 0.232189, -1.14974), Vector3(-0.319218, 0.0855159, -0.602935), Vector3(0.0660694, 0, -0.421688)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.0292904, 0.154854, 0.0317784), Vector3(-0.22883, 0.158965, 0), Vector3(-0.22883, 0.574248, 6.1987e-09), Vector3(0, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D/HurtBox")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_active"
+}, {
+"args": [false],
+"method": &"set_active"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_sk6rc"]
+resource_name = "punch2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.211819, 0.231482, -0.415455), Vector3(-0.200485, 0.283291, -0.472407), Vector3(-0.106477, 0.283291, -0.875228), Vector3(0.0982797, 0.258211, -0.605278), Vector3(0.220023, 0.209607, -0.437397)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.143396, 0, 0), Vector3(0.11685, -0.108472, 0), Vector3(0.0280757, -0.466633, 0.0449963), Vector3(0.0280757, -1.30621, 0.0449963), Vector3(0.0280757, -2.45161, 0.0449963)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D/HurtBox")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_active"
+}, {
+"args": [false],
+"method": &"set_active"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f7pot"]
+_data = {
+"RESET": SubResource("Animation_oibjy"),
+"punch": SubResource("Animation_pgik3"),
+"punch2": SubResource("Animation_sk6rc")
+}
+
+[node name="PunchingArms" type="Node3D"]
+script = ExtResource("1_twjcu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0660694, 0, -0.421688)
+mesh = SubResource("BoxMesh_j5ve2")
+script = ExtResource("2_obs5c")
+
+[node name="HurtBox" parent="MeshInstance3D" instance=ExtResource("3_1rgyr")]
+damage = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/HurtBox"]
+shape = SubResource("BoxShape3D_i86ir")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f7pot")
+}

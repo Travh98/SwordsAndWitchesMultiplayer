@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bg06jblfcqrjo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7yxi"]
+albedo_color = Color(0.32549, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xsya7"]
+material = SubResource("StandardMaterial3D_v7yxi")
+size = Vector3(0.01, 0.01, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3biy"]
+albedo_color = Color(0.972549, 0, 0.45098, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sgix0"]
+material = SubResource("StandardMaterial3D_w3biy")
+size = Vector3(0.01, 0.01, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvl5j"]
+albedo_color = Color(0.141176, 0.94902, 0.235294, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gt30i"]
+material = SubResource("StandardMaterial3D_cvl5j")
+size = Vector3(0.01, 0.01, 0.1)
+
+[node name="My3dGizmo" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0453835)
+mesh = SubResource("BoxMesh_xsya7")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0475123, 0, -0.00163416)
+mesh = SubResource("BoxMesh_sgix0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.91069e-15, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, -1, 0, -4.37114e-08, 0.000877894, 0.0535853, -0.00163416)
+mesh = SubResource("BoxMesh_gt30i")
+skeleton = NodePath("../..")

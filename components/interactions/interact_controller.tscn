@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfc8fb3pj77jl"]
+
+[ext_resource type="Script" path="res://components/interactions/interact_controller.gd" id="1_dcghd"]
+
+[node name="InteractController" type="Node"]
+script = ExtResource("1_dcghd")

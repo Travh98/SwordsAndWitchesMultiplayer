@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0pob3bs25oh0"]
+
+[ext_resource type="Script" path="res://ui/credits/credits.gd" id="1_loddt"]
+[ext_resource type="Texture2D" uid="uid://vwajed327wom" path="res://assets/sprites/travh98_64.png" id="2_2jxdh"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_6w55e"]
+device = -1
+pressed = true
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_doqbv"]
+events = [SubResource("InputEventKey_6w55e")]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_loddt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="CreditsContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/CreditsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/CreditsContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_2jxdh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/CreditsContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/ScrollContainer/CreditsContainer/HBoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/CreditsContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "GAME BY TRAVH98"
+
+[node name="GodotCredits" type="Label" parent="MarginContainer/ScrollContainer/CreditsContainer"]
+layout_mode = 2
+text = "Made in Godot 4"
+horizontal_alignment = 1
+
+[node name="AddonCreditsTitle" type="Label" parent="MarginContainer/ScrollContainer/CreditsContainer"]
+layout_mode = 2
+text = "Made with the help of these Addons:"
+horizontal_alignment = 1
+
+[node name="AddonCredits" type="VBoxContainer" parent="MarginContainer/ScrollContainer/CreditsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SampleAddonCredit" type="Label" parent="MarginContainer/ScrollContainer/CreditsContainer/AddonCredits"]
+layout_mode = 2
+text = "addon number 1 - author"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/ScrollContainer/CreditsContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="ReturnButton" type="Button" parent="MarginContainer/ScrollContainer/CreditsContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+shortcut = SubResource("Shortcut_doqbv")
+text = "RETURN"

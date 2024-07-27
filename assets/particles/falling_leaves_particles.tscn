@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://rigxamrjiutd"]
+
+[ext_resource type="Texture2D" uid="uid://dj3efd6nelsuv" path="res://assets/particles/maple_leaf.png" id="1_7qxtl"]
+
+[sub_resource type="Curve" id="Curve_6rxfn"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kat5n"]
+curve = SubResource("Curve_6rxfn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_632cd"]
+emission_shape = 3
+emission_box_extents = Vector3(3, 1, 3)
+angle_max = 720.0
+spread = 180.0
+angular_velocity_min = -5.0
+angular_velocity_max = 5.0
+gravity = Vector3(0, -1, 0)
+tangential_accel_min = -0.5
+tangential_accel_max = 0.5
+scale_min = 0.75
+color = Color(1, 0.462745, 0.0235294, 1)
+hue_variation_min = -0.05
+hue_variation_max = 0.2
+hue_variation_curve = SubResource("CurveTexture_kat5n")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mkbsx"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_7qxtl")
+metallic_specular = 0.0
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_pokcn"]
+material = SubResource("StandardMaterial3D_mkbsx")
+size = Vector2(0.25, 0.25)
+
+[node name="FallingLeavesParticles" type="GPUParticles3D"]
+amount = 40
+lifetime = 3.5
+process_material = SubResource("ParticleProcessMaterial_632cd")
+draw_pass_1 = SubResource("QuadMesh_pokcn")

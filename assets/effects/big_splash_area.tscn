@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo2u17dd56iu2"]
+
+[ext_resource type="Script" path="res://assets/effects/big_splash_area.gd" id="1_1dj4t"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_be42p"]
+radius = 2.0
+
+[node name="BigSplashArea" type="Area3D"]
+script = ExtResource("1_1dj4t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_be42p")

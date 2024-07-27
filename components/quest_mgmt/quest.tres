@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=2 format=3 uid="uid://fv4o7pxqo8ef"]
+
+[ext_resource type="Script" path="res://components/quest_mgmt/quest.gd" id="1_yxeny"]
+
+[resource]
+script = ExtResource("1_yxeny")
+quest_title = ""
+quest_description = ""
+quest_tasks = Array[Resource("res://components/quest_mgmt/quest_task.gd")]([])

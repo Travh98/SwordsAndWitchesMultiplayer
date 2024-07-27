@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="QuestTask" load_steps=2 format=3 uid="uid://dejl5xdqi165l"]
+
+[ext_resource type="Script" path="res://components/quest_mgmt/quest_task.gd" id="1_taquv"]
+
+[resource]
+script = ExtResource("1_taquv")
+is_done = false

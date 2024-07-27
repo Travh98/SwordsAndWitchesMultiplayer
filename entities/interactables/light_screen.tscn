@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://biu05e3uer6ak"]
+
+[ext_resource type="Script" path="res://entities/interactables/light_screen.gd" id="1_wyclj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l74c6"]
+resource_local_to_scene = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_o1yc8"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_l74c6")
+size = Vector3(2, 1, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rckwf"]
+size = Vector3(2, 1, 0.2)
+
+[node name="LightScreen" type="StaticBody3D"]
+script = ExtResource("1_wyclj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_o1yc8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_rckwf")

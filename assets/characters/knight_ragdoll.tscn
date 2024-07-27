@@ -1,0 +1,334 @@
+[gd_scene load_steps=16 format=3 uid="uid://ctyx8nd0kba84"]
+
+[ext_resource type="PackedScene" uid="uid://c7rbbdcld2axn" path="res://assets/characters/Knight.glb" id="1_63xqm"]
+[ext_resource type="Script" path="res://assets/characters/faction_mesh_color.gd" id="1_yh2sr"]
+[ext_resource type="Script" path="res://components/effects/ragdoll.gd" id="3_tkkbs"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cnfn5"]
+radius = 0.0409546
+height = 0.111823
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vww7t"]
+radius = 0.0927403
+height = 0.363441
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6f5eh"]
+radius = 0.0590828
+height = 0.154766
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wo8tp"]
+radius = 0.027444
+height = 0.27444
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ama4m"]
+radius = 0.027264
+height = 0.261146
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a0hvu"]
+radius = 0.027444
+height = 0.27444
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jnrav"]
+radius = 0.027264
+height = 0.253979
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jr1bu"]
+radius = 0.040031
+height = 0.389113
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h84jh"]
+radius = 0.042948
+height = 0.42948
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qo6xq"]
+radius = 0.040031
+height = 0.389263
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lcgma"]
+radius = 0.042948
+height = 0.42948
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0payy"]
+radius = 0.0509281
+height = 0.310829
+
+[node name="KnightRagdoll" type="Node3D" node_paths=PackedStringArray("skeleton")]
+script = ExtResource("3_tkkbs")
+skeleton = NodePath("Knight/KnightRig/Skeleton3D")
+
+[node name="Knight" parent="." node_paths=PackedStringArray("mesh") instance=ExtResource("1_63xqm")]
+script = ExtResource("1_yh2sr")
+mesh = NodePath("KnightRig/Skeleton3D/Cape")
+
+[node name="Skeleton3D" parent="Knight/KnightRig" index="0"]
+script = ExtResource("3_tkkbs")
+
+[node name="Head_002" parent="Knight/KnightRig/Skeleton3D" index="0"]
+transform = Transform3D(1.11114, 9.25672e-09, 3.12102e-08, -9.25674e-09, 1.11114, 1.71363e-07, -3.12102e-08, 2.98023e-08, 1.11114, 7.70287e-10, 1.5687, -0.0051)
+
+[node name="Neck_002" parent="Knight/KnightRig/Skeleton3D" index="1"]
+transform = Transform3D(1.11114, 3.91618e-09, 7.9055e-09, -3.91621e-09, 1.11114, 7.45058e-08, -7.90547e-09, 1.49012e-07, 1.11114, -1.58552e-09, 1.4876, 0.0105)
+
+[node name="LHand_001" parent="Knight/KnightRig/Skeleton3D" index="2"]
+transform = Transform3D(1.11114, 6.38886e-08, -4.10539e-08, 3.06001e-08, 1.11114, 1.49012e-08, 1.26223e-08, 1.71363e-07, 1.11114, -0.7389, 1.4408, 0.00799624)
+
+[node name="LForearm_001" parent="Knight/KnightRig/Skeleton3D" index="3"]
+transform = Transform3D(1.11114, -6.70552e-08, -2.42144e-08, 8.21892e-08, 1.11114, 1.41561e-07, 0, 7.45058e-08, 1.11114, -0.4663, 1.4408, 0.0126963)
+
+[node name="LUpperArm_001" parent="Knight/KnightRig/Skeleton3D" index="4"]
+transform = Transform3D(1.11114, -7.60283e-08, -1.19209e-07, 1.63907e-07, 1.11114, 3.02913e-07, 9.31323e-08, -9.52277e-08, 1.11114, -0.1919, 1.4408, 0.00799639)
+
+[node name="RHand_001" parent="Knight/KnightRig/Skeleton3D" index="5"]
+transform = Transform3D(1.11114, 8.82838e-08, 1.12251e-07, -6.41869e-08, 1.11114, -2.98023e-08, -1.49008e-07, 2.08616e-07, 1.11114, 0.7389, 1.4408, 0.00799643)
+
+[node name="RForearm_001" parent="Knight/KnightRig/Skeleton3D" index="6"]
+transform = Transform3D(1.11114, 2.18628e-07, 9.68575e-08, -1.59722e-07, 1.11114, 8.9407e-08, -1.30385e-07, 1.2666e-07, 1.11114, 0.4663, 1.4408, 0.0126965)
+
+[node name="RUpperArm_001" parent="Knight/KnightRig/Skeleton3D" index="7"]
+transform = Transform3D(1.11114, 4.13009e-07, 1.95578e-07, -3.45033e-07, 1.11114, 2.24099e-07, -2.34693e-07, -1.52504e-08, 1.11114, 0.1919, 1.4408, 0.00799646)
+
+[node name="LFoot_001" parent="Knight/KnightRig/Skeleton3D" index="8"]
+transform = Transform3D(1.11114, 1.14332e-07, -2.46359e-08, -1.14332e-07, 1.11114, 2.86102e-06, 2.46353e-08, -2.71201e-06, 1.11115, -0.089, 0.1037, 0.0358002)
+
+[node name="LShin_001" parent="Knight/KnightRig/Skeleton3D" index="9"]
+transform = Transform3D(1.11114, 1.688e-08, 5.63923e-08, -1.688e-08, 1.11114, 5.36442e-07, -5.6393e-08, -3.65078e-07, 1.11115, -0.089, 0.5318, 0.00140009)
+
+[node name="LThigh_001" parent="Knight/KnightRig/Skeleton3D" index="10"]
+transform = Transform3D(1.11114, 2.09366e-08, 3.64925e-08, -2.09367e-08, 1.11114, 1.12457e-06, -3.64932e-08, -9.36911e-07, 1.11115, -0.089, 0.9321, -0.0014)
+
+[node name="RFoot_001" parent="Knight/KnightRig/Skeleton3D" index="11"]
+transform = Transform3D(1.11114, 1.14332e-07, -2.46352e-08, -1.14332e-07, 1.11114, -3.57628e-07, 2.46367e-08, 4.17233e-07, 1.11114, 0.089, 0.1037, 0.0357994)
+
+[node name="RShin_001" parent="Knight/KnightRig/Skeleton3D" index="12"]
+transform = Transform3D(1.11114, 1.68799e-08, 5.63929e-08, -1.68799e-08, 1.11114, 2.23517e-08, -5.63905e-08, 2.23517e-08, 1.11114, 0.089, 0.5318, 0.00139975)
+visible = false
+
+[node name="RThigh_001" parent="Knight/KnightRig/Skeleton3D" index="13"]
+transform = Transform3D(1.11114, 2.09364e-08, 3.64932e-08, -2.09364e-08, 1.11114, -1.67638e-08, -3.64911e-08, 8.00937e-08, 1.11114, 0.089, 0.9321, -0.00139998)
+
+[node name="Hips_002" parent="Knight/KnightRig/Skeleton3D" index="14"]
+transform = Transform3D(1.11114, -1.06581e-14, 0, -1.06581e-14, 1.11114, 5.96046e-08, 0, 5.96046e-08, 1.11114, -7.56519e-09, 0.9167, 0.0501)
+
+[node name="Physical Bone spine" type="PhysicalBone3D" parent="Knight/KnightRig/Skeleton3D" index="17"]
+transform = Transform3D(-1, 1.78649e-07, -3.7667e-08, -8.48796e-09, -0.249691, -0.968347, -1.83914e-07, -0.968367, 0.249686, -4.76417e-09, 0.983602, 0.0328492)
+joint_type = 3
+joint_offset = Transform3D(-3.61999e-06, 0, 0.999999, 0, 1, 0, -0.999999, 0, -3.61999e-06, 1.98304e-10, -2.8154e-07, 0.0690888)
+joint_rotation = Vector3(0, 1.5708, 0)
+body_offset = Transform3D(1, 1.56705e-09, -3.45999e-11, -2.4869e-14, -1.04308e-07, -1.00002, 0, 1.00004, -2.38419e-07, -1.95913e-10, 0.0690902, 2.98023e-07)
+bone_name = "spine"
+joint_constraints/angular_limit_enabled = true
+joint_constraints/angular_limit_upper = 0.0
+joint_constraints/angular_limit_lower = -20.0
+joint_constraints/angular_limit_bias = 0.3
+joint_constraints/angular_limit_softness = 0.9
+joint_constraints/angular_limit_relaxation = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Knight/KnightRig/Skeleton3D/Physical Bone spine"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_cnfn5")
+
+[node name="Physical Bone spine_002" type="PhysicalBone3D" parent="Knight/KnightRig/Skeleton3D" index="18"]
+transform = Transform3D(-1, 1.44463e-07, 4.76075e-09, -1.55721e-10, 0.0318534, -0.999492, -1.46109e-07, -0.999493, -0.0318535, -3.9542e-10, 1.24418, 0.00264869)
+joint_type = 3
+joint_offset = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 1.0674e-12, -7.01449e-07, 0.0706165)
+joint_rotation = Vector3(0, 1.5708, 0)
+body_offset = Transform3D(1, 1.56768e-09, 4.89875e-11, -2.66454e-15, -3.72529e-08, -1, 0, 1, -3.72529e-08, -4.52563e-12, 0.0706165, 7.0408e-07)
+bone_name = "spine.002"
+joint_constraints/angular_limit_enabled = true
+joint_constraints/angular_limit_upper = 0.0
+joint_constraints/angular_limit_lower = -20.0
+joint_constraints/angular_limit_bias = 0.3
+joint_constraints/angular_limit_softness = 0.9
+joint_constraints/angular_limit_relaxation = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Knight/KnightRig/Skeleton3D/Physical Bone spine_002"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_vww7t")
+
+[node name="Physical Bone spine_004" type="PhysicalBone3D" parent="Knight/KnightRig/Skeleton3D" index="19"]
+transform = Transform3D(-1, 1.74554e-07, -2.85219e-08, -4.96343e-09, -0.188892, -0.981997, -1.768e-07, -0.981998, 0.188892, -4.0769e-10, 1.52815, 0.00270004)
+joint_type = 3
+joint_offset = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 6.02724e-16, 2.36491e-08, 0.0412935)
+joint_rotation = Vector3(0, 1.5708, 0)
+body_offset = Transform3D(1, 1.98952e-13, 2.84217e-14, 3.19744e-14, 4.02331e-07, -1, 0, 1, 1.49012e-07, -1.77636e-15, 0.0412935, -2.98023e-08)
+bone_name = "spine.004"
+joint_constraints/angular_limit_enabled = true
+joint_constraints/angular_limit_upper = 0.0
+joint_constraints/angular_limit_lower = -20.0
+joint_constraints/angular_limit_bias = 0.3
+joint_constraints/angular_limit_softness = 0.9
+joint_constraints/angular_limit_relaxation = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Knight/KnightRig/Skeleton3D/Physical Bone spine_004"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_6f5eh")
+
+[node name="Physical Bone upper_arm_L" type="PhysicalBone3D" parent="Knight/KnightRig/Skeleton3D" index="20"]
+transform = Transform3D(-1.56492e-05, -0.0173957, 1.00066, -1.01315, 0.000898675, -2.47263e-07, -0.000907855, -1.01549, -0.0171372, -0.329098, 1.45395, 0.0103437)
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, 0.01298, -1.39046e-05, 0.137107)
+joint_rotation = Vector3(-1.309, 0, 0)
+body_offset = Transform3D(1.01315, 1.11567e-05, 3.5644e-07, 1.67296e-07, 2.3786e-06, -1.00081, 1.99419e-07, 1.01564, -2.13832e-06, -0.0131507, 0.137218, 1.44127e-05)
+bone_name = "upper_arm.L"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Knight/KnightRig/Skeleton3D/Physical Bone upper_arm_L"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_wo8tp")
+
+[node name="Physical Bone forearm_L" type="PhysicalBone3D" parent="Knight/KnightRig/Skeleton3D" index="21"]
+transform = Transform3D(-0.000553843, 0.0172301, 0.999851, -0.999481, -0.0321983, 1.26638e-07, 0.0322052, -0.99933, 0.0172391, -0.602611, 1.44089, 0.0103432)
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, 9.26278e-05, 1.08176e-07, 0.136331)
+joint_rotation = Vector3(-1.309, 0, 0)
+body_offset = Transform3D(1, -1.11759e-07, -1.62399e-08, -1.3691e-06, 2.23517e-08, -1, -1.16006e-05, 0.999997, -2.04891e-08, -9.26256e-05, 0.136331, -1.04308e-07)
+bone_name = "forearm.L"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Knight/KnightRig/Skeleton3D/Physical Bone forearm_L"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ama4m")
+
+[node name="Physical Bone upper_arm_R" type="PhysicalBone3D" parent="Knight/KnightRig/Skeleton3D" index="22"]
+transform = Transform3D(-1.53022e-05, 0.0171291, -0.999797, 0.993424, 0.000889486, -8.86694e-08, 0.000885566, -0.999853, -0.0171312, 0.329103, 1.4408, 0.0103473)
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, 3.47043e-08, -7.96846e-08, 0.137231)
+joint_rotation = Vector3(-1.309, 0, 0)
+body_offset = Transform3D(0.993425, -6.43486e-06, -2.51231e-07, -3.25199e-07, 3.30247e-06, -0.999944, 4.51825e-06, 1, 6.3628e-06, 0, 0.137223, -7.93487e-07)
+bone_name = "upper_arm.R"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Knight/KnightRig/Skeleton3D/Physical Bone upper_arm_R"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_a0hvu")
+
+[node name="Physical Bone forearm_R" type="PhysicalBone3D" parent="Knight/KnightRig/Skeleton3D" index="23"]
+transform = Transform3D(-0.000554874, -0.0172298, -0.999851, 0.999481, -0.0321983, -6.05877e-07, -0.0321908, -0.99933, 0.0172403, 0.6026, 1.44098, 0.0103446)
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, -0.000180014, 4.08661e-06, 0.13632)
+joint_rotation = Vector3(-1.309, 0, 0)
+body_offset = Transform3D(1, 1.86265e-08, -8.16886e-07, -5.55301e-08, 1.30385e-08, -1, -2.70456e-06, 0.999997, -1.39698e-06, 0.000180125, 0.13632, -3.89665e-06)
+bone_name = "forearm.R"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Knight/KnightRig/Skeleton3D/Physical Bone forearm_R"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_jnrav")
+
+[node name="Physical Bone thigh_L" type="PhysicalBone3D" parent="Knight/KnightRig/Skeleton3D" index="24"]
+transform = Transform3D(-1, -1.47868e-07, 2.46377e-08, 2.35814e-08, 0.00699469, 0.999975, -1.51164e-07, 0.999978, -0.00699483, -0.089, 0.73195, 2.70456e-06)
+joint_type = 3
+joint_offset = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, -4.80314e-09, -2.64887e-06, 0.200155)
+joint_rotation = Vector3(0, 1.5708, 0)
+body_offset = Transform3D(1, -3.12845e-09, -1.3227e-08, -1.32275e-08, 2.8871e-07, -1, 0, 1, 9.31323e-10, 7.45058e-09, 0.200155, 2.64868e-06)
+bone_name = "thigh.L"
+joint_constraints/angular_limit_enabled = true
+joint_constraints/angular_limit_upper = 90.0
+joint_constraints/angular_limit_lower = 45.0
+joint_constraints/angular_limit_bias = 0.3
+joint_constraints/angular_limit_softness = 0.9
+joint_constraints/angular_limit_relaxation = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Knight/KnightRig/Skeleton3D/Physical Bone thigh_L"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_jr1bu")
+
+[node name="Physical Bone shin_L" type="PhysicalBone3D" parent="Knight/KnightRig/Skeleton3D" index="25"]
+transform = Transform3D(-1, -1.32197e-07, 2.50185e-08, 1.45449e-08, 0.0800962, 0.996787, -1.33792e-07, 0.996787, -0.0800971, -0.0890003, 0.31775, 0.0186002)
+joint_type = 3
+joint_offset = Transform3D(3.43372e-06, -1.14626e-06, -1, -0.316647, -0.948542, 4.80109e-15, -0.948543, 0.316647, -3.61999e-06, -2.44222e-07, -5.32524e-09, 0.21474)
+joint_rotation = Vector3(-4.80109e-15, -1.5708, -2.8194)
+body_offset = Transform3D(1, -8.2423e-13, -7.67055e-09, -7.86652e-09, 6.18398e-07, -1, 8.95284e-13, 0.999997, 7.45058e-09, 2.45869e-07, 0.21474, 3.72529e-09)
+bone_name = "shin.L"
+joint_constraints/angular_limit_enabled = true
+joint_constraints/angular_limit_upper = 89.19
+joint_constraints/angular_limit_lower = 44.77
+joint_constraints/angular_limit_bias = 0.3
+joint_constraints/angular_limit_softness = 0.9
+joint_constraints/angular_limit_relaxation = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Knight/KnightRig/Skeleton3D/Physical Bone shin_L"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_h84jh")
+
+[node name="Physical Bone thigh_R" type="PhysicalBone3D" parent="Knight/KnightRig/Skeleton3D" index="26"]
+transform = Transform3D(-1, -1.50995e-07, 6.07455e-09, 4.97109e-09, 0.00699395, 0.999975, -1.51225e-07, 0.99997, -0.00699386, 0.089, 0.732099, -3.11935e-06)
+joint_type = 3
+joint_offset = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, -1.06724e-09, 1.96174e-06, 0.200006)
+joint_rotation = Vector3(0, 1.5708, 0)
+body_offset = Transform3D(1, 0, 5.33604e-09, 5.38197e-09, 4.65661e-10, -1, -1.89999e-10, 1, 4.65661e-10, 0, 0.200006, -1.96183e-06)
+bone_name = "thigh.R"
+joint_constraints/angular_limit_enabled = true
+joint_constraints/angular_limit_upper = 90.0
+joint_constraints/angular_limit_lower = 45.0
+joint_constraints/angular_limit_bias = 0.3
+joint_constraints/angular_limit_softness = 0.9
+joint_constraints/angular_limit_relaxation = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Knight/KnightRig/Skeleton3D/Physical Bone thigh_R"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_qo6xq")
+
+[node name="Physical Bone shin_R" type="PhysicalBone3D" parent="Knight/KnightRig/Skeleton3D" index="27"]
+transform = Transform3D(-1, -1.29062e-07, 4.25622e-08, 3.18371e-08, 0.0800966, 0.996787, -1.35185e-07, 0.996782, -0.0800962, 0.088999, 0.317746, 0.0185999)
+joint_type = 3
+joint_offset = Transform3D(3.43372e-06, -1.14626e-06, -1, -0.316647, -0.948542, 4.80109e-15, -0.948543, 0.316647, -3.61999e-06, -9.48259e-07, 2.4477e-08, 0.214744)
+joint_rotation = Vector3(-4.80109e-15, -1.5708, -2.8194)
+body_offset = Transform3D(1, -3.13537e-09, -2.52144e-08, -2.52148e-08, 7.45058e-09, -1, -2.25953e-12, 1, 7.45058e-09, 9.53674e-07, 0.214744, -2.6077e-08)
+bone_name = "shin.R"
+joint_constraints/angular_limit_enabled = true
+joint_constraints/angular_limit_upper = 89.19
+joint_constraints/angular_limit_lower = 44.77
+joint_constraints/angular_limit_bias = 0.3
+joint_constraints/angular_limit_softness = 0.9
+joint_constraints/angular_limit_relaxation = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Knight/KnightRig/Skeleton3D/Physical Bone shin_R"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_lcgma")
+
+[node name="PhysicalBone3D Foot" type="PhysicalBone3D" parent="Knight/KnightRig/Skeleton3D" index="28"]
+transform = Transform3D(1, 1.88861e-07, -5.167e-08, 5.18589e-08, -5.96047e-07, 1, 1.88861e-07, -0.999995, -6.22827e-07, 0.089, 0.0151998, -0.113201)
+joint_type = 3
+joint_offset = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0, 0, 0)
+joint_rotation = Vector3(0, 1.5708, 0)
+body_offset = Transform3D(1, 0, 1.88855e-10, -1.42109e-14, 1, -3.02157e-09, -9.33303e-14, 2.98023e-08, 1, 0, 0, 0)
+bone_name = "toe.R"
+joint_constraints/angular_limit_enabled = true
+joint_constraints/angular_limit_upper = 6.28
+joint_constraints/angular_limit_lower = -180.0
+joint_constraints/angular_limit_bias = 0.3
+joint_constraints/angular_limit_softness = 0.9
+joint_constraints/angular_limit_relaxation = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Knight/KnightRig/Skeleton3D/PhysicalBone3D Foot"]
+transform = Transform3D(1, 0, -8.53593e-13, 0, 1, 1.36424e-11, 1.11611e-15, -4.54747e-13, 1, 1.49012e-08, -0.0622737, 0.0311842)
+shape = SubResource("CapsuleShape3D_0payy")
+
+[node name="PhysicalBone3D Foot2" type="PhysicalBone3D" parent="Knight/KnightRig/Skeleton3D" index="29"]
+transform = Transform3D(1, 1.89582e-07, -5.18519e-08, 5.1859e-08, 4.17232e-07, 1, 1.88861e-07, -1, 5.66361e-07, -0.089, 0.0151999, -0.1132)
+joint_type = 3
+joint_offset = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0, 0, 0)
+joint_rotation = Vector3(0, 1.5708, 0)
+body_offset = Transform3D(1, 7.19893e-10, 7.31897e-12, -1.42109e-14, 1, -1.16984e-10, -9.38071e-14, 2.98023e-08, 1, 0, 0, 0)
+bone_name = "toe.L"
+joint_constraints/angular_limit_enabled = true
+joint_constraints/angular_limit_upper = 6.28
+joint_constraints/angular_limit_lower = -180.0
+joint_constraints/angular_limit_bias = 0.3
+joint_constraints/angular_limit_softness = 0.9
+joint_constraints/angular_limit_relaxation = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Knight/KnightRig/Skeleton3D/PhysicalBone3D Foot2"]
+transform = Transform3D(1, 0, -8.53593e-13, 0, 1, 1.36424e-11, 1.11611e-15, -4.54747e-13, 1, 1.49012e-08, -0.0622737, 0.0311842)
+shape = SubResource("CapsuleShape3D_0payy")
+
+[editable path="Knight"]

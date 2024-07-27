@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnkwg08ykloru"]
+
+[ext_resource type="Script" path="res://components/quest_mgmt/quest_trigger.gd" id="1_y7wbk"]
+
+[node name="QuestTrigger" type="Node"]
+script = ExtResource("1_y7wbk")

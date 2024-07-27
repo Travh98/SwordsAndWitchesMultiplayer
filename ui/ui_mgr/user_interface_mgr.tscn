@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://dira04r103nt6"]
+
+[ext_resource type="Script" path="res://ui/ui_mgr/user_interface_mgr.gd" id="1_ehoeg"]
+[ext_resource type="PackedScene" uid="uid://cpecjqhopyssd" path="res://ui/fps_counter/fps_counter.tscn" id="3_sacjc"]
+[ext_resource type="PackedScene" uid="uid://cpmvetmfobl24" path="res://ui/cinematic_black_bars/cinematic_black_bars.tscn" id="4_nyqjn"]
+[ext_resource type="PackedScene" uid="uid://bdj0qinnw4dro" path="res://ui/fade_to_black/fade_to_black.tscn" id="5_3mdan"]
+
+[node name="UserInterfaceMgr" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ehoeg")
+
+[node name="Hud" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FpsCounter" parent="Hud" instance=ExtResource("3_sacjc")]
+layout_mode = 1
+
+[node name="CinematicBlackBars" parent="Hud" instance=ExtResource("4_nyqjn")]
+layout_mode = 1
+
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FadeToBlack" parent="." instance=ExtResource("5_3mdan")]
+layout_mode = 1

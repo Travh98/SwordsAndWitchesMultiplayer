@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxshgmr0mkpne"]
+
+[ext_resource type="PackedScene" uid="uid://c1kd4wmvts4qq" path="res://assets/gridmap/DevGridmap.glb" id="1_mngjr"]
+
+[node name="DevGridmap" instance=ExtResource("1_mngjr")]

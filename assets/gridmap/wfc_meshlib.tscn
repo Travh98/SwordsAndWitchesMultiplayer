@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3ke8ewom48xc"]
+
+[ext_resource type="PackedScene" uid="uid://c2t004cm3y1g2" path="res://assets/wave_function_collapse_test/wfc_curvedRoad.glb" id="1_srwr3"]
+[ext_resource type="PackedScene" uid="uid://cuylkuymuqo7p" path="res://assets/wave_function_collapse_test/wfc_tallBuilding.glb" id="2_xodas"]
+[ext_resource type="PackedScene" uid="uid://dfwqnpp73we8d" path="res://assets/wave_function_collapse_test/wfc_straightRoad.glb" id="3_kylno"]
+[ext_resource type="PackedScene" uid="uid://bl105wdgoly3j" path="res://assets/wave_function_collapse_test/wfc_building.glb" id="4_11uu1"]
+
+[node name="WfcMeshlib" type="Node3D"]
+
+[node name="wfc_curvedRoad" parent="." instance=ExtResource("1_srwr3")]
+
+[node name="wfc_tallBuilding" parent="." instance=ExtResource("2_xodas")]
+
+[node name="wfc_straightRoad" parent="." instance=ExtResource("3_kylno")]
+
+[node name="wfc_building" parent="." instance=ExtResource("4_11uu1")]

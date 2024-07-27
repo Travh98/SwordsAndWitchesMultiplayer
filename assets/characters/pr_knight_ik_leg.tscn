@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6cs1l5kpvh2h"]
+
+[ext_resource type="PackedScene" uid="uid://dtbuyr2105tay" path="res://assets/characters/KnightIkLeg.glb" id="1_m21ws"]
+[ext_resource type="Script" path="res://components/inverse_kinematics/start_ik.gd" id="2_d6yli"]
+[ext_resource type="Script" path="res://components/inverse_kinematics/ik_target.gd" id="3_ygdku"]
+[ext_resource type="PackedScene" uid="uid://cv7cqevgeeie" path="res://components/inverse_kinematics/small_sphere_marker_2.tscn" id="4_84af6"]
+[ext_resource type="Script" path="res://components/inverse_kinematics/step_ray.gd" id="5_bnv8a"]
+[ext_resource type="PackedScene" uid="uid://dpu07lf6sjeag" path="res://components/inverse_kinematics/small_sphere_marker.tscn" id="6_kbjgo"]
+
+[node name="KnightIkLeg2" instance=ExtResource("1_m21ws")]
+
+[node name="KnightIkLeg" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.128791, 0)
+
+[node name="Skeleton3D" parent="KnightIkLeg" index="0"]
+bones/0/rotation = Quaternion(-7.54975e-08, 0.00349734, 0.999994, -2.6404e-10)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(-0.529072, 5.25318e-08, -2.21998e-08, 0.848577)
+bones/3/rotation = Quaternion(-1.10599e-08, 0.964307, -0.264787, 7.28031e-08)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.681868, 0.681868, -0.187231, 0.187231)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-1.12846e-07, -0.489818, 0.871825, 1.05686e-08)
+bones/5/scale = Vector3(1.11114, 1.11114, 1.11114)
+bones/6/rotation = Quaternion(-9.20533e-08, 0.0400805, 0.999196, 5.54881e-10)
+bones/6/scale = Vector3(1.11114, 1.11114, 1.11115)
+bones/7/rotation = Quaternion(-9.19761e-08, 0.00491273, 0.999988, 4.00596e-09)
+bones/7/scale = Vector3(1.11114, 1.11114, 1.11115)
+
+[node name="FootMesh" parent="KnightIkLeg/Skeleton3D" index="0"]
+transform = Transform3D(1.11114, 2.55795e-13, -1.10134e-12, -2.70006e-13, 1.11107, -0.0122984, 1.08002e-12, 0.0122984, 1.11107, -0.00633889, 0.1037, 0.0358)
+
+[node name="ShinMesh" parent="KnightIkLeg/Skeleton3D" index="1"]
+transform = Transform3D(1.11114, 1.68799e-08, 5.63924e-08, -1.68799e-08, 1.11114, 3.42727e-07, -5.63919e-08, -3.42727e-07, 1.11115, -0.0063389, 0.1037, 0.0358)
+
+[node name="ThighMesh" parent="KnightIkLeg/Skeleton3D" index="2"]
+transform = Transform3D(1.11114, 8.25793e-09, 3.65812e-08, -8.15435e-09, 1.11114, -0.00314544, -3.66042e-08, 0.00314542, 1.11115, -0.00633889, 0.5318, 0.00140001)
+
+[node name="SkeletonIK3D" type="SkeletonIK3D" parent="KnightIkLeg/Skeleton3D" index="3"]
+process_priority = 1
+root_bone = &"thigh.L"
+tip_bone = &"toe.L"
+use_magnet = true
+magnet = Vector3(0, 0, -1)
+target_node = NodePath("../../../IkTarget")
+script = ExtResource("2_d6yli")
+
+[node name="IkTarget" type="Node3D" parent="." index="1" node_paths=PackedStringArray("step_target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.110015, -0.0248488, -0.167343)
+top_level = true
+script = ExtResource("3_ygdku")
+step_target = NodePath("../StepRay/StepTarget")
+distance_to_take_step = 1.0
+time_to_take_step_secs = 0.15
+snap_distance = 1.0
+
+[node name="SmallSphereMarker2" parent="IkTarget" index="0" instance=ExtResource("4_84af6")]
+visible = false
+
+[node name="StepRay" type="RayCast3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.977878, -0.209175, 0, 0.209175, 0.977878, 0, 0.330377, -0.293046)
+script = ExtResource("5_bnv8a")
+
+[node name="StepTarget" type="Node3D" parent="StepRay" index="0"]
+
+[node name="SmallSphereMarker" parent="StepRay/StepTarget" index="0" instance=ExtResource("6_kbjgo")]
+visible = false
