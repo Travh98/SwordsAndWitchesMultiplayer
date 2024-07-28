@@ -41,6 +41,8 @@ var spot_width: float = 10.0
 
 
 func _ready():
+	Server.level_gen_tiles_received.connect(on_level_gen_tiles_received)
+	
 	# Register all prefabs
 	four_ways.append(PR_FLOOR)
 	three_ways.append(PR_T_SECTION)
@@ -49,7 +51,23 @@ func _ready():
 	dead_ends.append(PR_DEADEND_CLIFF)
 
 
+func on_level_gen_tiles_received(tile_str: String):
+	var tile_array: Array[Vector2]
+	var split_tiles: PackedStringArray = tile_str.split(",", false)
+	for tile in split_tiles:
+		var tile_index = str_to_vec2(tile)
+		tile_array.append(tile_index)
+	print("Deserialized tile array to be: ", tile_array)
+	load_meshes(tile_array)
+
+
+func str_to_vec2(str: String) -> Vector2:
+	var split_indices = str.split(" ")
+	return Vector2(split_indices[0].lstrip("[").to_int(), split_indices[1].rstrip("]").to_int())
+
+
 func load_meshes(array: Array[Vector2]):
+	clear_tiles()
 	grid_array = array.duplicate()
 	
 	for spot in grid_array:
@@ -145,7 +163,7 @@ func load_meshes(array: Array[Vector2]):
 		var tile_xy: Vector2 = spot * spot_width
 		tile.position = Vector3(tile_xy.x, 0, tile_xy.y)
 		tile.rotation = new_rotation
-		print("Tile ", spot, " is a ", TileType.keys()[tile_type], " with ", neighbors.size(), " neighbors.")
+		#print("Tile ", spot, " is a ", TileType.keys()[tile_type], " with ", neighbors.size(), " neighbors.")
 		
 
 
@@ -217,3 +235,8 @@ func get_tile_relation(spot: Vector2, relative: Vector2) -> TileRelation:
 
 func get_random_rotation() -> Vector3:
 	return ROTATIONS[ROTATIONS.keys()[randi() % ROTATIONS.size()]]
+
+
+func clear_tiles():
+	for child in get_children():
+		child.queue_free()

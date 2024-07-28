@@ -7,6 +7,7 @@ extends Node
 ## Since this is an Autoload, this script is at that path.
 
 signal ping_calculated(ping: float)
+signal level_gen_tiles_received(tiles_str: String)
 
 const player_character_scene = preload("res://components/fps_character/fps_character.tscn")
 
@@ -104,7 +105,8 @@ func disconnect_from_server():
 
 
 func update_name(my_new_name: String):
-	peer_name_changed.rpc(multiplayer.multiplayer_peer.get_unique_id(), my_new_name)
+	if server_connected:
+		peer_name_changed.rpc(multiplayer.multiplayer_peer.get_unique_id(), my_new_name)
 
 
 @rpc("call_remote")
@@ -162,3 +164,9 @@ func spawn_existing_entities(entities: Array):
 #@rpc("any_peer")
 #func declare_existing_entities(entities: Array):
 	#pass
+
+
+@rpc("call_remote")
+func generated_level_tiles(tile_str: String):
+	level_gen_tiles_received.emit(tile_str)
+	pass
