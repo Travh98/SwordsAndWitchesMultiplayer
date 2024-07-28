@@ -42,6 +42,7 @@ layout_mode = 2
 placeholder_text = "Name"
 
 [node name="HostEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 placeholder_text = "Host IP Address"
 

@@ -105,7 +105,7 @@ func _ready():
 	coyote_timer.timeout.connect(on_coyote_timeout)
 	
 	# Tell the server who we are
-	MultiplayerMgr.register_player.rpc_id(1, get_multiplayer_authority(), player_name)
+	#MultiplayerMgr.register_player.rpc_id(1, get_multiplayer_authority(), player_name)
 	
 	GameMgr.name_changed.connect(set_player_name)
 	
@@ -425,4 +425,4 @@ func set_player_name(n: String):
 	name_label.text = n
 	
 	# Tell the server we have updated our name
-	MultiplayerMgr.register_player.rpc_id(1, get_multiplayer_authority(), player_name)
+	#MultiplayerMgr.register_player.rpc_id(1, get_multiplayer_authority(), player_name)

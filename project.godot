@@ -21,8 +21,8 @@ GameMgr="*res://components/game_mgr/game_mgr.gd"
 QuestMgr="*res://components/quest_mgmt/quest_mgr.gd"
 FactionMgr="*res://components/faction_mgr/faction_mgr.gd"
 MultiplayerMgr="*res://components/multiplayer/multiplayer_mgr.gd"
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 Server="*res://components/server_intf/server.gd"
+Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 

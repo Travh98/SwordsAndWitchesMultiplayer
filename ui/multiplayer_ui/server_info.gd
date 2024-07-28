@@ -2,6 +2,7 @@ class_name ServerInfo
 extends Control
 
 @onready var player_list: Container = $MarginContainer/HBoxContainer/Stats/PlayerList
+@onready var overlay_text: RichTextLabel = $MarginContainer/OverlayText
 
 func add_player_entry(peer_id: int, user_name: String):
 	# Update exising listing
@@ -17,3 +18,12 @@ func add_player_entry(peer_id: int, user_name: String):
 	player_label.name = str(peer_id)
 	player_list.add_child(player_label)
 	player_label.text = user_name + ": " + str(peer_id)
+
+
+func start_connecting_ui():
+	overlay_text.text = "[center][wave amp=50.0 freq=5.0 connected=1]Connecting[/wave][/center]"
+	overlay_text.show()
+
+
+func hide_connecting_ui():
+	overlay_text.hide()

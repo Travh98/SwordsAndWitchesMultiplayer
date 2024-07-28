@@ -34,6 +34,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Stats"]
+visible = false
 layout_mode = 2
 
 [node name="PingLabel" type="Label" parent="MarginContainer/HBoxContainer/Stats/HBoxContainer"]
@@ -52,3 +53,15 @@ text = "Players"
 
 [node name="PlayerList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Stats"]
 layout_mode = 2
+
+[node name="OverlayText" type="RichTextLabel" parent="MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Connecting[/center]"
+fit_content = true

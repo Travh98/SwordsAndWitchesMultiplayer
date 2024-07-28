@@ -4,8 +4,7 @@ extends Node
 ## Manages the tree items (UI, Current Level, Camera)
 
 
-
-@onready var multiplayer_starter: MultiplayerStarter = $MultiplayerStarter
+@onready var players: Node = $Players
 
 # UI Components
 @onready var start_menu: StartMenu = $StartMenu
@@ -32,12 +31,6 @@ func _ready():
 	
 	pause_menu.disconnect.connect(on_disconnect)
 	pause_menu.change_name.connect(on_name_change)
-	
-	multiplayer_starter.server_disconnected.connect(on_server_disconnected)
-	multiplayer_starter.connection_failed.connect(on_connection_failed)
-	multiplayer_starter.connection_success.connect(on_connection_success)
-	
-	MultiplayerMgr.new_player.connect(server_info.add_player_entry)
 
 
 func _input(_event):
@@ -51,20 +44,21 @@ func on_name_change(n: String):
 
 #region Multiplayer Hooks
 func on_host_button_pressed(p: int):
-	start_menu.hide()
-	
-	multiplayer_starter.set_port(p)
-	multiplayer_starter.setup_network(true)
-	# Add a character for the Host to own and control
-	multiplayer_starter.add_player_character(multiplayer.get_unique_id())
+	#start_menu.hide()
+	#
+	#multiplayer_starter.set_port(p)
+	#multiplayer_starter.setup_network(true)
+	## Add a character for the Host to own and control
+	#multiplayer_starter.add_player_character(multiplayer.get_unique_id())
+	pass
 
 
 func on_join_button_pressed(host_ip: String, p: int):
 	start_menu.hide()
 	
-	multiplayer_starter.set_host(host_ip)
-	multiplayer_starter.set_port(p)
-	multiplayer_starter.setup_network(false)
+	server_info.start_connecting_ui()
+	Server.set_server_connection_info(host_ip, p)
+	Server.connect_to_server()
 
 
 func on_server_disconnected():
@@ -75,11 +69,14 @@ func on_server_disconnected():
 
 func on_connection_failed():
 	#ConsoleLog.log_msg("Connection failed")
+	server_info.hide_connecting_ui()
 	start_menu.visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func on_connection_success():
+	server_info.hide_connecting_ui()
+	
 	# Delay the updating of the name so that the player can spawn probably
 	await get_tree().create_timer(1).timeout
 	
@@ -90,7 +87,7 @@ func on_disconnect():
 	multiplayer.multiplayer_peer = null
 	start_menu.show()
 	pause_menu.hide()
-	multiplayer_starter.remove_player_character(get_multiplayer_authority())
+	#multiplayer_starter.remove_player_character(get_multiplayer_authority())
 #endregion
 
 
