@@ -10,6 +10,7 @@ signal ping_calculated(ping: float)
 signal level_gen_tiles_received(tiles_str: String)
 
 const player_character_scene = preload("res://components/fps_character/fps_character.tscn")
+const ENEMY_KNIGHT = preload("res://entities/test_enemies/enemy_knight.tscn")
 
 @onready var ping_timer: Timer = Timer.new()
 
@@ -109,6 +110,15 @@ func update_name(my_new_name: String):
 		peer_name_changed.rpc(multiplayer.multiplayer_peer.get_unique_id(), my_new_name)
 
 
+func spawn_knight(red: bool):
+	var k = ENEMY_KNIGHT.instantiate()
+	if red:
+		k.faction = FactionMgr.Factions.RED
+	else:
+		k.faction = FactionMgr.Factions.BLUE
+	GameMgr.game_tree.level.npcs.add_child(k)
+
+
 @rpc("call_remote")
 func add_newly_connected_player_character(peer_id: int):
 	add_player_character(peer_id)
@@ -149,15 +159,15 @@ func peer_name_changed(peer_id: int, new_name: String):
 	print("Peer ", peer_id, " changed name to: ", new_name)
 
 
-@rpc("call_remote")
-func spawn_new_entity(ent_name: String, global_pos: Vector3):
-	print("Server declares new entity: ", ent_name, " at pos: ", global_pos)
-	pass
+#@rpc("call_remote")
+#func spawn_new_entity(ent_name: String, global_pos: Vector3):
+	#print("Server declares new entity: ", ent_name, " at pos: ", global_pos)
+	#pass
 
 
-@rpc("call_remote")
-func spawn_existing_entities(entities: Array):
-	pass
+#@rpc("call_remote")
+#func spawn_existing_entities(entities: Array):
+	#pass
 
 
 # TODO: First client that joins, declares where the existing entities are
@@ -169,4 +179,16 @@ func spawn_existing_entities(entities: Array):
 @rpc("call_remote")
 func generated_level_tiles(tile_str: String):
 	level_gen_tiles_received.emit(tile_str)
+	pass
+
+
+@rpc("call_remote")
+func client_spawn_red_knight():
+	spawn_knight(true)
+	pass
+
+
+@rpc("call_remote")
+func client_spawn_blue_knight():
+	spawn_knight(false)
 	pass

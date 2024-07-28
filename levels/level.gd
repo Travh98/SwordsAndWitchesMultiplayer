@@ -1,8 +1,9 @@
 class_name Level
 extends Node3D
 
+@onready var npcs: Node = $NPCs
 @export var respawn_pos: LocationIndicator
-@onready var spawn_locations = $SpawnLocations
+#@onready var spawn_locations = $SpawnLocations
 @onready var npc_respawn_spot = $KnightRespawnSpot
 @onready var blue_respawn_spot = $KnightRespawnSpot2
 @onready var teleport_area: Area3D = $TeleportArea
@@ -34,18 +35,18 @@ func _input(_event):
 
 
 # Recursively check each spawnpoint until finding a spot with no overlapping mobs
-func place_at_spawn_point(n: Node3D):
-	var spot: Node3D = spawn_locations.get_children().pick_random()
-	collision_checker.global_position = spot.global_position
-	await get_tree().create_timer(0.2).timeout
-	for body in collision_checker.get_overlapping_bodies():
-		if body is Mob:
-			# Try again
-			place_at_spawn_point(n)
-			return
-	n.global_position = spot.global_position
-	n.global_rotation = spot.global_rotation
-	print("Spawned node ", n.name, " at spot: ", spot.name)
+#func place_at_spawn_point(n: Node3D):
+	#var spot: Node3D = spawn_locations.get_children().pick_random()
+	#collision_checker.global_position = spot.global_position
+	#await get_tree().create_timer(0.2).timeout
+	#for body in collision_checker.get_overlapping_bodies():
+		#if body is Mob:
+			## Try again
+			#place_at_spawn_point(n)
+			#return
+	#n.global_position = spot.global_position
+	#n.global_rotation = spot.global_rotation
+	#print("Spawned node ", n.name, " at spot: ", spot.name)
 
 
 func on_teleport_area_entered(body: Node3D):

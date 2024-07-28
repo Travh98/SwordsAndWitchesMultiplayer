@@ -52,7 +52,7 @@ func _ready():
 
 
 func on_level_gen_tiles_received(tile_str: String):
-	var tile_array: Array[Vector2]
+	var tile_array: Array[Vector2] = []
 	var split_tiles: PackedStringArray = tile_str.split(",", false)
 	for tile in split_tiles:
 		var tile_index = str_to_vec2(tile)
@@ -61,8 +61,8 @@ func on_level_gen_tiles_received(tile_str: String):
 	load_meshes(tile_array)
 
 
-func str_to_vec2(str: String) -> Vector2:
-	var split_indices = str.split(" ")
+func str_to_vec2(vec_str: String) -> Vector2:
+	var split_indices = vec_str.split(" ")
 	return Vector2(split_indices[0].lstrip("[").to_int(), split_indices[1].rstrip("]").to_int())
 
 
