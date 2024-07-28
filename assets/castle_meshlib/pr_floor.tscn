@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjmvbilhcp81"]
+
+[ext_resource type="PackedScene" uid="uid://1maqwb1xjwba" path="res://assets/castle_meshlib/Floor-col.GLB" id="1_yjm7y"]
+
+[node name="Floor-col2" instance=ExtResource("1_yjm7y")]

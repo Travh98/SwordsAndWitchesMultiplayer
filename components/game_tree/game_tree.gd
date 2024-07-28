@@ -22,10 +22,9 @@ const quick_quit_game: bool = true
 func _ready():
 	GameMgr.game_tree = self
 	
-	level = current_level.get_child(0)
+	update_level()
 	
 	# Connect the tree
-	start_menu.host_server.connect(on_host_button_pressed)
 	start_menu.join_server.connect(on_join_button_pressed)
 	start_menu.name_selected.connect(on_name_change)
 	
@@ -42,19 +41,27 @@ func on_name_change(n: String):
 	GameMgr.on_name_selected(n)
 
 
+func delete_all_players():
+	for p in players.get_children():
+		p.queue_free()
+
+
+func update_player_name(peer_id: int, new_name: String):
+	for p in players.get_children():
+		if p.name == str(peer_id):
+			p.set_player_name(new_name)
+
+
+func update_level():
+	level = current_level.get_child(0)
+	# Rename the loaded level to match the scene tree on the Server
+	current_level.get_child(0).name = "Level"
+
+
 #region Multiplayer Hooks
-func on_host_button_pressed(p: int):
-	#start_menu.hide()
-	#
-	#multiplayer_starter.set_port(p)
-	#multiplayer_starter.setup_network(true)
-	## Add a character for the Host to own and control
-	#multiplayer_starter.add_player_character(multiplayer.get_unique_id())
-	pass
-
-
 func on_join_button_pressed(host_ip: String, p: int):
 	start_menu.hide()
+	GameMgr.unpause_game()
 	
 	server_info.start_connecting_ui()
 	Server.set_server_connection_info(host_ip, p)
@@ -84,10 +91,9 @@ func on_connection_success():
 
 
 func on_disconnect():
-	multiplayer.multiplayer_peer = null
 	start_menu.show()
 	pause_menu.hide()
-	#multiplayer_starter.remove_player_character(get_multiplayer_authority())
+	Server.disconnect_from_server()
 #endregion
 
 

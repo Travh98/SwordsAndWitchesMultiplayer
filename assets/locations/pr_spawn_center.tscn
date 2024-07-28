@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cibpb62c7xb0t"]
+
+[ext_resource type="PackedScene" uid="uid://dqkp2cbijejqk" path="res://assets/locations/spawn_center.glb" id="1_pesbh"]
+
+[node name="spawn_center" instance=ExtResource("1_pesbh")]
+
+[node name="WonkyStairs" parent="SpawnCenter/NurbsPath/WonkyStairsMesh" index="0"]
+visible = false

@@ -12,12 +12,14 @@ const player_character_scene = preload("res://components/fps_character/fps_chara
 
 @onready var ping_timer: Timer = Timer.new()
 
-var network: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
+var network: ENetMultiplayerPeer
 var host_ip: String = "localhost"
 var port: int = 25026
 var last_join_attempt_secs: float
 var server_connected: bool = false
 var ping_start_time_msec: float
+var report_ping_interval: int = 5
+var num_pings: int = 0
 
 
 func _ready():
@@ -25,6 +27,8 @@ func _ready():
 	ping_timer.wait_time = 1
 	ping_timer.one_shot = false
 	ping_timer.timeout.connect(start_ping)
+	
+	GameMgr.name_changed.connect(update_name)
 	pass
 
 
@@ -36,6 +40,7 @@ func set_server_connection_info(h: String, p: int):
 
 
 func connect_to_server():
+	network = ENetMultiplayerPeer.new()
 	last_join_attempt_secs = Time.get_unix_time_from_system()
 	network.create_client(host_ip, port)
 	multiplayer.multiplayer_peer = network
@@ -83,6 +88,25 @@ func start_ping():
 		ping_to_server.rpc_id(1, multiplayer.multiplayer_peer.get_unique_id())
 
 
+func report_ping(ping: float):
+	# Report every couple pings
+	if num_pings > report_ping_interval:
+		report_ping_to_server.rpc_id(1, 
+			multiplayer.multiplayer_peer.get_unique_id(), ping)
+		num_pings = 0
+	num_pings += 1
+
+
+func disconnect_from_server():
+	server_connected = false
+	multiplayer.multiplayer_peer = null
+	GameMgr.game_tree.delete_all_players()
+
+
+func update_name(my_new_name: String):
+	peer_name_changed.rpc(multiplayer.multiplayer_peer.get_unique_id(), my_new_name)
+
+
 @rpc("call_remote")
 func add_newly_connected_player_character(peer_id: int):
 	add_player_character(peer_id)
@@ -100,7 +124,7 @@ func remove_existing_player_character(peer_id: int):
 
 
 @rpc("any_peer")
-func ping_to_server(peer_id: int):
+func ping_to_server(_peer_id: int):
 	# Input peer_id tells the server who to pong back to
 	pass
 
@@ -110,3 +134,31 @@ func pong_to_client():
 	# Called from server
 	var ping: float = Time.get_ticks_msec() - ping_start_time_msec
 	ping_calculated.emit(ping)
+	report_ping(ping)
+
+@rpc("any_peer")
+func report_ping_to_server(_peer_id: int, _ping: float):
+	pass
+
+
+@rpc("any_peer")
+func peer_name_changed(peer_id: int, new_name: String):
+	GameMgr.game_tree.update_player_name(peer_id, new_name)
+	print("Peer ", peer_id, " changed name to: ", new_name)
+
+
+@rpc("call_remote")
+func spawn_new_entity(ent_name: String, global_pos: Vector3):
+	print("Server declares new entity: ", ent_name, " at pos: ", global_pos)
+	pass
+
+
+@rpc("call_remote")
+func spawn_existing_entities(entities: Array):
+	pass
+
+
+# TODO: First client that joins, declares where the existing entities are
+#@rpc("any_peer")
+#func declare_existing_entities(entities: Array):
+	#pass

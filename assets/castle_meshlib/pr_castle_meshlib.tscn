@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkkiyjg7yx1ag"]
+
+[ext_resource type="PackedScene" uid="uid://c4pejvx26fsd5" path="res://assets/castle_meshlib/CastleMeshlib.glb" id="1_0g4yb"]
+
+[node name="CastleMeshlib" instance=ExtResource("1_0g4yb")]

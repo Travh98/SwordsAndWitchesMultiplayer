@@ -49,10 +49,10 @@ func place_at_spawn_point(n: Node3D):
 
 
 func on_teleport_area_entered(body: Node3D):
-	
 	if body is Mob:
 		body.velocity = Vector3.ZERO
 		if body.faction == FactionMgr.Factions.RED:
 			body.global_position = npc_respawn_spot.global_position
 			return
 	body.global_position = blue_respawn_spot.global_position
+	

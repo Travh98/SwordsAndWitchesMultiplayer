@@ -41,18 +41,18 @@ func _input(_event):
 			unpause_game()
 		else:
 			pause_game()
-		game_paused = !game_paused
 
 
 func pause_game():
 	game_tree.pause_menu.visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	pass
+	game_paused = true
 
 
 func unpause_game():
 	game_tree.pause_menu.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	game_paused = false
 
 
 func change_scene(level_name: String) -> bool:

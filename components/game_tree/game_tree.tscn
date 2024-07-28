@@ -1,7 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://5p4ihhps6f2q"]
 
-[ext_resource type="Script" path="res://components/game_tree/multiplayer.gd" id="1_wtqql"]
-[ext_resource type="PackedScene" uid="uid://b3pu1tvl7wlnn" path="res://levels/test_level.tscn" id="2_ipicy"]
+[ext_resource type="Script" path="res://components/game_tree/game_tree.gd" id="1_wtqql"]
 [ext_resource type="PackedScene" uid="uid://cpt28d5sjo8pi" path="res://ui/start_menu/start_menu.tscn" id="2_w1ut0"]
 [ext_resource type="PackedScene" uid="uid://dtq36h2m73xpv" path="res://ui/multiplayer_ui/server_info.tscn" id="3_u54cj"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_n6j8m"]
@@ -9,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b6eakq2gu0je8" path="res://ui/ping_counter/ping_counter.tscn" id="6_kl3vl"]
 [ext_resource type="PackedScene" uid="uid://mb2xptlvdkyn" path="res://ui/pause_menu/pause_menu.tscn" id="6_sqdu1"]
 [ext_resource type="Script" path="res://components/multiplayer/multiplayer_starter.gd" id="7_746xs"]
+[ext_resource type="PackedScene" uid="uid://cw38xpjywaub" path="res://levels/sa_w_level.tscn" id="7_ym4vn"]
 
 [node name="GameTree" type="Node"]
 script = ExtResource("1_wtqql")
@@ -33,10 +33,9 @@ visible = false
 [node name="CurrentLevel" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="TestLevel" parent="CurrentLevel" instance=ExtResource("2_ipicy")]
+[node name="SaW_Level" parent="CurrentLevel" instance=ExtResource("7_ym4vn")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.0410409, -0.527962, 0.848276, 0, 0.848991, 0.528407, -0.999157, -0.0216863, 0.0348434, 21.9246, 7.96008, -1.88396)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("5_n6j8m")

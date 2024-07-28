@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b3pu1tvl7wlnn"]
+[gd_scene load_steps=29 format=3 uid="uid://b3pu1tvl7wlnn"]
 
 [ext_resource type="MeshLibrary" uid="uid://dfj7cvhte3dsn" path="res://assets/gridmap/dev_meshlib.meshlib" id="1_3j1fv"]
 [ext_resource type="Texture2D" uid="uid://cvi4bsih01rwp" path="res://assets/sky/kloofendal_48d_partly_cloudy_puresky_1k.exr" id="1_8elnh"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://sboyc7632ei8" path="res://components/hurt_box/hurt_box.tscn" id="2_tjwtl"]
 [ext_resource type="PackedScene" uid="uid://dn0o072firg03" path="res://props/dev_wood_plank.tscn" id="3_oaqvh"]
 [ext_resource type="Material" uid="uid://u81fndq2ntv2" path="res://assets/materials/red_transparent.tres" id="3_ptv2h"]
+[ext_resource type="PackedScene" uid="uid://dny33js41rokw" path="res://assets/castle_meshlib/castle_grid.tscn" id="3_yg3sp"]
 [ext_resource type="PackedScene" uid="uid://b1mputhdf02rc" path="res://components/debug_label_3d/debug_label_3d.tscn" id="4_eqwnx"]
 [ext_resource type="PackedScene" uid="uid://dtnep5cd6wq0s" path="res://props/dev_rectangular_prism.tscn" id="4_sgnop"]
 [ext_resource type="PackedScene" uid="uid://c6jdandmwrh7t" path="res://entities/punching_bag/punching_bag.tscn" id="4_u5ghu"]
@@ -66,6 +67,23 @@ size = Vector3(1000, 50, 1000)
 [node name="TestLevel" type="Node3D" node_paths=PackedStringArray("respawn_pos")]
 script = ExtResource("1_hvqxj")
 respawn_pos = NodePath("RespawnPos")
+
+[node name="NPCs" type="Node" parent="."]
+
+[node name="RedKnight" parent="NPCs" instance=ExtResource("16_xbyjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+
+[node name="RedKnight2" parent="NPCs" instance=ExtResource("16_xbyjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.1335)
+
+[node name="RedKnight3" parent="NPCs" instance=ExtResource("16_xbyjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.5589)
+
+[node name="BlueKnight" parent="NPCs" instance=ExtResource("16_xbyjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98577, 0, 0.25511)
+faction = 2
+
+[node name="CastleGrid" parent="." instance=ExtResource("3_yg3sp")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4s4cl")
@@ -144,7 +162,7 @@ transform = Transform3D(1, 0, 0, 0, 0.974574, -0.224066, 0, 0.224066, 0.974574, 
 transform = Transform3D(1, 0, 0, 0, 0.996526, 0.083278, 0, -0.083278, 0.996526, 8.13709, 8.77169, -38.1166)
 
 [node name="SidePcam" type="Node3D" parent="."]
-transform = Transform3D(0.0410409, -0.527962, 0.848276, 0, 0.848991, 0.528407, -0.999157, -0.0216863, 0.0348434, 21.9246, 8.96008, -1.88396)
+transform = Transform3D(0.0403749, -0.671721, 0.739704, 0.00736358, 0.740487, 0.67203, -0.999157, -0.0216863, 0.0348434, 75.3477, 63.7011, -1.88396)
 script = ExtResource("7_7utg6")
 priority_override = false
 priority = 0
@@ -228,19 +246,6 @@ mesh = SubResource("BoxMesh_3prtq")
 [node name="KnightRespawnSpot2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 3.9299, -1.49925)
 mesh = SubResource("BoxMesh_vfk68")
-
-[node name="RedKnight" parent="." instance=ExtResource("16_xbyjg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
-
-[node name="RedKnight2" parent="." instance=ExtResource("16_xbyjg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.1335)
-
-[node name="RedKnight3" parent="." instance=ExtResource("16_xbyjg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.5589)
-
-[node name="BlueKnight" parent="." instance=ExtResource("16_xbyjg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98577, 0, 0.25511)
-faction = 2
 
 [node name="TeleportArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -41, 0)
