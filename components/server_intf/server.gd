@@ -8,6 +8,8 @@ extends Node
 
 signal ping_calculated(ping: float)
 signal level_gen_tiles_received(tiles_str: String)
+signal change_map(map_name: String)
+signal change_gamemode(mode_name: String)
 
 const player_character_scene = preload("res://components/fps_character/fps_character.tscn")
 const ENEMY_KNIGHT = preload("res://entities/test_enemies/enemy_knight.tscn")
@@ -191,4 +193,18 @@ func client_spawn_red_knight():
 @rpc("call_remote")
 func client_spawn_blue_knight():
 	spawn_knight(false)
+	pass
+
+
+@rpc("call_remote", "reliable")
+func mode_changed(mode_name: String):
+	print("new mode: ", mode_name)
+	change_gamemode.emit(mode_name)
+	pass
+
+
+@rpc("call_remote", "reliable")
+func map_changed(map_name: String):
+	print("new map: ", map_name)
+	change_map.emit(map_name)
 	pass

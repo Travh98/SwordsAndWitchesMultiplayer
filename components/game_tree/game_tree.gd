@@ -30,6 +30,8 @@ func _ready():
 	
 	pause_menu.disconnect.connect(on_disconnect)
 	pause_menu.change_name.connect(on_name_change)
+	
+	Server.change_map.connect(on_map_change)
 
 
 func _input(_event):
@@ -56,6 +58,19 @@ func update_level():
 	level = current_level.get_child(0)
 	# Rename the loaded level to match the scene tree on the Server
 	current_level.get_child(0).name = "Level"
+
+
+func on_map_change(map_name: String):
+	var new_map: Node
+	var new_map_path: String = "res://levels/" + map_name + ".tscn"
+	if !ResourceLoader.exists(new_map_path):
+		push_warning("Missing map: ", new_map_path)
+		return
+	
+	new_map = load(new_map_path).instantiate()
+	level.queue_free()
+	current_level.add_child(new_map)
+	update_level.call_deferred()
 
 
 #region Multiplayer Hooks
