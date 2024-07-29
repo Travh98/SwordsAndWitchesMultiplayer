@@ -14,7 +14,7 @@ extends Node
 # Level
 @onready var current_level: Node3D = $CurrentLevel
 
-var level: Level
+var level: Level : get = get_level
 
 const quick_quit_game: bool = true
 
@@ -57,10 +57,15 @@ func update_player_name(peer_id: int, new_name: String):
 func update_level():
 	level = current_level.get_child(0)
 	# Rename the loaded level to match the scene tree on the Server
-	current_level.get_child(0).name = "Level"
+	level.name = "Level"
+
+
+func get_level() -> Level:
+	return current_level.get_child(0)
 
 
 func on_map_change(map_name: String):
+	update_level()
 	var new_map: Node
 	var new_map_path: String = "res://levels/" + map_name + ".tscn"
 	if !ResourceLoader.exists(new_map_path):
@@ -70,7 +75,19 @@ func on_map_change(map_name: String):
 	new_map = load(new_map_path).instantiate()
 	level.queue_free()
 	current_level.add_child(new_map)
-	update_level.call_deferred()
+	update_level()
+	await get_tree().create_timer(1).timeout
+	#print("Respawning players")
+	respawn_players.call_deferred()
+
+
+func respawn_players():
+	for p in players.get_children():
+		print("Respawniing player: ", p.name)
+		level.respawn_entity(p)
+		#print("Respawning players. ", get_multiplayer_authority(), " vs ", p.get_multiplayer_authority())
+		#if get_multiplayer_authority() == p.get_multiplayer_authority():
+			
 
 
 #region Multiplayer Hooks

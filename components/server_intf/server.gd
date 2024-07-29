@@ -53,12 +53,21 @@ func connect_to_server():
 	multiplayer.connected_to_server.connect(on_connection_success)
 
 
+func disconnect_from_server():
+	server_connected = false
+	print("Disconnected from server")
+	multiplayer.multiplayer_peer = null
+	multiplayer.connection_failed.disconnect(on_connection_failed)
+	multiplayer.connected_to_server.disconnect(on_connection_success)
+	GameMgr.game_tree.delete_all_players()
+
+
 func on_connection_failed():
 	server_connected = false
 	var time_spent_joining: float = Time.get_unix_time_from_system() - last_join_attempt_secs
 	push_warning("Connection failed after ", str(time_spent_joining), " seconds.")
 	GameMgr.game_tree.on_connection_failed()
-	multiplayer.multiplayer_peer = null
+	disconnect_from_server()
 
 
 func on_connection_success():
@@ -99,12 +108,6 @@ func report_ping(ping: float):
 			multiplayer.multiplayer_peer.get_unique_id(), ping)
 		num_pings = 0
 	num_pings += 1
-
-
-func disconnect_from_server():
-	server_connected = false
-	multiplayer.multiplayer_peer = null
-	GameMgr.game_tree.delete_all_players()
 
 
 func update_name(my_new_name: String):

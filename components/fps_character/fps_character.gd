@@ -21,6 +21,12 @@ class_name FpsCharacter
 @onready var peer_name_label: Label3D = $PeerNameLabel
 @onready var name_label: Label3D = $NameLabel
 @onready var hide_self_body: Node3D = $Knight/KnightRig
+@onready var step_checker: StepChecker = $StepChecker
+
+const mouse_sens: float = 0.25
+const SlideSpeed: float = 10.0
+const MaxSlideTime = 1000.0
+const SlideJumpCooldownMax: float = 1.0
 
 var player_name: String : set = set_player_name
 
@@ -29,7 +35,6 @@ var crouching_depth: float = -0.5
 var head_height: float = 1.7
 
 # Player Controls
-const mouse_sens: float = 0.25
 var lerp_speed: float = 10.0
 var air_lerp_speed: float = 3.0
 var player_control_direction: Vector3 = Vector3.ZERO
@@ -53,12 +58,9 @@ var slide_timer = 0.0
 var slide_timer_max = 1.0
 var slide_vector: Vector2 = Vector2.ZERO
 var initial_slide_vector: Vector2 = Vector2.ZERO
-const SlideSpeed: float = 10.0
 var slide_pending: bool = false
 var slide_time_debt: float = 0.0
-const MaxSlideTime = 1000.0
 var slide_jump_cooldown: float = 0.0
-const SlideJumpCooldownMax: float = 1.0
 
 # Head Bob Variables
 const HeadBobSprintSpeed: float = 22.0
@@ -82,8 +84,6 @@ var last_frame_on_floor: bool = false # Tracks if on the floor last frame
 
 
 func _enter_tree():
-	# This code runs on the server and all of the clients
-	# Server and Clients all agree that multiplayer authority belongs to this name
 	# The authority of the multiplayer synchronizer belongs to this peer ID
 	set_multiplayer_authority(str(name).to_int())
 
@@ -175,8 +175,9 @@ func _physics_process(delta):
 	handle_headbob(input_dir, delta)
 	
 	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= locomotion_driver.gravity * delta
+	if !apply_step(delta):
+		if not is_on_floor():
+			velocity.y -= locomotion_driver.gravity * delta
 	
 	if is_on_floor():
 		is_slide_jumping = false
@@ -426,3 +427,27 @@ func set_player_name(n: String):
 	
 	# Tell the server we have updated our name
 	#MultiplayerMgr.register_player.rpc_id(1, get_multiplayer_authority(), player_name)
+
+
+func apply_step(delta: float) -> bool:
+	if step_checker == null:
+		return false
+	
+	var step_to_pos: Vector3 = step_checker.can_step(player_control_direction, velocity, delta)
+	var desired_y_pos: float = 0.0
+	if step_to_pos != Vector3.ZERO:
+		desired_y_pos = step_to_pos.y - global_position.y
+		if desired_y_pos > 0.2 and desired_y_pos < step_checker.step_height:
+			desired_y_pos = step_checker.step_height # Setting desired height to be higher than the step, so its easy to clear the steps when stepping
+			# TODO do we really need step_height if we have the wall_check?
+	else:
+		desired_y_pos = 0
+	
+	# Return true if we have stepped
+	if desired_y_pos <= 0:
+		# We will descend using gravity
+		return false
+	else:
+		# Hard set the mob's y velocity
+		velocity.y = desired_y_pos * locomotion_driver.walking_speed * 3
+		return true

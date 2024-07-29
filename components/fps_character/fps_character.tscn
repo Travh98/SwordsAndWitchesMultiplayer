@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cheoq2dxkgi7u"]
+[gd_scene load_steps=20 format=3 uid="uid://cheoq2dxkgi7u"]
 
 [ext_resource type="Script" path="res://components/fps_character/fps_character.gd" id="1_1asp3"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="1_r0lxu"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c8k2ucbty2xvc" path="res://entities/weapons/punching_arms.tscn" id="9_q017s"]
 [ext_resource type="PackedScene" uid="uid://bbm7284ux0w7j" path="res://entities/weapons/sword.tscn" id="10_6wrfn"]
 [ext_resource type="PackedScene" uid="uid://dcnnd5dfv234e" path="res://assets/characters/pr_knight.tscn" id="11_63vpc"]
+[ext_resource type="Script" path="res://components/health_component/health_component.gd" id="11_mmqlb"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5j838"]
 properties/0/path = NodePath(".:position")
@@ -157,6 +158,9 @@ faction = 4
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_5j838")
 
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("11_mmqlb")
+
 [node name="StandingCol" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_ftsmo")
@@ -288,6 +292,9 @@ transform = Transform3D(1.11114, 1.68799e-08, 5.63924e-08, -1.68799e-08, 1.11114
 [node name="ThighMesh" parent="Knight/KnightIkLeg2/KnightIkLeg/Skeleton3D" index="2"]
 transform = Transform3D(1.11114, 8.25793e-09, 3.65812e-08, -8.15435e-09, 1.11114, -0.00314544, -3.66042e-08, 0.00314542, 1.11115, -0.00633889, 0.5318, 0.00140001)
 
+[node name="ThighMesh" parent="Knight/KnightIkLeg2/KnightIkLeg/Skeleton3D/ThighMesh" index="0"]
+transform = Transform3D(1, 9.22873e-16, 3.55271e-15, 4.16334e-16, 1, 0, -3.55271e-15, 2.32831e-10, 1, 0, 0, 0)
+
 [node name="FootMesh" parent="Knight/KnightIkLeg3/KnightIkLeg/Skeleton3D" index="0"]
 transform = Transform3D(1.11114, 2.55795e-13, -1.10134e-12, -2.70006e-13, 1.11107, -0.0122984, 1.08002e-12, 0.0122984, 1.11107, -0.00633889, 0.1037, 0.0358)
 
@@ -299,6 +306,7 @@ transform = Transform3D(1.11114, 8.25793e-09, 3.65812e-08, -8.15435e-09, 1.11114
 
 [node name="PeerNameLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+visible = false
 billboard = 1
 text = "test"
 

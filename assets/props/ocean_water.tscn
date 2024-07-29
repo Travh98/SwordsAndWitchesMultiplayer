@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgg3cjkvqk7du"]
+
+[ext_resource type="Shader" path="res://assets/shaders/ocean_waves.gdshader" id="1_qlo1x"]
+[ext_resource type="Texture2D" uid="uid://cgbvpouk13lqs" path="res://assets/sprites/frothy_water.png" id="2_8kbkn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_14pgi"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hmike"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_14pgi")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_47mxd"]
+render_priority = 0
+shader = ExtResource("1_qlo1x")
+shader_parameter/amp = 0.5
+shader_parameter/wavelength = 1.0
+shader_parameter/phase = 2.0
+shader_parameter/scroll_speed = 0.25
+shader_parameter/direction = Vector2(-0.1, -0.5)
+shader_parameter/direction2 = Vector2(-0.5, 0.5)
+shader_parameter/noise = SubResource("NoiseTexture2D_hmike")
+shader_parameter/tex = ExtResource("2_8kbkn")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8dh25"]
+material = SubResource("ShaderMaterial_47mxd")
+size = Vector2(1000, 1000)
+subdivide_width = 100
+subdivide_depth = 100
+
+[node name="OceanWater" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -43, 0)
+mesh = SubResource("PlaneMesh_8dh25")

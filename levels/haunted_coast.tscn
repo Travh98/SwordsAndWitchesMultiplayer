@@ -1,0 +1,202 @@
+[gd_scene load_steps=18 format=3 uid="uid://c6ltsok8mfgb"]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1_h8d6y"]
+[ext_resource type="PackedScene" uid="uid://i4ev6xb85ys7" path="res://assets/locations/haunted_coast/pr_haunted_coast.tscn" id="2_6cijf"]
+[ext_resource type="Material" uid="uid://u81fndq2ntv2" path="res://assets/materials/red_transparent.tres" id="3_eh6aa"]
+[ext_resource type="Shader" path="res://assets/shaders/ocean_waves.gdshader" id="4_4352y"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="4_jjs16"]
+[ext_resource type="PackedScene" uid="uid://cbf86ogudnhaq" path="res://components/location_indicator/location_indicator.tscn" id="4_kay5r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5eg1f"]
+sky_top_color = Color(0.152941, 0.219608, 0.258824, 1)
+sky_horizon_color = Color(0.215686, 0.301961, 0.352941, 1)
+ground_bottom_color = Color(0.160784, 0.2, 0.254902, 1)
+ground_horizon_color = Color(0.215686, 0.301961, 0.352941, 1)
+
+[sub_resource type="Sky" id="Sky_a6eke"]
+sky_material = SubResource("ProceduralSkyMaterial_5eg1f")
+
+[sub_resource type="Environment" id="Environment_8oimj"]
+background_mode = 2
+sky = SubResource("Sky_a6eke")
+tonemap_mode = 2
+adjustment_saturation = 0.7
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_xaiyn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_101pk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r67r3"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_101pk")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f0qyh"]
+load_path = "res://.godot/imported/frothy_water.png-9489d0bcd267a8b6062aa78e46d28c1f.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eohgn"]
+render_priority = 0
+shader = ExtResource("4_4352y")
+shader_parameter/amp = 0.05
+shader_parameter/wavelength = 2.0
+shader_parameter/phase = 2.0
+shader_parameter/scroll_speed = 0.25
+shader_parameter/direction = Vector2(-0.1, -0.5)
+shader_parameter/direction2 = Vector2(-0.5, 0.5)
+shader_parameter/noise = SubResource("NoiseTexture2D_r67r3")
+shader_parameter/tex = SubResource("CompressedTexture2D_f0qyh")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_olgt6"]
+material = SubResource("ShaderMaterial_eohgn")
+size = Vector2(200, 200)
+subdivide_width = 100
+subdivide_depth = 100
+
+[sub_resource type="BoxMesh" id="BoxMesh_o0bnv"]
+material = ExtResource("3_eh6aa")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jw48m"]
+size = Vector3(1000, 50, 1000)
+
+[node name="HauntedCoast" type="Node3D"]
+script = ExtResource("1_h8d6y")
+
+[node name="NPCs" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8oimj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.833913, -0.526943, 0.164073, 0.00254509, 0.300958, 0.953634, -0.55189, -0.79483, 0.252314, 0, 0, 0)
+light_color = Color(0.72549, 0.72549, 0.72549, 1)
+light_energy = 0.1
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_xaiyn")
+
+[node name="haunted_coast" parent="NavigationRegion3D" instance=ExtResource("2_6cijf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="OceanWater" type="MeshInstance3D" parent="NavigationRegion3D/haunted_coast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.678772, 0)
+mesh = SubResource("PlaneMesh_olgt6")
+
+[node name="Lights" type="Node3D" parent="NavigationRegion3D/haunted_coast"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="NavigationRegion3D/haunted_coast/Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.57627, 5.39223, -7.59576)
+light_color = Color(0.839216, 0.854902, 0.803922, 1)
+light_energy = 20.0
+spot_range = 9.01463
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="NavigationRegion3D/haunted_coast/Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.0666, 7.60995, -41.9555)
+light_color = Color(0.839216, 0.854902, 0.803922, 1)
+light_energy = 20.0
+spot_range = 11.841
+spot_angle = 45.9285
+
+[node name="OmniLight3D" type="OmniLight3D" parent="NavigationRegion3D/haunted_coast/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45248, 2.93549, 9.77993)
+light_color = Color(0.811765, 0.796078, 0.698039, 1)
+light_energy = 10.0
+omni_range = 13.3899
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="NavigationRegion3D/haunted_coast/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.83354, 5.55142, -54.3066)
+light_color = Color(0.811765, 0.796078, 0.698039, 1)
+light_energy = 10.0
+omni_range = 13.3899
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="LocationIndicator" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.772053, 0, -50.7518)
+
+[node name="LocationIndicator2" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.772053, 0, -56.7518)
+
+[node name="LocationIndicator3" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.30906, 0, -49.5097)
+
+[node name="LocationIndicator4" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 3.30906, 0, -43.5097)
+
+[node name="LocationIndicator5" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.30906, 0, -46.5097)
+
+[node name="LocationIndicator6" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.30906, 0, -46.5097)
+
+[node name="LocationIndicator7" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7988, 0, -54.0181)
+
+[node name="LocationIndicator8" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 15.7988, 0, -60.0181)
+
+[node name="LocationIndicator9" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.7988, 0, -57.0181)
+
+[node name="LocationIndicator10" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 12.7988, 0, -57.0181)
+
+[node name="LocationIndicator11" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06108, 0, -52.7918)
+
+[node name="LocationIndicator12" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.06108, 0, -58.7918)
+
+[node name="LocationIndicator13" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.06109, 0, -55.7918)
+
+[node name="LocationIndicator14" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.0611, 0, -55.7918)
+
+[node name="LocationIndicator15" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.95329, 0, -20.8695)
+
+[node name="LocationIndicator16" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.95329, 0, -26.8695)
+
+[node name="LocationIndicator17" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.95329, 0, -23.8695)
+
+[node name="LocationIndicator18" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.953295, 0, -23.8695)
+
+[node name="LocationIndicator19" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.58301, 0, 13.348)
+
+[node name="LocationIndicator20" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.58301, 0, 7.34795)
+
+[node name="LocationIndicator21" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.58301, 0, 10.348)
+
+[node name="LocationIndicator22" parent="SpawnPoints" instance=ExtResource("4_kay5r")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.58301, 0, 10.348)
+
+[node name="ZeroMarker" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.113276, 0)
+mesh = SubResource("BoxMesh_o0bnv")
+
+[node name="TeleportArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TeleportArea"]
+shape = SubResource("BoxShape3D_jw48m")
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(-0.954252, 0.240988, -0.176995, 0, 0.591951, 0.805974, 0.299002, 0.769103, -0.56487, -28.0456, 119.51, -46.4232)
+script = ExtResource("4_jjs16")
+priority_override = false
+priority = 0
+follow_mode = 0
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null

@@ -1,21 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://cw38xpjywaub"]
+[gd_scene load_steps=16 format=3 uid="uid://cw38xpjywaub"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_63opl"]
 [ext_resource type="PackedScene" uid="uid://dny33js41rokw" path="res://assets/castle_meshlib/castle_grid.tscn" id="2_8svtg"]
 [ext_resource type="Texture2D" uid="uid://cvi4bsih01rwp" path="res://assets/sky/kloofendal_48d_partly_cloudy_puresky_1k.exr" id="3_lwpyd"]
 [ext_resource type="PackedScene" uid="uid://cibpb62c7xb0t" path="res://assets/locations/pr_spawn_center.tscn" id="4_jmkwt"]
 [ext_resource type="Material" uid="uid://u81fndq2ntv2" path="res://assets/materials/red_transparent.tres" id="5_dj6l6"]
+[ext_resource type="PackedScene" uid="uid://cbf86ogudnhaq" path="res://components/location_indicator/location_indicator.tscn" id="5_hdyyd"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="7_85rr7"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_l2qnu"]
 panorama = ExtResource("3_lwpyd")
 
-[sub_resource type="Sky" id="Sky_ur2td"]
+[sub_resource type="Sky" id="Sky_6rhsh"]
 sky_material = SubResource("PanoramaSkyMaterial_l2qnu")
 
 [sub_resource type="Environment" id="Environment_q38sf"]
 background_mode = 2
-sky = SubResource("Sky_ur2td")
+sky = SubResource("Sky_6rhsh")
 tonemap_mode = 2
 adjustment_saturation = 0.7
 
@@ -58,6 +59,32 @@ navigation_mesh = SubResource("NavigationMesh_h2xyt")
 
 [node name="spawn_center" parent="NavigationRegion3D" instance=ExtResource("4_jmkwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="LocationIndicator" parent="SpawnPoints" instance=ExtResource("5_hdyyd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70948, 0, -2.8015)
+
+[node name="LocationIndicator2" parent="SpawnPoints" instance=ExtResource("5_hdyyd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.70948, 0, -8.8015)
+
+[node name="LocationIndicator3" parent="SpawnPoints" instance=ExtResource("5_hdyyd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.290525, 0, -5.8015)
+
+[node name="LocationIndicator4" parent="SpawnPoints" instance=ExtResource("5_hdyyd")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -5.70948, 0, -5.8015)
+
+[node name="LocationIndicator5" parent="SpawnPoints" instance=ExtResource("5_hdyyd")]
+transform = Transform3D(0.775991, 0, 0.630744, 0, 1, 0, -0.630744, 0, 0.775991, 4.71767, 0, 4.31748)
+
+[node name="LocationIndicator6" parent="SpawnPoints" instance=ExtResource("5_hdyyd")]
+transform = Transform3D(-0.775991, 0, -0.630744, 0, 1, 0, 0.630744, 0, -0.775991, 0.933209, 0, -0.338468)
+
+[node name="LocationIndicator7" parent="SpawnPoints" instance=ExtResource("5_hdyyd")]
+transform = Transform3D(-0.630744, 0, 0.775991, 0, 1, 0, -0.775991, 0, -0.630744, 5.15341, 0, 0.0972756)
+
+[node name="LocationIndicator8" parent="SpawnPoints" instance=ExtResource("5_hdyyd")]
+transform = Transform3D(0.630744, 0, -0.775991, 0, 1, 0, 0.775991, 0, 0.630744, 0.497464, 0, 3.88174)
 
 [node name="ZeroMarker" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.113276, 0)
