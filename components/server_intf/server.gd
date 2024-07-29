@@ -119,18 +119,18 @@ func spawn_knight(red: bool):
 	GameMgr.game_tree.level.npcs.add_child(k)
 
 
-@rpc("call_remote")
+@rpc("call_remote", "reliable")
 func add_newly_connected_player_character(peer_id: int):
 	add_player_character(peer_id)
 
 
-@rpc("call_remote")
+@rpc("call_remote", "reliable")
 func add_previously_connected_player_characters(peer_ids: Array):
 	for peer_id in peer_ids:
 		add_player_character(peer_id)
 
 
-@rpc("call_remote")
+@rpc("call_remote", "reliable")
 func remove_existing_player_character(peer_id: int):
 	remove_player_character(peer_id)
 
@@ -153,7 +153,7 @@ func report_ping_to_server(_peer_id: int, _ping: float):
 	pass
 
 
-@rpc("any_peer")
+@rpc("any_peer", "reliable")
 func peer_name_changed(peer_id: int, new_name: String):
 	GameMgr.game_tree.update_player_name(peer_id, new_name)
 	print("Peer ", peer_id, " changed name to: ", new_name)
@@ -176,7 +176,7 @@ func peer_name_changed(peer_id: int, new_name: String):
 	#pass
 
 
-@rpc("call_remote")
+@rpc("call_remote", "reliable")
 func generated_level_tiles(tile_str: String):
 	level_gen_tiles_received.emit(tile_str)
 	pass

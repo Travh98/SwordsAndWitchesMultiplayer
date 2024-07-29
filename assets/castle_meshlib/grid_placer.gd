@@ -57,7 +57,7 @@ func on_level_gen_tiles_received(tile_str: String):
 	for tile in split_tiles:
 		var tile_index = str_to_vec2(tile)
 		tile_array.append(tile_index)
-	print("Deserialized tile array to be: ", tile_array)
+	#print("Deserialized tile array to be: ", tile_array)
 	load_meshes(tile_array)
 
 
