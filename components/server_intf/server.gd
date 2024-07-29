@@ -14,6 +14,11 @@ signal change_gamemode(mode_name: String)
 const player_character_scene = preload("res://components/fps_character/fps_character.tscn")
 const ENEMY_KNIGHT = preload("res://entities/test_enemies/enemy_knight.tscn")
 
+enum ServerMode {
+	MODE_PVE,
+	MODE_TTT,
+}
+
 @onready var ping_timer: Timer = Timer.new()
 
 var network: ENetMultiplayerPeer
@@ -24,6 +29,7 @@ var server_connected: bool = false
 var ping_start_time_msec: float
 var report_ping_interval: int = 5
 var num_pings: int = 0
+var server_mode: ServerMode = ServerMode.MODE_PVE
 
 
 func _ready():
@@ -33,7 +39,8 @@ func _ready():
 	ping_timer.timeout.connect(start_ping)
 	
 	GameMgr.name_changed.connect(update_name)
-	pass
+	
+	change_gamemode.connect(on_game_mode_changed)
 
 
 func set_server_connection_info(h: String, p: int):
@@ -122,6 +129,16 @@ func spawn_knight(red: bool):
 	else:
 		k.faction = FactionMgr.Factions.BLUE
 	GameMgr.game_tree.level.npcs.add_child(k)
+
+
+func on_game_mode_changed(mode_str: String):
+	match mode_str:
+		"pve":
+			server_mode = ServerMode.MODE_PVE
+		"ttt":
+			server_mode = ServerMode.MODE_TTT
+		_:
+			push_warning("Unknown game mode: ", mode_str)
 
 
 @rpc("call_remote", "reliable")
