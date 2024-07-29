@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dttma5gja5lgk"]
+
+[ext_resource type="Script" path="res://components/multiplayer/server_connector.gd" id="1_7jb5o"]
+[ext_resource type="PackedScene" uid="uid://b8l1evuilk45" path="res://components/multiplayer/ping_mgr.tscn" id="2_a3pog"]
+
+[node name="ServerConnector" type="Node"]
+script = ExtResource("1_7jb5o")
+
+[node name="PingMgr" parent="." instance=ExtResource("2_a3pog")]

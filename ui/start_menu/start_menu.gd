@@ -27,7 +27,6 @@ func _ready():
 	quit_button.pressed.connect(quit)
 	settings_button.disabled = true
 	credits.close_credits.connect(on_credits_closed)
-	
 
 
 func on_join_server():
@@ -60,5 +59,6 @@ func quit():
 	get_tree().quit()
 
 
+## TODO store player name somewhere
 func get_player_name() -> String:
 	return name_edit.text

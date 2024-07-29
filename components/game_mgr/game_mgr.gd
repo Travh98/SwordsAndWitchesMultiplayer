@@ -24,15 +24,8 @@ func _ready():
 	
 	set_random_name()
 	
-	deferred_init.call_deferred()
-
-
-func deferred_init():
-	if !game_tree:
-		push_error("NO GAME TREE")
-	
 	game_paused = false
-	game_tree.pause_menu.visible = false
+	
 
 
 func _input(_event):
@@ -44,13 +37,13 @@ func _input(_event):
 
 
 func pause_game():
-	game_tree.pause_menu.visible = true
+	game_tree.gui_mgr.pause_menu.visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	game_paused = true
 
 
 func unpause_game():
-	game_tree.pause_menu.visible = false
+	game_tree.gui_mgr.pause_menu.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	game_paused = false
 

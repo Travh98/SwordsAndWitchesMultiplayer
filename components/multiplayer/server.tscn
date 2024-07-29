@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccbgo0olx5j7p"]
+
+[ext_resource type="Script" path="res://components/multiplayer/server.gd" id="1_oov04"]
+[ext_resource type="PackedScene" uid="uid://dttma5gja5lgk" path="res://components/multiplayer/server_connector.tscn" id="2_375pb"]
+
+[node name="Server" type="Node"]
+script = ExtResource("1_oov04")
+
+[node name="ServerConnector" parent="." instance=ExtResource("2_375pb")]
+
+[editable path="ServerConnector"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8l1evuilk45"]
+
+[ext_resource type="Script" path="res://components/multiplayer/ping_mgr.gd" id="1_lgsv6"]
+
+[node name="PingMgr" type="Node"]
+script = ExtResource("1_lgsv6")
