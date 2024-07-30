@@ -23,6 +23,4 @@ func _ready():
 	Server.despawn_player_character.connect(player_data_mgr.delete_player_data)
 	Server.player_name_changed.connect(player_data_mgr.on_player_name_changed)
 	Server.server_connection_changed.connect(player_data_mgr.on_server_connection_changed)
-	
-	
 

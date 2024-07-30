@@ -38,6 +38,4 @@ func respawn_entity(ent: Node3D):
 
 
 func on_teleport_area_entered(body: Node3D):
-	if body.get_multiplayer_authority() != get_multiplayer_authority():
-		return
 	respawn_entity(body)

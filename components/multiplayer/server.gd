@@ -34,6 +34,7 @@ func add_newly_connected_player_character(peer_id: int):
 @rpc("call_remote", "reliable")
 func add_previously_connected_player_characters(peer_ids: Array):
 	for peer_id in peer_ids:
+		print("Adding previously connected player: ", peer_id)
 		spawn_player_character.emit(peer_id)
 
 

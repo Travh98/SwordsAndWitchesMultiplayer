@@ -9,6 +9,7 @@ signal damaged_by(damager: Node3D)
 
 @export var health: int = 100
 @export var max_health: int = 100
+
 var invincible: bool = false
 var is_dead: bool = false
 var last_damaged_by: Mob = null

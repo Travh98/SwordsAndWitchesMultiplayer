@@ -263,7 +263,7 @@ properties/2/replication_mode = 1
 script = ExtResource("1_lkqp3")
 
 [node name="SwordMesh" type="Node3D" parent="."]
-transform = Transform3D(0.972834, -0.216705, 0.0814513, 0.217428, 0.976075, 0, -0.0795029, 0.0177097, 0.996676, -0.157799, 0.00262845, 0)
+transform = Transform3D(0.972834, -0.216705, 0.0814514, 0.217428, 0.976075, 0, -0.0795029, 0.0177098, 0.996676, -0.157799, 0.00262845, 0)
 
 [node name="IronSword2" parent="SwordMesh" instance=ExtResource("2_pemwx")]
 transform = Transform3D(0.0429093, -0.0838489, 0.995554, -0.00672534, 0.996425, 0.0842121, -0.999056, -0.0103089, 0.042192, 0, 0, 0)

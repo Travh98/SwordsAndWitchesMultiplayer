@@ -15,6 +15,10 @@ func _ready():
 
 
 func add_player_character(peer_id: int):
+	if does_player_exist(peer_id):
+		print("Player ", peer_id, " already exists")
+		return
+	
 	# Spawn a new character for this player to control
 	var player_character = player_character_scene.instantiate()
 	# Set the player character's name to the peer_id of the Player who owns it
@@ -59,3 +63,11 @@ func respawn_players():
 	for p in get_children():
 		print("Respawning player: ", p.name)
 		respawn_player.emit(p)
+
+
+func does_player_exist(peer_id: int):
+	for player in get_children():
+		if player.name == str(peer_id):
+			return true
+	return false
+	
