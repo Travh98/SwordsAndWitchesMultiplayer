@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://doq4nrx3d7smi"
+path.s3tc="res://.godot/imported/Medieval table 1_122_old wood planks texture-seamless.jpg-77f84ff34786674042e11a80bd6c2d65.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={}
+
+[deps]
+
+source_file="res://assets/zavier/Medieval table 1_122_old wood planks texture-seamless.jpg"
+dest_files=["res://.godot/imported/Medieval table 1_122_old wood planks texture-seamless.jpg-77f84ff34786674042e11a80bd6c2d65.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://e3ycaoef0awq"]
+
+[ext_resource type="PackedScene" uid="uid://bchtx7vaao7o5" path="res://assets/zavier/Medieval table 1.gltf" id="1_tnumh"]
+
+[node name="Medieval table 1" instance=ExtResource("1_tnumh")]
+
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.0165588, 0.445906, 0)

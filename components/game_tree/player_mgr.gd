@@ -3,12 +3,14 @@ extends Node
 
 ## Manages player characters
 
+signal respawn_player(player: Node)
+
 const player_character_scene = preload("res://components/fps_character/fps_character.tscn")
 
 
 func _ready():
 	Server.spawn_player_character.connect(add_player_character)
-	Server.despawn_player_character.connect(add_player_character)
+	Server.despawn_player_character.connect(remove_player_character)
 
 
 func add_player_character(peer_id: int):
@@ -35,9 +37,16 @@ func update_player_name(peer_id: int, new_name: String):
 	for p in get_children():
 		if p.name == str(peer_id):
 			p.set_player_name(new_name)
+			return
+	push_warning("Failed to update name for peer_id: ", peer_id, ", could not find them.")
+	
+
+
+func on_new_map_loaded(_map_name: String):
+	respawn_players()
 
 
 func respawn_players():
 	for p in get_children():
-		print("Respawniing player: ", p.name)
-		GameMgr.game_tree.level.respawn_entity(p)
+		print("Respawning player: ", p.name)
+		respawn_player.emit(p)

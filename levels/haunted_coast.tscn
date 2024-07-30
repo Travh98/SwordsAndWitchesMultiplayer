@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c6ltsok8mfgb"]
+[gd_scene load_steps=20 format=3 uid="uid://c6ltsok8mfgb"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_h8d6y"]
 [ext_resource type="PackedScene" uid="uid://i4ev6xb85ys7" path="res://assets/locations/haunted_coast/pr_haunted_coast.tscn" id="2_6cijf"]
@@ -6,6 +6,8 @@
 [ext_resource type="Shader" path="res://assets/shaders/ocean_waves.gdshader" id="4_4352y"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="4_jjs16"]
 [ext_resource type="PackedScene" uid="uid://cbf86ogudnhaq" path="res://components/location_indicator/location_indicator.tscn" id="4_kay5r"]
+[ext_resource type="PackedScene" uid="uid://e3ycaoef0awq" path="res://assets/zavier/pr_medieval_table_1.tscn" id="7_vnf0f"]
+[ext_resource type="PackedScene" uid="uid://c1ub7gcnj4xhk" path="res://assets/zavier/pr_medieval_chair_1.tscn" id="8_i7iom"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5eg1f"]
 sky_top_color = Color(0.152941, 0.219608, 0.258824, 1)
@@ -200,3 +202,33 @@ tween_parameters = null
 tween_on_load = true
 inactive_update_mode = 0
 camera_3D_resource = null
+
+[node name="Medieval table 1" parent="." instance=ExtResource("7_vnf0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0163, 9.70856, -40.0988)
+
+[node name="Medieval chair 1" parent="Medieval table 1" instance=ExtResource("8_i7iom")]
+transform = Transform3D(0.29409, 0, -0.955778, 0, 1, 0, 0.955778, 0, 0.29409, 1.11869, 0, -0.910789)
+
+[node name="Medieval chair 2" parent="Medieval table 1" instance=ExtResource("8_i7iom")]
+transform = Transform3D(-0.282392, 0, -0.959299, 0, 1, 0, 0.959299, 0, -0.282392, 1.37287, 0, 0.728817)
+
+[node name="Medieval chair 3" parent="Medieval table 1" instance=ExtResource("8_i7iom")]
+transform = Transform3D(-0.282392, 0, -0.959299, 0, 1, 0, 0.959299, 0, -0.282392, 4.10988, 0, 4.43805)
+
+[node name="Medieval chair 4" parent="Medieval table 1" instance=ExtResource("8_i7iom")]
+transform = Transform3D(0.32182, 0, -0.946801, 0, 1, 0, 0.946801, 0, 0.32182, 4.03596, 0, 5.4463)
+
+[node name="Medieval chair 5" parent="Medieval table 1" instance=ExtResource("8_i7iom")]
+transform = Transform3D(0.37923, 0, 0.925303, 0, 1, 0, -0.925303, 0, 0.37923, 2.10502, 0, 4.60033)
+
+[node name="Medieval chair 6" parent="Medieval table 1" instance=ExtResource("8_i7iom")]
+transform = Transform3D(0.37923, 0, 0.925303, 0, 1, 0, -0.925303, 0, 0.37923, 2.51861, 0, 3.72558)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Medieval table 1"]
+transform = Transform3D(1, 0, 0, 0, 0.348703, 0.937233, 0, -0.937233, 0.348703, 1.57009, 8.16308, 6.79896)
+light_energy = 5.0
+spot_range = 14.8574
+spot_angle = 37.3367
+
+[node name="Medieval table 2" parent="Medieval table 1" instance=ExtResource("7_vnf0f")]
+transform = Transform3D(0.94008, 0, -0.340954, 0, 1, 0, 0.340954, 0, 0.94008, 3.15076, 0, 4.60906)

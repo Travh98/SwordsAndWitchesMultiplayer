@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwl8phfdklrse"]
+
+[ext_resource type="PackedScene" uid="uid://ct74toba884a7" path="res://assets/zavier/bow.gltf" id="1_02j64"]
+
+[node name="bow" instance=ExtResource("1_02j64")]

@@ -103,12 +103,6 @@ func _ready():
 	coyote_timer.wait_time = coyote_frames / 60.0
 	coyote_timer.one_shot = true
 	coyote_timer.timeout.connect(on_coyote_timeout)
-	
-	# Tell the server who we are
-	#MultiplayerMgr.register_player.rpc_id(1, get_multiplayer_authority(), player_name)
-	
-	GameMgr.name_changed.connect(set_player_name)
-	
 
 
 func _input(event):

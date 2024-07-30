@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cheoq2dxkgi7u"]
+[gd_scene load_steps=21 format=3 uid="uid://cheoq2dxkgi7u"]
 
 [ext_resource type="Script" path="res://components/fps_character/fps_character.gd" id="1_1asp3"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="1_r0lxu"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bbm7284ux0w7j" path="res://entities/weapons/sword.tscn" id="10_6wrfn"]
 [ext_resource type="PackedScene" uid="uid://dcnnd5dfv234e" path="res://assets/characters/pr_knight.tscn" id="11_63vpc"]
 [ext_resource type="Script" path="res://components/health_component/health_component.gd" id="11_mmqlb"]
+[ext_resource type="PackedScene" uid="uid://dwl8phfdklrse" path="res://assets/zavier/pr_bow.tscn" id="12_l3t4f"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5j838"]
 properties/0/path = NodePath(".:position")
@@ -19,9 +20,9 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath("NameLabel:text")
+properties/2/path = NodePath("Neck/Head:rotation")
 properties/2/spawn = true
-properties/2/replication_mode = 2
+properties/2/replication_mode = 1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ftsmo"]
 radius = 0.25
@@ -314,6 +315,9 @@ text = "test"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.20284, 0)
 billboard = 1
 text = "name"
+
+[node name="bow" parent="." instance=ExtResource("12_l3t4f")]
+transform = Transform3D(0.171244, 0.00388448, -0.282064, -0.282091, 0.00235806, -0.171228, -2.02842e-08, 0.329969, 0.00454418, 0, 1.33052, 0.140008)
 
 [editable path="Knight"]
 [editable path="Knight/KnightIkLeg2"]

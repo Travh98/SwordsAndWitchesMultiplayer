@@ -43,7 +43,7 @@ placeholder_text = "Name"
 
 [node name="HostEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-placeholder_text = "Host IP Address"
+placeholder_text = "IP Address of the Host"
 
 [node name="PortEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -52,11 +52,6 @@ placeholder_text = "Port"
 [node name="JoinButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Join"
-
-[node name="HostButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-text = "Host"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)

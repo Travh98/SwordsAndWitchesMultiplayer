@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1ub7gcnj4xhk"]
+
+[ext_resource type="PackedScene" uid="uid://dlsigl5ewpw83" path="res://assets/zavier/Medieval chair 1.gltf" id="1_pr1tp"]
+
+[node name="Medieval chair 1" instance=ExtResource("1_pr1tp")]
+
+[node name="Chair" parent="." index="0"]
+transform = Transform3D(0.088, -5.55311e-05, -1.48636e-06, 1.48634e-06, 0.00470746, -0.087874, 5.55311e-05, 0.087874, 0.00470746, 0.00285314, 0.723836, -0.137015)

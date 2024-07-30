@@ -1,61 +1,28 @@
 class_name GameTree
 extends Node
 
-## Manages the tree items (UI, Current Level, Camera)
-
+## Manages the tree items
 
 @onready var player_mgr: PlayerMgr = $Players
+@onready var player_data_mgr: PlayerDataMgr = $PlayerDataMgr
 @onready var gui_mgr: GuiMgr = $GuiMgr
-
-# Level
-@onready var current_level: Node3D = $CurrentLevel
-
-var level: Level : get = get_level
+@onready var level_mgr: LevelMgr = $LevelMgr
+@onready var camera: Camera3D = $Camera3D
 
 
 func _ready():
 	GameMgr.game_tree = self
 	
-	update_level()
+	level_mgr.new_map_loaded.connect(player_mgr.on_new_map_loaded)
+	player_mgr.respawn_player.connect(level_mgr.respawn_entity)
 	
-	# Connect the tree
+	gui_mgr.local_player_name_changed.connect(player_data_mgr.on_local_player_name_changed)
+	player_data_mgr.player_name_changed.connect(player_mgr.update_player_name)
 	
-	Server.change_map.connect(on_map_change)
-
-
-func _input(_event):
-	if Input.is_action_just_pressed("quit_game"):
-		get_tree().quit()
-
-
-func on_name_change(n: String):
-	GameMgr.on_name_selected(n)
-
-
-func update_level():
-	level = current_level.get_child(0)
-	# Rename the loaded level to match the scene tree on the Server
-	level.name = "Level"
-
-
-func get_level() -> Level:
-	return current_level.get_child(0)
-
-
-func on_map_change(map_name: String):
-	update_level()
-	var new_map: Node
-	var new_map_path: String = "res://levels/" + map_name + ".tscn"
-	if !ResourceLoader.exists(new_map_path):
-		push_warning("Missing map: ", new_map_path)
-		return
+	Server.spawn_player_character.connect(player_data_mgr.create_player_data)
+	Server.despawn_player_character.connect(player_data_mgr.delete_player_data)
+	Server.player_name_changed.connect(player_data_mgr.on_player_name_changed)
+	Server.server_connection_changed.connect(player_data_mgr.on_server_connection_changed)
 	
-	new_map = load(new_map_path).instantiate()
-	level.queue_free()
-	current_level.add_child(new_map)
-	update_level()
-	#await get_tree().create_timer(1).timeout
-	#print("Respawning players")
-	player_mgr.respawn_players.call_deferred()
-
+	
 

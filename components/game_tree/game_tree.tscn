@@ -1,15 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://5p4ihhps6f2q"]
+[gd_scene load_steps=15 format=3 uid="uid://5p4ihhps6f2q"]
 
 [ext_resource type="Script" path="res://components/game_tree/game_tree.gd" id="1_wtqql"]
 [ext_resource type="Script" path="res://components/game_tree/player_mgr.gd" id="2_cpy1k"]
 [ext_resource type="PackedScene" uid="uid://cpt28d5sjo8pi" path="res://ui/start_menu/start_menu.tscn" id="2_w1ut0"]
 [ext_resource type="Script" path="res://components/game_tree/gui_mgr.gd" id="3_41ul6"]
+[ext_resource type="Script" path="res://components/game_tree/player_data_mgr.gd" id="3_plehg"]
 [ext_resource type="PackedScene" uid="uid://dtq36h2m73xpv" path="res://ui/multiplayer_ui/server_info.tscn" id="3_u54cj"]
+[ext_resource type="PackedScene" uid="uid://vqpb8abvvahj" path="res://components/game_tree/player_data.tscn" id="4_h8eih"]
+[ext_resource type="Script" path="res://components/game_tree/random_name_gen.gd" id="5_d8kaq"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_n6j8m"]
 [ext_resource type="PackedScene" uid="uid://cpecjqhopyssd" path="res://ui/fps_counter/fps_counter.tscn" id="5_yc8gm"]
 [ext_resource type="PackedScene" uid="uid://b6eakq2gu0je8" path="res://ui/ping_counter/ping_counter.tscn" id="6_kl3vl"]
 [ext_resource type="PackedScene" uid="uid://mb2xptlvdkyn" path="res://ui/pause_menu/pause_menu.tscn" id="6_sqdu1"]
 [ext_resource type="PackedScene" uid="uid://cw38xpjywaub" path="res://levels/sa_w_level.tscn" id="7_ym4vn"]
+[ext_resource type="Script" path="res://components/game_tree/level_mgr.gd" id="9_c775u"]
 
 [node name="GameTree" type="Node"]
 script = ExtResource("1_wtqql")
@@ -20,6 +24,14 @@ spawn_path = NodePath("../Players")
 
 [node name="Players" type="Node" parent="."]
 script = ExtResource("2_cpy1k")
+
+[node name="PlayerDataMgr" type="Node" parent="."]
+script = ExtResource("3_plehg")
+
+[node name="PlayerData" parent="PlayerDataMgr" instance=ExtResource("4_h8eih")]
+
+[node name="RandomNameGen" type="Node" parent="PlayerDataMgr"]
+script = ExtResource("5_d8kaq")
 
 [node name="GuiMgr" type="Node" parent="."]
 script = ExtResource("3_41ul6")
@@ -35,13 +47,13 @@ visible = false
 
 [node name="PingCounter" parent="GuiMgr" instance=ExtResource("6_kl3vl")]
 
-[node name="CurrentLevel" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+[node name="LevelMgr" type="Node" parent="."]
+script = ExtResource("9_c775u")
 
-[node name="SaW_Level" parent="CurrentLevel" instance=ExtResource("7_ym4vn")]
+[node name="SaW_Level" parent="LevelMgr" instance=ExtResource("7_ym4vn")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.954252, 0.240988, -0.176995, 0, 0.591951, 0.805974, 0.299002, 0.769103, -0.56487, -28.0456, 118.51, -46.4232)
+transform = Transform3D(-0.954252, 0.240988, -0.176995, 0, 0.591951, 0.805974, 0.299002, 0.769103, -0.56487, -28.0456, 119.51, -46.4232)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("5_n6j8m")

@@ -13,7 +13,6 @@ signal change_name(new_name: String)
 func _ready():
 	name_apply_button.pressed.connect(on_apply_name)
 	disconnect_button.pressed.connect(on_disconnect)
-	GameMgr.name_changed.connect(update_name)
 
 
 func on_apply_name():

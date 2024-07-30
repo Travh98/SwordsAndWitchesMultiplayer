@@ -3,6 +3,8 @@ extends Node
 
 ## Manages GUI elements
 
+signal local_player_name_changed(new_name: String)
+
 @onready var start_menu: StartMenu = $StartMenu
 @onready var pause_menu: PauseMenu = $PauseMenu
 @onready var server_info: ServerInfo = $ServerInfo
@@ -19,6 +21,9 @@ func _ready():
 func on_local_name_changed(new_name: String):
 	if Server.server_connector.is_server_connected:
 		Server.peer_name_changed.rpc(multiplayer.multiplayer_peer.get_unique_id(), new_name)
+	
+	pause_menu.update_name(new_name)
+	local_player_name_changed.emit(new_name)
 
 
 func on_join_button_pressed(host_ip: String, p: int):
