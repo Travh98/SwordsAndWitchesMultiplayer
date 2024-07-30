@@ -11,6 +11,7 @@ const player_character_scene = preload("res://components/fps_character/fps_chara
 func _ready():
 	Server.spawn_player_character.connect(add_player_character)
 	Server.despawn_player_character.connect(remove_player_character)
+	Server.player_faction_changed.connect(on_player_faction_changed)
 
 
 func add_player_character(peer_id: int):
@@ -39,7 +40,14 @@ func update_player_name(peer_id: int, new_name: String):
 			p.set_player_name(new_name)
 			return
 	push_warning("Failed to update name for peer_id: ", peer_id, ", could not find them.")
-	
+
+
+func on_player_faction_changed(peer_id: int, faction_name: String):
+	for p in get_children():
+		if p.name == str(peer_id):
+			p.faction = FactionMgr.get_faction_from_string(faction_name)
+			print("Player ", p.name, " changed faction to: ", faction_name)
+			return
 
 
 func on_new_map_loaded(_map_name: String):

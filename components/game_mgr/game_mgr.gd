@@ -41,3 +41,9 @@ func unpause_game():
 	game_tree.gui_mgr.pause_menu.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	game_paused = false
+
+
+func is_valid_name(in_name: String) -> bool:
+	if in_name.replace(" ", "").is_empty():
+		return false
+	return true

@@ -11,4 +11,4 @@ func spawn_knight(red: bool):
 		k.faction = FactionMgr.Factions.RED
 	else:
 		k.faction = FactionMgr.Factions.BLUE
-	GameMgr.game_tree.level.npcs.add_child(k)
+	GameMgr.game_tree.level_mgr.level.npcs.add_child(k)

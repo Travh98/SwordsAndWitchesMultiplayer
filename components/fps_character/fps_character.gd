@@ -93,6 +93,7 @@ func _ready():
 	faction = FactionMgr.Factions.PLAYER
 	
 	if not is_multiplayer_authority(): return
+	# Do things locally
 	
 	hide_self_body.hide()
 	

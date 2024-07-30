@@ -8,6 +8,7 @@ extends StaticBody3D
 @export var value: int = 0
 
 func _ready():
+	set_multiplayer_authority(1)
 	# Mesh and Mesh's material both have to be local to scene
 	material = mesh_instance_3d.mesh.surface_get_material(0)
 	if interactable:
@@ -23,7 +24,7 @@ func _ready():
 func on_state_change(state: int):
 	value = state
 	set_screen(value)
-	#print(name, " value: ", value)
+	print(name, " value: ", value)
 
 
 func set_screen(v: int):

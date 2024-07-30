@@ -1,3 +1,4 @@
+class_name CastleGridPlacer
 extends Node3D
 
 ## Receives an array of spots to place tiles on
@@ -41,24 +42,12 @@ var spot_width: float = 10.0
 
 
 func _ready():
-	Server.level_gen_tiles_received.connect(on_level_gen_tiles_received)
-	
 	# Register all prefabs
 	four_ways.append(PR_FLOOR)
 	three_ways.append(PR_T_SECTION)
 	straight_two_ways.append(PR_SKINNY_BRIDGE)
 	curved_two_ways.append(PR_CURVE_TWOWAY)
 	dead_ends.append(PR_DEADEND_CLIFF)
-
-
-func on_level_gen_tiles_received(tile_str: String):
-	var tile_array: Array[Vector2] = []
-	var split_tiles: PackedStringArray = tile_str.split(",", false)
-	for tile in split_tiles:
-		var tile_index = str_to_vec2(tile)
-		tile_array.append(tile_index)
-	#print("Deserialized tile array to be: ", tile_array)
-	load_meshes(tile_array)
 
 
 func str_to_vec2(vec_str: String) -> Vector2:

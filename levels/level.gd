@@ -17,19 +17,20 @@ func _ready():
 
 # Recursively check each spawnpoint until finding a spot with no overlapping mobs
 func place_at_spawn_point(n: Node3D):
+	## TODO Check spots until we run out of spots, then just spawn on a random one
 	var spot: Node3D = spawn_points.get_children().pick_random()
-	print("Got random spot: ", spot.global_position)
-	#collision_checker.global_position = spot.global_position
-	#await get_tree().create_timer(0.2).timeout
-	#for body in collision_checker.get_overlapping_bodies():
+	#print("Got random spot: ", spot.global_position)
+	collision_checker.global_position = spot.global_position
+	await get_tree().create_timer(0.2).timeout
+	for body in collision_checker.get_overlapping_bodies():
 		#print("Checking for respawn collisions with ", body, " at spot ", spot.global_position)
-		#if body is Mob:
-			## Try again
-			#place_at_spawn_point(n)
-			#return
+		if body is Mob:
+			# Try again
+			place_at_spawn_point(n)
+			return
 	n.global_position = spot.global_position
 	n.global_rotation = spot.global_rotation
-	print("Spawned node ", n.name, " at spot: ", spot.global_position)
+	#print("Spawned node ", n.name, " at spot: ", spot.global_position)
 
 
 func respawn_entity(ent: Node3D):

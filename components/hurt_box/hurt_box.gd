@@ -29,20 +29,25 @@ func damage_body(body: Node3D):
 			if FactionMgr.get_friendly_factions(mob_owner.faction).has(body.faction):
 				return
 	
+	# Don't hit yourself
+	if body == mob_owner:
+		return
+	
 	if body.has_node("HealthComponent"):
 		var health_component: HealthComponent = body.get_node("HealthComponent")
 		
 		if health_component.get_multiplayer_authority() == get_multiplayer_authority():
-			print("Server damaging body: ", body.name, " from peer: ", get_multiplayer_authority())
-			health_component.take_damage(damage, mob_owner.get_path())
+			print("Locally damaging body: ", body.name)
+			health_component.take_damage(damage)
 		else:
-			health_component.take_damage.rpc(damage, mob_owner.get_path())
+			health_component.take_damage.rpc(damage)
 			print("Client damaging body: ", body.name, " from peer: ", get_multiplayer_authority())
 
 
 func on_body_entered(body: Node3D):
 	if active:
 		damage_body(body)
+		print("Damaging body")
 
 
 func start_damage():

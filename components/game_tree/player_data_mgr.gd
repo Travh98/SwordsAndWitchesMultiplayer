@@ -9,7 +9,7 @@ const PLAYER_DATA = preload("res://components/game_tree/player_data.tscn")
 
 @onready var random_name_gen: RandomNameGen= $RandomNameGen
 
-var local_player_name: String = ""
+var local_player_name: String = "unset player name"
 var player_data_nodes: Dictionary
 
 
@@ -32,7 +32,11 @@ func delete_player_data(peer_id: int):
 
 
 func on_player_name_changed(peer_id: int, new_name: String):
+	if !GameMgr.is_valid_name(new_name):
+		return
+	
 	print("PlayerDataMgr: Storing Player name for ", peer_id, " as ", new_name)
+	
 	if !player_data_nodes.has(peer_id):
 		push_warning("Invalid peer_id for setting PlayerData: ", peer_id)
 		return
@@ -41,6 +45,9 @@ func on_player_name_changed(peer_id: int, new_name: String):
 
 
 func on_local_player_name_changed(new_name: String):
+	if !GameMgr.is_valid_name(new_name):
+		return
+	
 	local_player_name = new_name
 
 
@@ -48,8 +55,6 @@ func on_server_connection_changed(connected: bool):
 	if !connected:
 		return
 	
-	#await get_tree().create_timer(2).timeout
-	#
-	#print("PlayerDataMgr: Joined server, sending my local name: ", local_player_name)
-	#var local_peer_id: int = multiplayer.multiplayer_peer.get_unique_id()
-	#Server.peer_name_changed.rpc(local_peer_id, player_data_nodes[local_peer_id].player_name)
+	Server.send_player_data.rpc_id(1, 
+		multiplayer.multiplayer_peer.get_unique_id(),
+		local_player_name, Color.CHOCOLATE)

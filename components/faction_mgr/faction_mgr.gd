@@ -7,7 +7,10 @@ enum Factions
 	BLUE,
 	UNDEAD,
 	PLAYER,
+	INNOCENT,
+	TRAITOR,
 }
+
 
 func get_hostile_factions(my_faction: Factions):
 	var hostile_array = []
@@ -22,6 +25,12 @@ func get_hostile_factions(my_faction: Factions):
 			hostile_array.append(Factions.RED)
 		Factions.UNDEAD:
 			pass
+		Factions.INNOCENT:
+			hostile_array.append(Factions.INNOCENT)
+			hostile_array.append(Factions.TRAITOR)
+		Factions.TRAITOR:
+			hostile_array.append(Factions.INNOCENT)
+			hostile_array.append(Factions.TRAITOR)
 	
 	return hostile_array
 
@@ -39,6 +48,10 @@ func get_friendly_factions(my_faction: Factions):
 			friendly_array.append(Factions.PLAYER)
 		Factions.UNDEAD:
 			pass
+		Factions.INNOCENT:
+			pass
+		Factions.TRAITOR:
+			pass
 	
 	return friendly_array
 
@@ -55,3 +68,13 @@ func get_faction_color(faction: Factions) -> Color:
 			return Color.GRAY
 		_:
 			return Color.WHITE
+
+
+func get_faction_from_string(faction_name: String) -> Factions:
+	match faction_name:
+		"Traitor":
+			return Factions.TRAITOR
+		"Innocent":
+			return Factions.INNOCENT
+		_:
+			return Factions.UNSET
