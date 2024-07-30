@@ -25,7 +25,8 @@ func _ready():
 
 
 func on_join_server():
-	name_selected.emit(name_edit.text)
+	if GameMgr.is_valid_name(name_edit.text):
+		name_selected.emit(name_edit.text)
 	join_server.emit(host_edit.text, port_edit.text.to_int())
 
 

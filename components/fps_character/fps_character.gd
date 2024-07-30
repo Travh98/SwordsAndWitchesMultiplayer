@@ -419,9 +419,6 @@ func update_state_info():
 func set_player_name(n: String):
 	player_name = n
 	name_label.text = n
-	
-	# Tell the server we have updated our name
-	#MultiplayerMgr.register_player.rpc_id(1, get_multiplayer_authority(), player_name)
 
 
 func apply_step(delta: float) -> bool:

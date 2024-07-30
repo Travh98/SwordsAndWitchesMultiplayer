@@ -16,7 +16,8 @@ func _ready():
 
 
 func on_apply_name():
-	change_name.emit(name_select_edit.text)
+	if GameMgr.is_valid_name(name_select_edit.text):
+		change_name.emit(name_select_edit.text)
 
 
 func on_disconnect():

@@ -35,6 +35,7 @@ func delete_all_players():
 
 
 func update_player_name(peer_id: int, new_name: String):
+	print("Updating player name for peer: ", peer_id, " to be ", new_name)
 	for p in get_children():
 		if p.name == str(peer_id):
 			p.set_player_name(new_name)

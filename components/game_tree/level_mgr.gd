@@ -33,8 +33,6 @@ func on_map_change(new_map_name: String):
 	
 	new_map_loaded.emit(map_name)
 	
-	#await get_tree().create_timer(2).timeout
-	
 	if get_grid_placer():
 		get_grid_placer().load_meshes.call_deferred(tile_array)
 	
