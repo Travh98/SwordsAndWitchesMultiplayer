@@ -17,6 +17,12 @@ func _ready():
 	server_connection_changed.connect(ping_mgr.on_server_connection_changed)
 
 
+func get_peer_id() -> int:
+	if is_server_connected:
+		return multiplayer.multiplayer_peer.get_unique_id()
+	return -1
+
+
 func set_server_connection_info(h: String, p: int):
 	if !h.is_empty():
 		host_ip = h

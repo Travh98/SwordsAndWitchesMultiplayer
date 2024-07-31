@@ -34,23 +34,17 @@ func damage_body(body: Node3D):
 		return
 	
 	if body.has_node("HealthComponent"):
-		var health_component: HealthComponent = body.get_node("HealthComponent")
-		
-		if health_component.get_multiplayer_authority() == get_multiplayer_authority():
-			print("Locally damaging body: ", body.name)
-			health_component.take_damage(damage)
-		else:
-			health_component.take_damage.rpc(damage)
-			print("Client damaging body: ", body.name, " from peer: ", get_multiplayer_authority())
+		Server.damage_entity.rpc_id(1, mob_owner.name.to_int(), body.name.to_int(), damage)
 
 
 func on_body_entered(body: Node3D):
+	if !is_multiplayer_authority(): return
 	if active:
 		damage_body(body)
-		print("Damaging body")
 
 
 func start_damage():
+	if !is_multiplayer_authority(): return
 	for body in get_overlapping_bodies():
 		damage_body(body)
 
@@ -62,3 +56,4 @@ func end_damage():
 
 func set_mob_owner(m: Mob):
 	mob_owner = m
+	set_multiplayer_authority(mob_owner.get_multiplayer_authority())

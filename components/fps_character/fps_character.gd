@@ -22,6 +22,9 @@ class_name FpsCharacter
 @onready var name_label: Label3D = $NameLabel
 @onready var hide_self_body: Node3D = $Knight/KnightRig
 @onready var step_checker: StepChecker = $StepChecker
+@onready var health_component: HealthComponent = $HealthComponent
+@onready var ragdoll_mgr: RagdollMgr = $RagdollMgr
+@onready var mesh: Node3D = $Knight
 
 const mouse_sens: float = 0.25
 const SlideSpeed: float = 10.0
@@ -91,6 +94,8 @@ func _enter_tree():
 func _ready():
 	peer_name_label.text = str(get_multiplayer_authority())
 	faction = FactionMgr.Factions.PLAYER
+	health_component.health_died.connect(on_death)
+	health_component.health_revived.connect(on_revive)
 	
 	if not is_multiplayer_authority(): return
 	# Do things locally
@@ -121,15 +126,14 @@ func _input(event):
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 	
 	if Input.is_action_just_pressed("secondary"):
-		#ads_anim_player.play("aim_down_sights")
 		head_pcam.set_camera_fov(30)
 	if Input.is_action_just_released("secondary"):
 		head_pcam.set_camera_fov(75)
-		#ads_anim_player.play("unaim_down_sights")
 
 
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
+	if health_component.is_dead: return
 	if GameMgr.game_paused:
 		velocity = velocity.move_toward(Vector3.ZERO, delta * lerp_speed)
 		# Add the gravity.
@@ -443,3 +447,17 @@ func apply_step(delta: float) -> bool:
 		# Hard set the mob's y velocity
 		velocity.y = desired_y_pos * locomotion_driver.walking_speed * 3
 		return true
+
+
+func on_death():
+	mesh.visible = false
+	ragdoll_mgr.spawn_ragdoll()
+	standing_col.disabled = true
+	crouching_col.disabled = true
+
+
+func on_revive():
+	mesh.visible = true
+	ragdoll_mgr.despawn_ragdoll()
+	standing_col.disabled = false
+	crouching_col.disabled = false

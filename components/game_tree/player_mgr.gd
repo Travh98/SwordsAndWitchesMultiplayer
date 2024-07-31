@@ -12,6 +12,8 @@ func _ready():
 	Server.spawn_player_character.connect(add_player_character)
 	Server.despawn_player_character.connect(remove_player_character)
 	Server.player_faction_changed.connect(on_player_faction_changed)
+	Server.player_health_updated.connect(on_player_health_changed)
+	Server.respawn_all_players.connect(respawn_players)
 
 
 func add_player_character(peer_id: int):
@@ -40,19 +42,26 @@ func delete_all_players():
 
 func update_player_name(peer_id: int, new_name: String):
 	print("Updating player name for peer: ", peer_id, " to be ", new_name)
-	for p in get_children():
-		if p.name == str(peer_id):
-			p.set_player_name(new_name)
-			return
+	var player = get_player(peer_id)
+	if player:
+		player.set_player_name(new_name)
+		return
 	push_warning("Failed to update name for peer_id: ", peer_id, ", could not find them.")
 
 
 func on_player_faction_changed(peer_id: int, faction_name: String):
-	for p in get_children():
-		if p.name == str(peer_id):
-			p.faction = FactionMgr.get_faction_from_string(faction_name)
-			print("Player ", p.name, " changed faction to: ", faction_name)
-			return
+	var player = get_player(peer_id)
+	if player:
+		player.faction = FactionMgr.get_faction_from_string(faction_name)
+		print("Player ", player.name, " changed faction to: ", faction_name)
+		return
+
+
+func on_player_health_changed(peer_id: int, new_health: int):
+	var player = get_player(peer_id)
+	if player:
+		var hp: HealthComponent = player.get_node("HealthComponent")
+		hp.health = new_health
 
 
 func on_new_map_loaded(_map_name: String):
@@ -70,4 +79,10 @@ func does_player_exist(peer_id: int):
 		if player.name == str(peer_id):
 			return true
 	return false
-	
+
+
+func get_player(peer_id: int) -> Node:
+	for p in get_children():
+		if p.name == str(peer_id):
+			return p
+	return null

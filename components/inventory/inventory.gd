@@ -18,6 +18,9 @@ func _ready():
 
 func _input(_event):
 	if not is_multiplayer_authority(): return
+	if mob.has_node("HealthComponent"):
+		if mob.get_node("HealthComponent").is_dead:
+			return
 	
 	if Input.is_action_just_pressed("slot1"):
 		equip_item(get_slot_item(0))

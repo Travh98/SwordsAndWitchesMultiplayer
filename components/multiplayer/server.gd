@@ -15,6 +15,11 @@ signal change_gamemode(mode_name: String)
 signal player_name_changed(peer_id: int, new_name: String)
 signal player_faction_changed(peer_id: int, faction_name: String)
 signal player_data_received(player_data: Dictionary)
+signal player_health_updated(peer_id: int, new_health: int)
+signal respawn_all_players()
+signal gamemode_stage_updated(new_stage: String)
+signal game_stage_time_left_updated(time_left: int)
+signal ttt_winner_decided(traitors_won: bool)
 
 @onready var server_connector: ServerConnector = $ServerConnector
 @onready var game_state_mgr: GameStateMgr = $GameStateMgr
@@ -105,4 +110,40 @@ func assign_player_faction(peer_id: int, faction_name: String):
 func send_player_data_from_server(player_data: Dictionary):
 	# Update our player data
 	player_data_received.emit(player_data)
+	pass
+
+
+@rpc("any_peer", "reliable")
+func damage_entity(_damager_id: int, _target_id: int, _damage: int):
+	pass
+
+
+@rpc("call_remote")
+func player_health_changed(peer_id: int, new_health: int):
+	print("Peer ", peer_id, " has new health: ", new_health)
+	player_health_updated.emit(peer_id, new_health)
+	pass
+
+
+@rpc("call_remote")
+func respawn_players():
+	respawn_all_players.emit()
+
+
+@rpc("call_remote", "reliable")
+func gamemode_stage_changed(stage_name: String):
+	gamemode_stage_updated.emit(stage_name)
+	pass
+
+
+@rpc("call_remote", "reliable")
+func gamemode_stage_time_left(time_left: int):
+	game_stage_time_left_updated.emit(time_left)
+	pass
+
+
+@rpc("call_remote", "reliable")
+func ttt_team_won(traitors_won: bool):
+	print("TTT round won by traitors: ", traitors_won)
+	ttt_winner_decided.emit(traitors_won)
 	pass

@@ -9,6 +9,7 @@ enum Factions
 	PLAYER,
 	INNOCENT,
 	TRAITOR,
+	PEACEFUL,
 }
 
 
@@ -31,6 +32,8 @@ func get_hostile_factions(my_faction: Factions):
 		Factions.TRAITOR:
 			hostile_array.append(Factions.INNOCENT)
 			hostile_array.append(Factions.TRAITOR)
+		Factions.PEACEFUL:
+			pass
 	
 	return hostile_array
 
@@ -51,6 +54,11 @@ func get_friendly_factions(my_faction: Factions):
 		Factions.INNOCENT:
 			pass
 		Factions.TRAITOR:
+			pass
+		Factions.PEACEFUL:
+			friendly_array.append(Factions.INNOCENT)
+			friendly_array.append(Factions.TRAITOR)
+			friendly_array.append(Factions.PEACEFUL)
 			pass
 	
 	return friendly_array
@@ -76,5 +84,7 @@ func get_faction_from_string(faction_name: String) -> Factions:
 			return Factions.TRAITOR
 		"Innocent":
 			return Factions.INNOCENT
+		"Peaceful":
+			return Factions.PEACEFUL
 		_:
 			return Factions.UNSET

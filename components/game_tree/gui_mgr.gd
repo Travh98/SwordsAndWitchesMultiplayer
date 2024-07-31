@@ -8,6 +8,7 @@ signal local_player_name_changed(new_name: String)
 @onready var start_menu: StartMenu = $StartMenu
 @onready var pause_menu: PauseMenu = $PauseMenu
 @onready var server_info: ServerInfo = $ServerInfo
+@onready var ttt_hud: Control = $TttHud
 
 
 func _ready():
@@ -66,4 +67,13 @@ func return_to_start_menu():
 	server_info.hide_connecting_ui()
 	start_menu.show()
 	pause_menu.hide()
+	ttt_hud.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func show_ttt_hud():
+	ttt_hud.show()
+
+
+func hide_ttt_hud():
+	ttt_hud.hide()
