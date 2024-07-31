@@ -19,8 +19,8 @@ func _ready():
 	gui_mgr.local_player_name_changed.connect(player_data_mgr.on_local_player_name_changed)
 	player_data_mgr.player_name_changed.connect(player_mgr.update_player_name)
 	
-	Server.spawn_player_character.connect(player_data_mgr.create_player_data)
-	Server.despawn_player_character.connect(player_data_mgr.delete_player_data)
+	# Store incoming player data
 	Server.player_name_changed.connect(player_data_mgr.on_player_name_changed)
 	Server.server_connection_changed.connect(player_data_mgr.on_server_connection_changed)
+	Server.player_data_received.connect(player_data_mgr.receive_player_data)
 

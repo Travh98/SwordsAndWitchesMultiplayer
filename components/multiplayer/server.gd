@@ -14,6 +14,7 @@ signal change_map(map_name: String)
 signal change_gamemode(mode_name: String)
 signal player_name_changed(peer_id: int, new_name: String)
 signal player_faction_changed(peer_id: int, faction_name: String)
+signal player_data_received(player_data: Dictionary)
 
 @onready var server_connector: ServerConnector = $ServerConnector
 @onready var game_state_mgr: GameStateMgr = $GameStateMgr
@@ -95,6 +96,13 @@ func assign_player_faction(peer_id: int, faction_name: String):
 	pass
 
 
-@rpc("any_peer")
-func send_player_data(_peer_id: int, _player_name: String, _player_color: Color):
+#@rpc("any_peer")
+#func send_player_data(_peer_id: int, _player_name: String, _player_color: Color):
+	#pass
+
+
+@rpc("call_remote")
+func send_player_data_from_server(player_data: Dictionary):
+	# Update our player data
+	player_data_received.emit(player_data)
 	pass

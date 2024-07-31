@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://5p4ihhps6f2q"]
+[gd_scene load_steps=15 format=3 uid="uid://5p4ihhps6f2q"]
 
 [ext_resource type="Script" path="res://components/game_tree/game_tree.gd" id="1_wtqql"]
 [ext_resource type="Script" path="res://components/game_tree/player_mgr.gd" id="2_cpy1k"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://components/game_tree/gui_mgr.gd" id="3_41ul6"]
 [ext_resource type="Script" path="res://components/game_tree/player_data_mgr.gd" id="3_plehg"]
 [ext_resource type="PackedScene" uid="uid://dtq36h2m73xpv" path="res://ui/multiplayer_ui/server_info.tscn" id="3_u54cj"]
-[ext_resource type="PackedScene" uid="uid://vqpb8abvvahj" path="res://components/game_tree/player_data.tscn" id="4_h8eih"]
 [ext_resource type="Script" path="res://components/game_tree/random_name_gen.gd" id="5_d8kaq"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_n6j8m"]
 [ext_resource type="PackedScene" uid="uid://cpecjqhopyssd" path="res://ui/fps_counter/fps_counter.tscn" id="5_yc8gm"]
@@ -28,8 +27,6 @@ script = ExtResource("2_cpy1k")
 
 [node name="PlayerDataMgr" type="Node" parent="."]
 script = ExtResource("3_plehg")
-
-[node name="PlayerData" parent="PlayerDataMgr" instance=ExtResource("4_h8eih")]
 
 [node name="RandomNameGen" type="Node" parent="PlayerDataMgr"]
 script = ExtResource("5_d8kaq")
@@ -57,7 +54,7 @@ script = ExtResource("9_c775u")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.954252, 0.240988, -0.176995, 0, 0.591951, 0.805974, 0.299002, 0.769103, -0.56487, -28.0456, 119.51, -46.4232)
-fov = 74.6774
+fov = 74.9991
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("5_n6j8m")
