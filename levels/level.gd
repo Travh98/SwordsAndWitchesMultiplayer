@@ -17,6 +17,9 @@ func _ready():
 
 # Recursively check each spawnpoint until finding a spot with no overlapping mobs
 func place_at_spawn_point(n: Node3D):
+	if n == null:
+		return
+	
 	## TODO Check spots until we run out of spots, then just spawn on a random one
 	var spot: Node3D = spawn_points.get_children().pick_random()
 	#print("Got random spot: ", spot.global_position)

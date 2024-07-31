@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://24slbpntb45y"]
+
+[ext_resource type="Texture2D" uid="uid://cwqiuhf4k47c7" path="res://assets/sprites/flag_64.png" id="1_hys6y"]
+
+[node name="RadarBlipFeet" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.212817, 0)
+pixel_size = 0.002
+billboard = 2
+no_depth_test = true
+fixed_size = true
+texture_filter = 0
+texture = ExtResource("1_hys6y")

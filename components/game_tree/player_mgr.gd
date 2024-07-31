@@ -91,3 +91,7 @@ func get_player(peer_id: int) -> Node:
 		if p.name == str(peer_id):
 			return p
 	return null
+
+
+func get_players() -> Array:
+	return get_children()

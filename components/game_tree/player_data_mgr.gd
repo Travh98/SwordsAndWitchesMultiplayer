@@ -6,6 +6,7 @@ extends Node
 signal player_name_changed(peer_id: int, new_name: String)
 signal player_active_inv_slot_changed(peer_id: int, slot_index: int)
 signal player_health_changed(peer_id: int, health: int)
+#signal player_faction_changed(peer_id: int, health: int)
 
 @onready var random_name_gen: RandomNameGen = $RandomNameGen
 
