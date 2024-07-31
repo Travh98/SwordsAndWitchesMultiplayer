@@ -7,6 +7,7 @@ signal local_player_name_changed(new_name: String)
 
 @onready var start_menu: StartMenu = $StartMenu
 @onready var pause_menu: PauseMenu = $PauseMenu
+@onready var settings_menu: SettingsMenu = $SettingsMenu
 @onready var server_info: ServerInfo = $ServerInfo
 @onready var ttt_hud: Control = $TttHud
 
@@ -17,6 +18,10 @@ func _ready():
 	start_menu.name_selected.connect(on_local_name_changed)
 	pause_menu.change_name.connect(on_local_name_changed)
 	Server.server_connection_changed.connect(on_server_connection_changed)
+	start_menu.show_settings_menu.connect(show_settings)
+	pause_menu.show_settings_menu.connect(show_settings)
+	settings_menu.close_settings.connect(close_settings)
+	settings_menu.hat_selected.connect(on_hat_selected)
 
 
 func on_local_name_changed(new_name: String):
@@ -71,9 +76,28 @@ func return_to_start_menu():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
+func show_settings():
+	start_menu.hide()
+	pause_menu.hide()
+	settings_menu.show()
+
+
+func close_settings():
+	settings_menu.hide()
+	if Server.server_connector.is_server_connected:
+		pause_menu.show()
+	else:
+		start_menu.show()
+
+
 func show_ttt_hud():
 	ttt_hud.show()
 
 
 func hide_ttt_hud():
 	ttt_hud.hide()
+
+
+func on_hat_selected(file_name: String):
+	if Server.server_connector.is_server_connected:
+		Server.peer_hat_selected.rpc_id(1, Server.server_connector.get_peer_id(), file_name)

@@ -39,6 +39,39 @@ tracks/1/keys = {
 "values": [Vector3(-0.123568, -0.11012, -0.439264)]
 }
 
+[sub_resource type="Animation" id="Animation_hi6xx"]
+resource_name = "left_punch"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftFist:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.123568, -0.11012, -0.439264), Vector3(-0.000328124, -0.00523697, -0.96639), Vector3(0.0299537, -0.0994882, -0.88881), Vector3(-0.123568, -0.11012, -0.439264)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftFist/LeftHurtBox")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_active"
+}, {
+"args": [false],
+"method": &"set_active"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_sk6rc"]
 resource_name = "punch2"
 tracks/0/type = "value"
@@ -90,39 +123,6 @@ tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("RightFist/RightHurtBox")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [true],
-"method": &"set_active"
-}, {
-"args": [false],
-"method": &"set_active"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_hi6xx"]
-resource_name = "left_punch"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LeftFist:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.123568, -0.11012, -0.439264), Vector3(-0.000328124, -0.00523697, -0.96639), Vector3(0.0299537, -0.0994882, -0.88881), Vector3(-0.123568, -0.11012, -0.439264)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LeftFist/LeftHurtBox")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {

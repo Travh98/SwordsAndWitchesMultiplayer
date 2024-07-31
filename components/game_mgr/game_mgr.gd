@@ -39,6 +39,7 @@ func pause_game():
 
 func unpause_game():
 	game_tree.gui_mgr.pause_menu.visible = false
+	game_tree.gui_mgr.settings_menu.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	game_paused = false
 

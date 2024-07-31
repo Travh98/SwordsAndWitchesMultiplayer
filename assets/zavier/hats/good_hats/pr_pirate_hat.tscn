@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://1jvrnavhu58b"]
+
+[ext_resource type="PackedScene" uid="uid://dyigafph7si78" path="res://assets/zavier/hats/Pirate hat 2.glb" id="1_3av3k"]
+
+[node name="Pirate hat 2" instance=ExtResource("1_3av3k")]

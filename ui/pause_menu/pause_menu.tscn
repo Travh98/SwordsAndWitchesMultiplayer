@@ -73,6 +73,16 @@ custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 mouse_filter = 2
 
+[node name="SettingsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+mouse_filter = 2
+
 [node name="DisconnectButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Disconnect"

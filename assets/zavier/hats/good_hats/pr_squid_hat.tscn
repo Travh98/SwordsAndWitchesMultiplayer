@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b24ame24vmxwk"]
+
+[ext_resource type="PackedScene" uid="uid://bjojyl05flg08" path="res://assets/zavier/hats/Squid hat 2.glb" id="1_26v04"]
+
+[node name="Squid hat 2" instance=ExtResource("1_26v04")]

@@ -111,3 +111,4 @@ stream = ExtResource("3_esfi3")
 volume_db = -6.0
 unit_size = 100.0
 max_db = 0.0
+bus = &"Sfx"

@@ -21,6 +21,7 @@ signal gamemode_stage_updated(new_stage: String)
 signal game_stage_time_left_updated(time_left: int)
 signal ttt_winner_decided(traitors_won: bool)
 signal player_equipped_slot_changed(peer_id: int, slot_index: int)
+signal player_selected_hat(peer_id: int, file_name: String)
 
 @onready var server_connector: ServerConnector = $ServerConnector
 @onready var game_state_mgr: GameStateMgr = $GameStateMgr
@@ -150,4 +151,10 @@ func ttt_team_won(traitors_won: bool):
 @rpc("any_peer", "reliable")
 func player_equipped_slot(peer_id: int, slot_index: int):
 	player_equipped_slot_changed.emit(peer_id, slot_index)
+	pass
+
+
+@rpc("any_peer", "reliable")
+func peer_hat_selected(peer_id: int, file_name: String):
+	player_selected_hat.emit(peer_id, file_name)
 	pass

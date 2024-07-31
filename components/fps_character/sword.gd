@@ -5,7 +5,10 @@ extends HandItem
 @onready var hurt_box: HurtBox = $SwordMesh/IronSword2/HurtBox
 @onready var iron_sword_mesh = $SwordMesh/IronSword2
 @onready var block_area: BlockArea = $SwordMesh/IronSword2/BlockArea
+@onready var swipe_sfx = $SwipeSfx
+
 var swing_from_right: bool = true
+
 
 func _ready():
 	grab_node_r = iron_sword_mesh
@@ -19,8 +22,10 @@ func primary_use():
 	if animation_player.is_playing():
 		return
 	if swing_from_right:
+		swipe_sfx.play()
 		animation_player.play("swing1")
 	else:
+		swipe_sfx.play()
 		animation_player.play("swing2")
 
 
@@ -34,6 +39,7 @@ func alt1_use():
 	super()
 	if animation_player.is_playing():
 		return
+	swipe_sfx.play()
 	animation_player.play("down_swing")
 
 
@@ -41,6 +47,7 @@ func alt2_use():
 	super()
 	if animation_player.is_playing():
 		return
+	swipe_sfx.play()
 	animation_player.play("stab")
 
 
@@ -52,12 +59,14 @@ func register_user(user: Mob):
 
 func get_parried():
 	cancel_animation()
+	swipe_sfx.stop()
 	animation_player.play("parried")
 
 
 func long_spiral_block():
 	if animation_player.is_playing():
 		return
+	swipe_sfx.play()
 	animation_player.play("long_spiral_block")
 
 

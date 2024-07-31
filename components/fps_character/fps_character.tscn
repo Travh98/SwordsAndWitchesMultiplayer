@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cheoq2dxkgi7u"]
+[gd_scene load_steps=27 format=3 uid="uid://cheoq2dxkgi7u"]
 
 [ext_resource type="Script" path="res://components/fps_character/fps_character.gd" id="1_1asp3"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="1_r0lxu"]
@@ -14,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://dwl8phfdklrse" path="res://assets/zavier/pr_bow.tscn" id="12_l3t4f"]
 [ext_resource type="PackedScene" uid="uid://b6qydmka43s6f" path="res://ui/healthbar/healthbar_3d.tscn" id="13_8dm2f"]
 [ext_resource type="Script" path="res://components/ragdoll/ragdoll_mgr.gd" id="14_0id14"]
+[ext_resource type="AudioStream" uid="uid://diuumwga3u3sq" path="res://assets/sfx/SlideStart.wav" id="15_llrk2"]
+[ext_resource type="AudioStream" uid="uid://2uaetttg7wry" path="res://assets/sfx/player_death.wav" id="16_duvpp"]
+[ext_resource type="AudioStream" uid="uid://il5bhws4jpa" path="res://assets/sfx/hit_hurt.wav" id="17_daaee"]
+[ext_resource type="AudioStream" uid="uid://ov42tft38igu" path="res://assets/sfx/jump.wav" id="18_8x4qc"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5j838"]
 properties/0/path = NodePath(".:position")
@@ -303,10 +307,10 @@ transform = Transform3D(1.11113, -0.00500419, 0.00218607, 0.00504028, 0.768619, 
 transform = Transform3D(1, 9.22873e-16, 3.55271e-15, 4.16334e-16, 1, 0, -3.55271e-15, 2.32831e-10, 1, 0, 0, 0)
 
 [node name="FootMesh" parent="Knight/KnightIkLeg3/KnightIkLeg/Skeleton3D" index="0"]
-transform = Transform3D(0.904262, -0.307482, 0.5678, -0.645687, -0.438915, 0.790615, 0.00550409, -0.973365, -0.535875, -0.225837, 0.226238, 0.23667)
+transform = Transform3D(0.904261, -0.307482, 0.5678, -0.645687, -0.438915, 0.790615, 0.00550411, -0.973365, -0.535875, -0.225837, 0.226238, 0.23667)
 
 [node name="ShinMesh" parent="Knight/KnightIkLeg3/KnightIkLeg/Skeleton3D" index="1"]
-transform = Transform3D(1.05075, 0.352954, 0.0772714, -0.336087, 0.867542, 0.607493, 0.132638, -0.597845, 0.927162, -0.225836, 0.226239, 0.236669)
+transform = Transform3D(1.05075, 0.352954, 0.0772715, -0.336087, 0.867542, 0.607493, 0.132638, -0.597845, 0.927162, -0.225836, 0.226239, 0.236669)
 
 [node name="ThighMesh" parent="Knight/KnightIkLeg3/KnightIkLeg/Skeleton3D" index="2"]
 transform = Transform3D(1.08523, 0.238361, -0.00949145, -0.238487, 1.08307, -0.0686778, -0.00548101, 0.069113, 1.10898, -0.0922425, 0.541679, -0.0223726)
@@ -330,6 +334,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90776, 0)
 
 [node name="RagdollMgr" type="Node" parent="."]
 script = ExtResource("14_0id14")
+
+[node name="SlideStartSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("15_llrk2")
+bus = &"Sfx"
+
+[node name="PlayerDeathSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("16_duvpp")
+bus = &"Sfx"
+
+[node name="HitHurtSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("17_daaee")
+bus = &"Sfx"
+
+[node name="JumpSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("18_8x4qc")
+bus = &"Sfx"
+
+[node name="HatSpot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74792, -0.0130232)
 
 [editable path="Knight"]
 [editable path="Knight/KnightIkLeg2"]

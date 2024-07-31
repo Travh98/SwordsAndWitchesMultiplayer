@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c6ltsok8mfgb"]
+[gd_scene load_steps=21 format=3 uid="uid://c6ltsok8mfgb"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_h8d6y"]
 [ext_resource type="PackedScene" uid="uid://i4ev6xb85ys7" path="res://assets/locations/haunted_coast/pr_haunted_coast.tscn" id="2_6cijf"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cbf86ogudnhaq" path="res://components/location_indicator/location_indicator.tscn" id="4_kay5r"]
 [ext_resource type="PackedScene" uid="uid://e3ycaoef0awq" path="res://assets/zavier/pr_medieval_table_1.tscn" id="7_vnf0f"]
 [ext_resource type="PackedScene" uid="uid://c1ub7gcnj4xhk" path="res://assets/zavier/pr_medieval_chair_1.tscn" id="8_i7iom"]
+[ext_resource type="AudioStream" uid="uid://joyx2xc0h3ud" path="res://assets/sfx/sea_cliff_ambience-loop.wav" id="9_23iyk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5eg1f"]
 sky_top_color = Color(0.152941, 0.219608, 0.258824, 1)
@@ -232,3 +233,9 @@ spot_angle = 37.3367
 
 [node name="Medieval table 2" parent="Medieval table 1" instance=ExtResource("7_vnf0f")]
 transform = Transform3D(0.94008, 0, -0.340954, 0, 1, 0, 0.340954, 0, 0.94008, 3.15076, 0, 4.60906)
+
+[node name="CoastAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_23iyk")
+volume_db = -6.0
+autoplay = true
+bus = &"Sfx"

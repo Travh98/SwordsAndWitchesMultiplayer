@@ -15,6 +15,7 @@ func _ready():
 	Server.player_health_updated.connect(on_player_health_changed)
 	Server.respawn_all_players.connect(respawn_players)
 	Server.player_equipped_slot_changed.connect(on_player_equipment_changed)
+	Server.player_selected_hat.connect(on_player_hat_selected)
 
 
 func add_player_character(peer_id: int):
@@ -68,6 +69,12 @@ func on_player_equipment_changed(peer_id: int, slot_index: int):
 	var player = get_player(peer_id)
 	if player:
 		player.set_equipment_slot(slot_index)
+
+
+func on_player_hat_selected(peer_id: int, file_name: String):
+	var player = get_player(peer_id)
+	if player:
+		player.set_hat(file_name)
 
 
 func on_new_map_loaded(_map_name: String):

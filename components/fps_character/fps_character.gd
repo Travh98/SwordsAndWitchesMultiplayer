@@ -27,6 +27,14 @@ class_name FpsCharacter
 @onready var mesh: Node3D = $Knight
 @onready var arms: Node3D = $Arms
 @onready var base_inventory: BaseInventory = $BaseInventory
+@onready var hat_spot: Node3D = $HatSpot
+
+## SFX
+@onready var slide_start_sfx: AudioStreamPlayer3D = $SlideStartSfx
+@onready var player_death_sfx: AudioStreamPlayer3D = $PlayerDeathSfx
+@onready var hit_hurt_sfx: AudioStreamPlayer3D = $HitHurtSfx
+@onready var jump_sfx: AudioStreamPlayer3D = $JumpSfx
+
 
 const mouse_sens: float = 0.25
 const SlideSpeed: float = 10.0
@@ -85,6 +93,8 @@ var in_coyote_time: bool = false # Track whether we're in coyote time or not
 var last_frame_on_floor: bool = false # Tracks if on the floor last frame
 @onready var coyote_timer = $CoyoteTimer
 
+var hat: Node3D = null
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 1.0
 
@@ -99,6 +109,7 @@ func _ready():
 	faction = FactionMgr.Factions.PLAYER
 	health_component.health_died.connect(on_death)
 	health_component.health_revived.connect(on_revive)
+	health_component.health_changed.connect(on_health_changed)
 	
 	if not is_multiplayer_authority(): return
 	# Do things locally
@@ -203,6 +214,9 @@ func _physics_process(delta):
 		var initial_y_velocity: float = velocity.y
 		velocity.y = locomotion_driver.jump_velocity
 		is_jumping = true
+		
+		jump_sfx.play()
+		
 		# Cancel the slide if jumping
 		if is_sliding:
 			if slide_jump_cooldown <= 0:
@@ -262,7 +276,7 @@ func _physics_process(delta):
 	update_state_info()
 
 
-func handle_crouch(input_dir: Vector2, delta: float):
+func handle_crouch(in_dir: Vector2, delta: float):
 	if is_on_floor():
 		locomotion_driver.current_speed = lerp(locomotion_driver.current_speed, locomotion_driver.crouching_speed, delta * lerp_speed)
 	else:
@@ -273,40 +287,41 @@ func handle_crouch(input_dir: Vector2, delta: float):
 	crouching_col.disabled = false
 	
 	# If we were currently sprinting and moving
-	if (is_sprinting and input_dir != Vector2.ZERO):
+	if (is_sprinting and in_dir != Vector2.ZERO):
 		#print("Crouching and also sprinting")
 		slide_pending = true
-	if (!is_on_floor() and input_dir != Vector2.ZERO):
+	if (!is_on_floor() and in_dir != Vector2.ZERO):
 		if slide_pending == false:
 			#print("Wants to land into slide")
 			slide_pending = true
 	
 	if slide_pending and !is_sliding and is_on_floor():
-		start_slide(input_dir)
+		start_slide(in_dir)
 	
 	is_walking = false
 	is_sprinting = false
 	is_crouching = true
 
 
-func start_slide(input_dir: Vector2):
+func start_slide(in_dir: Vector2):
+	slide_start_sfx.play()
 	# Sliding begin logic
 	slide_pending = false
 	is_sliding = true
 	slide_timer = slide_timer_max
-	initial_slide_vector = input_dir
+	initial_slide_vector = in_dir
 	slide_vector = initial_slide_vector
 	is_free_looking = true
 	#print("Slide begin")
 
 
-func handle_slide_state(input_dir: Vector2, delta: float):
+func handle_slide_state(in_dir: Vector2, delta: float):
 	# Count down our slide timer every physics frame
 	slide_timer -= delta
 	
 	# Allow the user to slightly move the direction of the slide
 	if !is_slide_jumping:
-		slide_vector = (initial_slide_vector + input_dir).normalized()
+		slide_vector = (initial_slide_vector + in_dir).normalized()
 	
 	# See if we are on a slope, if so then keep sliding and add slide debt
 	# This way you build up velocity while sliding and slide longer after steep slopes
@@ -378,7 +393,7 @@ func reset_free_look(delta: float):
 	eyes.rotation.z = lerp(eyes.rotation.z, 0.0, delta * lerp_speed)
 
 
-func handle_headbob(input_dir: Vector2, delta: float):
+func handle_headbob(in_dir: Vector2, delta: float):
 	if is_sprinting:
 		head_bobbing_intensity = HeadBobSprintIntensity
 		head_bobbing_index += HeadBobSprintSpeed * delta
@@ -389,7 +404,7 @@ func handle_headbob(input_dir: Vector2, delta: float):
 		head_bobbing_intensity = HeadBobCrouchIntensity
 		head_bobbing_index += HeadBobCrouchSpeed * delta
 	
-	if is_on_floor() and !is_sliding and input_dir != Vector2.ZERO:
+	if is_on_floor() and !is_sliding and in_dir != Vector2.ZERO:
 		head_bobbing_vector.y = sin(head_bobbing_index)
 		head_bobbing_vector.x = sin(head_bobbing_index / 2) + 0.5
 		
@@ -460,6 +475,7 @@ func apply_step(delta: float) -> bool:
 
 
 func on_death():
+	player_death_sfx.play()
 	mesh.visible = false
 	ragdoll_mgr.spawn_ragdoll()
 	standing_col.disabled = true
@@ -480,3 +496,24 @@ func on_inventory_slot_equipped(slot_index: int):
 
 func set_equipment_slot(slot_index: int):
 	base_inventory.set_inventory_slot(slot_index)
+
+
+func on_health_changed(_health: int):
+	hit_hurt_sfx.play()
+
+
+func set_hat(file_name: String):
+	if file_name.is_empty():
+		if hat:
+			hat.queue_free()
+			return
+	
+	if !FileAccess.file_exists("res://assets/zavier/hats/good_hats/" + file_name):
+		push_warning("Invalid file for hat: ", file_name)
+		return
+	
+	if hat:
+		hat.queue_free()
+	var hat_scene = load("res://assets/zavier/hats/good_hats/" + file_name)
+	hat = hat_scene.instantiate()
+	hat_spot.add_child(hat)

@@ -3,6 +3,7 @@ extends Control
 
 signal join_server(host_ip: String, port: int)
 signal name_selected(name: String)
+signal show_settings_menu()
 
 @onready var name_edit: LineEdit = $MarginContainer/HBoxContainer/VBoxContainer/NameEdit
 @onready var host_edit: LineEdit = $MarginContainer/HBoxContainer/VBoxContainer/HostEdit
@@ -14,20 +15,25 @@ signal name_selected(name: String)
 
 @onready var start_menu_buttons: Control = $MarginContainer
 @onready var credits: Control = $Credits
+@onready var start_menu_music: AudioStreamPlayer = $StartMenuMusic
 
 
 func _ready():
 	join_button.pressed.connect(on_join_server)
 	credits_button.pressed.connect(show_credits)
 	quit_button.pressed.connect(quit)
-	settings_button.disabled = true
+	settings_button.pressed.connect(func(): self.show_settings_menu.emit())
 	credits.close_credits.connect(on_credits_closed)
+	
+	AudioServer.set_bus_volume_db(0, linear_to_db(0.05))
+	start_menu_music.play()
 
 
 func on_join_server():
 	if GameMgr.is_valid_name(name_edit.text):
 		name_selected.emit(name_edit.text)
 	join_server.emit(host_edit.text, port_edit.text.to_int())
+	start_menu_music.stop()
 
 
 func show_credits():

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1ev06apfdaxe"]
+
+[ext_resource type="PackedScene" uid="uid://cij1xjf1honwd" path="res://assets/zavier/hats/Pinwheel hat.gltf" id="1_ymgbb"]
+
+[node name="Pinwheel hat" instance=ExtResource("1_ymgbb")]
+
+[node name="PInwheel hat" parent="." index="0"]
+transform = Transform3D(0, 0, 0.0283015, 0, 0.0283015, 0, -0.0283015, 0, 0, 0.00353739, 0.0521826, -0.0394555)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]

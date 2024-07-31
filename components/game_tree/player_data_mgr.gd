@@ -6,6 +6,7 @@ extends Node
 signal player_name_changed(peer_id: int, new_name: String)
 signal player_active_inv_slot_changed(peer_id: int, slot_index: int)
 signal player_health_changed(peer_id: int, health: int)
+signal player_hat_selected(peer_id: int, file_name: String)
 #signal player_faction_changed(peer_id: int, health: int)
 
 @onready var random_name_gen: RandomNameGen = $RandomNameGen
@@ -57,5 +58,6 @@ func receive_player_data(in_data):
 		player_name_changed.emit(peer_id, player_data[peer_id]["name"])
 		player_active_inv_slot_changed.emit(peer_id, player_data[peer_id]["active_inv_slot"])
 		player_health_changed.emit(peer_id, player_data[peer_id]["health"])
+		player_hat_selected.emit(peer_id, player_data[peer_id]["hat"])
 		
 

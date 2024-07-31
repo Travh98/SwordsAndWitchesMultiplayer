@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cln5mlmdux312"]
+
+[ext_resource type="PackedScene" uid="uid://dej01i5tm6tv8" path="res://assets/zavier/hats/Magician hat.gltf" id="1_dnnfc"]
+
+[node name="Magician hat" instance=ExtResource("1_dnnfc")]
+
+[node name="Magician\'s hat" parent="." index="0"]
+transform = Transform3D(0.11465, 0, 0, 0, 0.11465, 0, 0, 0, 0.11465, 2.31892e-06, 0.0331315, -0.0327953)

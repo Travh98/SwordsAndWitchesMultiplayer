@@ -10,9 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Swords And Witches Multiplayer"
+config/name="SaW_Client"
 run/main_scene="res://components/game_tree/game_tree.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/image="res://assets/sprites/travh98_64.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [autoload]
