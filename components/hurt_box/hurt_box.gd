@@ -8,6 +8,7 @@ signal hurtbox_active_changed(a: bool)
 @export var damage: int = 0
 @export var active: bool = false : set = set_active
 var mob_owner: Mob = null : set = set_mob_owner
+var weapon_owner: HandItem = null : set = set_weapon_owner
 
 func _ready():
 	body_entered.connect(on_body_entered)
@@ -57,3 +58,7 @@ func end_damage():
 func set_mob_owner(m: Mob):
 	mob_owner = m
 	set_multiplayer_authority(mob_owner.get_multiplayer_authority())
+
+
+func set_weapon_owner(w: HandItem):
+	weapon_owner = w

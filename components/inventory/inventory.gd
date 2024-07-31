@@ -34,12 +34,19 @@ func _input(_event):
 	if Input.is_action_just_pressed("primary"):
 		if current_inventory_item:
 			current_inventory_item.primary_use()
+	if Input.is_action_just_pressed("secondary"):
+		if current_inventory_item:
+			current_inventory_item.secondary_use()
 	if Input.is_action_just_pressed("scroll_down"):
 		if current_inventory_item:
 			current_inventory_item.alt1_use()
 	if Input.is_action_just_pressed("scroll_up"):
 		if current_inventory_item:
 			current_inventory_item.alt2_use()
+	if Input.is_action_just_pressed("fun_attack1"):
+		if current_inventory_item:
+			if current_inventory_item is Sword:
+				current_inventory_item.long_spiral_block()
 
 
 func get_slot_item(index: int) -> HandItem:

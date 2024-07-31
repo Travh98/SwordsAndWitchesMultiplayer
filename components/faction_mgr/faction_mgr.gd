@@ -80,6 +80,8 @@ func get_faction_color(faction: Factions) -> Color:
 
 func get_faction_from_string(faction_name: String) -> Factions:
 	match faction_name:
+		"Player":
+			return Factions.PLAYER
 		"Traitor":
 			return Factions.TRAITOR
 		"Innocent":

@@ -1,11 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://bbm7284ux0w7j"]
+[gd_scene load_steps=18 format=3 uid="uid://bbm7284ux0w7j"]
 
 [ext_resource type="Script" path="res://components/fps_character/sword.gd" id="1_lkqp3"]
 [ext_resource type="PackedScene" uid="uid://6ldfl5dpeix1" path="res://assets/weapons/pr_iron_sword.tscn" id="2_pemwx"]
 [ext_resource type="PackedScene" uid="uid://sboyc7632ei8" path="res://components/hurt_box/hurt_box.tscn" id="3_sfal1"]
+[ext_resource type="Script" path="res://entities/weapons/block_area.gd" id="4_v28mk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_beeqx"]
 size = Vector3(0.0652191, 0.819342, 0.111157)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lexh2"]
+size = Vector3(0.36953, 1.07971, 0.328223)
 
 [sub_resource type="Animation" id="Animation_y7hr4"]
 length = 0.001
@@ -32,6 +36,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-0.157799, 0.00262845, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SwordMesh/IronSword2/BlockArea:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_pj3ho"]
@@ -238,11 +254,120 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_5lg7c"]
+resource_name = "parry"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwordMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.197801, 0.00262845, -0.334661), Vector3(-0.0270006, 0.125049, -0.48053), Vector3(0.118709, 0.186136, -0.48053), Vector3(0.197801, 0.00262845, -0.334661)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwordMesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0260446, 0.0772793, -0.105249), Vector3(-1.04633, -1.2719, 2.90744), Vector3(-1.4021, 0.498564, 1.0927), Vector3(0.0260446, 0.0772793, -0.105249)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SwordMesh/IronSword2/BlockArea:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+
+[sub_resource type="Animation" id="Animation_sxe4n"]
+resource_name = "parried"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwordMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.00656512, 0.00262848, -0.336886), Vector3(-0.00656512, 0.487668, -0.145277), Vector3(0.0161422, 0.51512, -0.0920706), Vector3(-0.131904, 0.399523, -0.110364), Vector3(-0.025739, 0.094698, -0.251454), Vector3(0.197801, 0.00262845, -0.334661)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwordMesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.88236, 0.121775, -0.201493), Vector3(-0.443781, 0.0855581, -0.144074), Vector3(0.218996, 0.080136, -0.0899467), Vector3(0.807247, 0.227084, 0.512147), Vector3(0.0374177, 0.1485, 0.553063), Vector3(0.0260446, 0.0772793, -0.105249)]
+}
+
+[sub_resource type="Animation" id="Animation_qvxx7"]
+resource_name = "long_spiral_block"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwordMesh:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9, 9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.197801, 0.00262845, -0.334661), Vector3(0.00669158, 0.186234, -0.334661), Vector3(0.00669156, 0.186234, -0.334661), Vector3(0.00866176, 0.184341, -0.334661), Vector3(0.010632, 0.182448, -0.334661), Vector3(0.0126022, 0.180555, -0.334661), Vector3(0.0145724, 0.178662, -0.334661), Vector3(0.0165426, 0.176769, -0.334661), Vector3(0.0185128, 0.174877, -0.334661), Vector3(0.00669158, 0.186234, -0.334661), Vector3(0.00669156, 0.186234, -0.334661), Vector3(0.00866176, 0.184341, -0.334661), Vector3(0.010632, 0.182448, -0.334661), Vector3(0.0126022, 0.180555, -0.334661), Vector3(0.0145724, 0.178662, -0.334661), Vector3(0.0165426, 0.176769, -0.334661), Vector3(0.0185128, 0.174877, -0.334661), Vector3(0.00669158, 0.186234, -0.334661), Vector3(0.00669156, 0.186234, -0.334661), Vector3(0.00866176, 0.184341, -0.334661), Vector3(0.010632, 0.182448, -0.334661), Vector3(0.0126022, 0.180555, -0.334661), Vector3(0.0145724, 0.178662, -0.334661), Vector3(0.0165426, 0.176769, -0.334661), Vector3(0.0185128, 0.174877, -0.334661), Vector3(0.00669158, 0.186234, -0.334661), Vector3(0.00669156, 0.186234, -0.334661), Vector3(0.00866176, 0.184341, -0.334661), Vector3(0.010632, 0.182448, -0.334661), Vector3(0.0126022, 0.180555, -0.334661), Vector3(0.0145724, 0.178662, -0.334661), Vector3(0.0165426, 0.176769, -0.334661), Vector3(0.0185128, 0.174877, -0.334661), Vector3(0.00669158, 0.186234, -0.334661), Vector3(0.00669156, 0.186234, -0.334661), Vector3(0.00866176, 0.184341, -0.334661), Vector3(0.010632, 0.182448, -0.334661), Vector3(0.0126022, 0.180555, -0.334661), Vector3(0.0145724, 0.178662, -0.334661), Vector3(0.0165426, 0.176769, -0.334661), Vector3(0.0185128, 0.174877, -0.334661), Vector3(0.00669158, 0.186234, -0.334661), Vector3(0.00669156, 0.186234, -0.334661), Vector3(0.00866176, 0.184341, -0.334661), Vector3(0.010632, 0.182448, -0.334661), Vector3(0.0126022, 0.180555, -0.334661), Vector3(0.0145724, 0.178662, -0.334661), Vector3(0.0165426, 0.176769, -0.334661), Vector3(0.0185128, 0.174877, -0.334661), Vector3(0.00669158, 0.186234, -0.334661), Vector3(0.00669156, 0.186234, -0.334661), Vector3(0.00866176, 0.184341, -0.334661), Vector3(0.010632, 0.182448, -0.334661), Vector3(0.0126022, 0.180555, -0.334661), Vector3(0.0145724, 0.178662, -0.334661), Vector3(0.0165426, 0.176769, -0.334661), Vector3(0.0185128, 0.174877, -0.334661), Vector3(0.00669158, 0.186234, -0.334661), Vector3(0.00669156, 0.186234, -0.334661), Vector3(0.00866176, 0.184341, -0.334661), Vector3(0.010632, 0.182448, -0.334661), Vector3(0.0126022, 0.180555, -0.334661), Vector3(0.0145724, 0.178662, -0.334661), Vector3(0.0165426, 0.176769, -0.334661), Vector3(0.0185128, 0.174877, -0.334661), Vector3(0.00669158, 0.186234, -0.334661), Vector3(0.00669156, 0.186234, -0.334661), Vector3(0.00866176, 0.184341, -0.334661), Vector3(0.010632, 0.182448, -0.334661), Vector3(0.0126022, 0.180555, -0.334661), Vector3(0.0145724, 0.178662, -0.334661), Vector3(0.0165426, 0.176769, -0.334661), Vector3(0.0185128, 0.174877, -0.334661), Vector3(0.00669158, 0.186234, -0.334661), Vector3(0.00669156, 0.186234, -0.334661), Vector3(0.00866176, 0.184341, -0.334661), Vector3(0.010632, 0.182448, -0.334661), Vector3(0.0126022, 0.180555, -0.334661), Vector3(0.0145724, 0.178662, -0.334661), Vector3(0.0165426, 0.176769, -0.334661), Vector3(0.0185128, 0.174877, -0.334661), Vector3(0.00669158, 0.186234, -0.334661), Vector3(0.00669156, 0.186234, -0.334661), Vector3(0.00866176, 0.184341, -0.334661), Vector3(0.010632, 0.182448, -0.334661), Vector3(0.0126022, 0.180555, -0.334661), Vector3(0.0145724, 0.178662, -0.334661), Vector3(0.0165426, 0.176769, -0.334661), Vector3(0.0185128, 0.174877, -0.334661), Vector3(0.00669158, 0.186234, -0.334661), Vector3(0.00669156, 0.186234, -0.334661), Vector3(0.00866176, 0.184341, -0.334661), Vector3(0.010632, 0.182448, -0.334661), Vector3(0.0126022, 0.180555, -0.334661), Vector3(0.0145724, 0.178662, -0.334661), Vector3(0.0165426, 0.176769, -0.334661), Vector3(0.0185128, 0.174877, -0.334661), Vector3(0.197801, 0.00262845, -0.334661)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwordMesh:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9, 9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0260446, 0.0772793, -0.105249), Vector3(0.0221849, 1.34495, -0.0557827), Vector3(-0.875414, 1.21383, 0.228198), Vector3(-1.31743, -0.37278, 1.89323), Vector3(-0.718474, -1.23721, 2.83854), Vector3(-0.0332115, -1.30963, 3.03064), Vector3(0.686866, -1.21094, -3.04248), Vector3(1.28152, -0.0969931, -1.78295), Vector3(0.714632, 1.16673, -0.367525), Vector3(0.0221849, 1.34495, -0.0557827), Vector3(-0.875414, 1.21383, 0.228198), Vector3(-1.31743, -0.37278, 1.89323), Vector3(-0.718474, -1.23721, 2.83854), Vector3(-0.0332115, -1.30963, 3.03064), Vector3(0.686866, -1.21094, -3.04248), Vector3(1.28152, -0.0969931, -1.78295), Vector3(0.714632, 1.16673, -0.367525), Vector3(0.0221849, 1.34495, -0.0557827), Vector3(-0.875414, 1.21383, 0.228198), Vector3(-1.31743, -0.37278, 1.89323), Vector3(-0.718474, -1.23721, 2.83854), Vector3(-0.0332115, -1.30963, 3.03064), Vector3(0.686866, -1.21094, -3.04248), Vector3(1.28152, -0.0969931, -1.78295), Vector3(0.714632, 1.16673, -0.367525), Vector3(0.0221849, 1.34495, -0.0557827), Vector3(-0.875414, 1.21383, 0.228198), Vector3(-1.31743, -0.37278, 1.89323), Vector3(-0.718474, -1.23721, 2.83854), Vector3(-0.0332115, -1.30963, 3.03064), Vector3(0.686866, -1.21094, -3.04248), Vector3(1.28152, -0.0969931, -1.78295), Vector3(0.714632, 1.16673, -0.367525), Vector3(0.0221849, 1.34495, -0.0557827), Vector3(-0.875414, 1.21383, 0.228198), Vector3(-1.31743, -0.37278, 1.89323), Vector3(-0.718474, -1.23721, 2.83854), Vector3(-0.0332115, -1.30963, 3.03064), Vector3(0.686866, -1.21094, -3.04248), Vector3(1.28152, -0.0969931, -1.78295), Vector3(0.714632, 1.16673, -0.367525), Vector3(0.0221849, 1.34495, -0.0557827), Vector3(-0.875414, 1.21383, 0.228198), Vector3(-1.31743, -0.37278, 1.89323), Vector3(-0.718474, -1.23721, 2.83854), Vector3(-0.0332115, -1.30963, 3.03064), Vector3(0.686866, -1.21094, -3.04248), Vector3(1.28152, -0.0969931, -1.78295), Vector3(0.714632, 1.16673, -0.367525), Vector3(0.0221849, 1.34495, -0.0557827), Vector3(-0.875414, 1.21383, 0.228198), Vector3(-1.31743, -0.37278, 1.89323), Vector3(-0.718474, -1.23721, 2.83854), Vector3(-0.0332115, -1.30963, 3.03064), Vector3(0.686866, -1.21094, -3.04248), Vector3(1.28152, -0.0969931, -1.78295), Vector3(0.714632, 1.16673, -0.367525), Vector3(0.0221849, 1.34495, -0.0557827), Vector3(-0.875414, 1.21383, 0.228198), Vector3(-1.31743, -0.37278, 1.89323), Vector3(-0.718474, -1.23721, 2.83854), Vector3(-0.0332115, -1.30963, 3.03064), Vector3(0.686866, -1.21094, -3.04248), Vector3(1.28152, -0.0969931, -1.78295), Vector3(0.714632, 1.16673, -0.367525), Vector3(0.0221849, 1.34495, -0.0557827), Vector3(-0.875414, 1.21383, 0.228198), Vector3(-1.31743, -0.37278, 1.89323), Vector3(-0.718474, -1.23721, 2.83854), Vector3(-0.0332115, -1.30963, 3.03064), Vector3(0.686866, -1.21094, -3.04248), Vector3(1.28152, -0.0969931, -1.78295), Vector3(0.714632, 1.16673, -0.367525), Vector3(0.0221849, 1.34495, -0.0557827), Vector3(-0.875414, 1.21383, 0.228198), Vector3(-1.31743, -0.37278, 1.89323), Vector3(-0.718474, -1.23721, 2.83854), Vector3(-0.0332115, -1.30963, 3.03064), Vector3(0.686866, -1.21094, -3.04248), Vector3(1.28152, -0.0969931, -1.78295), Vector3(0.714632, 1.16673, -0.367525), Vector3(0.0221849, 1.34495, -0.0557827), Vector3(-0.875414, 1.21383, 0.228198), Vector3(-1.31743, -0.37278, 1.89323), Vector3(-0.718474, -1.23721, 2.83854), Vector3(-0.0332115, -1.30963, 3.03064), Vector3(0.686866, -1.21094, -3.04248), Vector3(1.28152, -0.0969931, -1.78295), Vector3(0.714632, 1.16673, -0.367525), Vector3(0.0221849, 1.34495, -0.0557827), Vector3(-0.875414, 1.21383, 0.228198), Vector3(-1.31743, -0.37278, 1.89323), Vector3(-0.718474, -1.23721, 2.83854), Vector3(-0.0332115, -1.30963, 3.03064), Vector3(0.686866, -1.21094, -3.04248), Vector3(1.28152, -0.0969931, -1.78295), Vector3(0.714632, 1.16673, -0.367525), Vector3(0.0260446, 0.0772793, -0.105249)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SwordMesh/IronSword2/BlockArea:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 9.7, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_onj8e"]
 _data = {
 "RESET": SubResource("Animation_y7hr4"),
 "down_swing": SubResource("Animation_pj3ho"),
+"long_spiral_block": SubResource("Animation_qvxx7"),
 "on_equip": SubResource("Animation_hhfk5"),
+"parried": SubResource("Animation_sxe4n"),
+"parry": SubResource("Animation_5lg7c"),
 "stab": SubResource("Animation_t5v4p"),
 "swing1": SubResource("Animation_hgvfm"),
 "test_hold_swing": SubResource("Animation_20v3u")
@@ -263,18 +388,27 @@ properties/2/replication_mode = 1
 script = ExtResource("1_lkqp3")
 
 [node name="SwordMesh" type="Node3D" parent="."]
-transform = Transform3D(0.972834, -0.216705, 0.0814514, 0.217428, 0.976075, 0, -0.0795029, 0.0177098, 0.996676, -0.157799, 0.00262845, 0)
+transform = Transform3D(0.972833, -0.216704, 0.0814513, 0.217427, 0.976074, 0, -0.0795029, 0.0177097, 0.996676, -0.157799, 0.00262845, 0)
 
 [node name="IronSword2" parent="SwordMesh" instance=ExtResource("2_pemwx")]
 transform = Transform3D(0.0429093, -0.0838489, 0.995554, -0.00672534, 0.996425, 0.0842121, -0.999056, -0.0103089, 0.042192, 0, 0, 0)
 
 [node name="HurtBox" parent="SwordMesh/IronSword2" instance=ExtResource("3_sfal1")]
-transform = Transform3D(0.0429093, -0.00672535, -0.999056, -0.0838489, 0.996425, -0.0103088, 0.995555, 0.0842121, 0.042192, -0.00310507, 0.460043, 0.0388802)
+transform = Transform3D(0.0429093, -0.00672535, -0.999056, -0.0838489, 0.996425, -0.0103089, 0.995555, 0.084212, 0.0421919, -0.00310507, 0.460043, 0.0388802)
 damage = 25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SwordMesh/IronSword2/HurtBox"]
-transform = Transform3D(0.996548, -0.0830075, 0.0011996, 0.0829962, 0.996537, 0.00668213, -0.00174989, -0.00655949, 0.999976, -0.0287468, -0.0807154, -0.00292933)
+transform = Transform3D(0.996548, -0.0830068, 0.00119941, 0.0829962, 0.996537, 0.00668203, -0.00174989, -0.00655949, 0.999976, -0.0287468, -0.0807154, -0.00292933)
 shape = SubResource("BoxShape3D_beeqx")
+
+[node name="BlockArea" type="Area3D" parent="SwordMesh/IronSword2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+monitoring = false
+script = ExtResource("4_v28mk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SwordMesh/IronSword2/BlockArea"]
+transform = Transform3D(0.999986, 6.70552e-08, -2.12342e-07, 1.94646e-07, 1, -3.46103e-07, -1.04308e-07, 3.99479e-07, 1, 0.00318256, 0.362495, 0.00461115)
+shape = SubResource("BoxShape3D_lexh2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

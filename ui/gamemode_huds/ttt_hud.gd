@@ -21,13 +21,16 @@ func on_gamemode_stage_changed(new_stage: String):
 	game_stage_label.text = new_stage
 
 
-func _process(delta):
+func _process(_delta):
 	time_left_label.text = str(int(countdown_timer.time_left))
 
 
 func on_game_stage_time_left_changed(time_left: int):
-	countdown_timer.wait_time = time_left
-	countdown_timer.start()
+	if time_left > 0:
+		countdown_timer.wait_time = time_left
+		countdown_timer.start()
+	else:
+		countdown_timer.stop()
 
 
 func on_player_faction_changed(peer_id: int, faction_name: String):

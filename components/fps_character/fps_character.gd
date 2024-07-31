@@ -25,6 +25,7 @@ class_name FpsCharacter
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var ragdoll_mgr: RagdollMgr = $RagdollMgr
 @onready var mesh: Node3D = $Knight
+@onready var arms: Node3D = $Arms
 
 const mouse_sens: float = 0.25
 const SlideSpeed: float = 10.0
@@ -125,13 +126,15 @@ func _input(event):
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 	
-	if Input.is_action_just_pressed("secondary"):
-		head_pcam.set_camera_fov(30)
-	if Input.is_action_just_released("secondary"):
-		head_pcam.set_camera_fov(75)
+	
+	#if Input.is_action_just_pressed("secondary"):
+		#head_pcam.set_camera_fov(30)
+	#if Input.is_action_just_released("secondary"):
+		#head_pcam.set_camera_fov(75)
 
 
 func _physics_process(delta):
+	arms.rotation.x = clamp(head.rotation.x, deg_to_rad(-40), deg_to_rad(40))
 	if not is_multiplayer_authority(): return
 	if health_component.is_dead: return
 	if GameMgr.game_paused:
