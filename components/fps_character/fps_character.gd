@@ -42,6 +42,7 @@ var head_height: float = 1.7
 # Player Controls
 var lerp_speed: float = 10.0
 var air_lerp_speed: float = 3.0
+var input_dir: Vector2 = Vector2.ZERO
 var player_control_direction: Vector3 = Vector3.ZERO
 
 # Player State
@@ -147,8 +148,8 @@ func _physics_process(delta):
 			velocity.y -= locomotion_driver.gravity * delta
 		move_and_slide()
 		return
-
-	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	# Movement
 	if Input.is_action_pressed("crouch") or is_sliding:
@@ -433,6 +434,9 @@ func set_player_name(n: String):
 
 func apply_step(delta: float) -> bool:
 	if step_checker == null:
+		return false
+	
+	if input_dir.length() == 0:
 		return false
 	
 	var step_to_pos: Vector3 = step_checker.can_step(player_control_direction, velocity, delta)

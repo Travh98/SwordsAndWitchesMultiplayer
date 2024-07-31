@@ -12,6 +12,7 @@ func spawn_ragdoll():
 	ragdoll = KNIGHT_RAGDOLL.instantiate()
 	add_child(ragdoll)
 	ragdoll.global_position = get_parent().global_position
+	ragdoll.global_rotation = get_parent().global_rotation
 	ragdoll.start_ragdoll()
 
 
