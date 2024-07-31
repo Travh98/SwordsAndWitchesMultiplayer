@@ -504,16 +504,20 @@ func on_health_changed(_health: int):
 
 func set_hat(file_name: String):
 	if file_name.is_empty():
-		if hat:
-			hat.queue_free()
-			return
+		despawn_hat()
+		return
 	
 	if !FileAccess.file_exists("res://assets/zavier/hats/good_hats/" + file_name):
 		push_warning("Invalid file for hat: ", file_name)
+		despawn_hat()
 		return
 	
-	if hat:
-		hat.queue_free()
+	despawn_hat()
 	var hat_scene = load("res://assets/zavier/hats/good_hats/" + file_name)
 	hat = hat_scene.instantiate()
 	hat_spot.add_child(hat)
+
+
+func despawn_hat():
+	if is_instance_valid(hat):
+		hat.queue_free()

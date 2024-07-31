@@ -64,6 +64,12 @@ func load_hats():
 				hat_button.pressed.connect(on_hat_pressed.bind(hat_button))
 			
 			file_name = hat_dir.get_next()
+	
+	var clear_button: Button = Button.new()
+	clear_button.text = "clear"
+	hats_container.add_child(clear_button)
+	clear_button.pressed.connect(on_hat_pressed.bind(clear_button))
+	
 
 
 func on_hat_pressed(button: Button):
