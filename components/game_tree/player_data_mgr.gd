@@ -4,6 +4,8 @@ extends Node
 ## Manages our records of all the Player's PlayerData
 
 signal player_name_changed(peer_id: int, new_name: String)
+signal player_active_inv_slot_changed(peer_id: int, slot_index: int)
+signal player_health_changed(peer_id: int, health: int)
 
 @onready var random_name_gen: RandomNameGen = $RandomNameGen
 
@@ -52,4 +54,7 @@ func receive_player_data(in_data):
 	
 	for peer_id in player_data:
 		player_name_changed.emit(peer_id, player_data[peer_id]["name"])
+		player_active_inv_slot_changed.emit(peer_id, player_data[peer_id]["active_inv_slot"])
+		player_health_changed.emit(peer_id, player_data[peer_id]["health"])
+		
 

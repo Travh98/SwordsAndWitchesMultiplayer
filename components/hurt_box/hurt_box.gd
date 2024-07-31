@@ -9,6 +9,7 @@ signal hurtbox_active_changed(a: bool)
 @export var active: bool = false : set = set_active
 var mob_owner: Mob = null : set = set_mob_owner
 var weapon_owner: HandItem = null : set = set_weapon_owner
+var hit_objects = []
 
 func _ready():
 	body_entered.connect(on_body_entered)
@@ -18,12 +19,16 @@ func set_active(a: bool):
 	active = a
 	hurtbox_active_changed.emit(a)
 	if active:
-		start_damage()
+		start_damage.call_deferred()
 	else:
 		end_damage()
 
 
 func damage_body(body: Node3D):
+	# Only hit things once per attack
+	if hit_objects.has(body):
+		return
+	
 	# No friendly fire
 	if body is Mob:
 		if mob_owner:
@@ -35,6 +40,7 @@ func damage_body(body: Node3D):
 		return
 	
 	if body.has_node("HealthComponent"):
+		hit_objects.append(body)
 		Server.damage_entity.rpc_id(1, mob_owner.name.to_int(), body.name.to_int(), damage)
 
 
@@ -52,6 +58,7 @@ func start_damage():
 
 func end_damage():
 	# Do nothing
+	hit_objects.clear()
 	pass
 
 

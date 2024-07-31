@@ -20,6 +20,7 @@ signal respawn_all_players()
 signal gamemode_stage_updated(new_stage: String)
 signal game_stage_time_left_updated(time_left: int)
 signal ttt_winner_decided(traitors_won: bool)
+signal player_equipped_slot_changed(peer_id: int, slot_index: int)
 
 @onready var server_connector: ServerConnector = $ServerConnector
 @onready var game_state_mgr: GameStateMgr = $GameStateMgr
@@ -40,7 +41,6 @@ func add_newly_connected_player_character(peer_id: int):
 @rpc("call_remote", "reliable")
 func add_previously_connected_player_characters(peer_ids: Array):
 	for peer_id in peer_ids:
-		print("Adding previously connected player: ", peer_id)
 		spawn_player_character.emit(peer_id)
 
 
@@ -120,7 +120,6 @@ func damage_entity(_damager_id: int, _target_id: int, _damage: int):
 
 @rpc("call_remote")
 func player_health_changed(peer_id: int, new_health: int):
-	print("Peer ", peer_id, " has new health: ", new_health)
 	player_health_updated.emit(peer_id, new_health)
 	pass
 
@@ -144,6 +143,11 @@ func gamemode_stage_time_left(time_left: int):
 
 @rpc("call_remote", "reliable")
 func ttt_team_won(traitors_won: bool):
-	print("TTT round won by traitors: ", traitors_won)
 	ttt_winner_decided.emit(traitors_won)
+	pass
+
+
+@rpc("any_peer", "reliable")
+func player_equipped_slot(peer_id: int, slot_index: int):
+	player_equipped_slot_changed.emit(peer_id, slot_index)
 	pass

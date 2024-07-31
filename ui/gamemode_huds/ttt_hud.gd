@@ -35,7 +35,6 @@ func on_game_stage_time_left_changed(time_left: int):
 
 func on_player_faction_changed(peer_id: int, faction_name: String):
 	if peer_id != Server.server_connector.get_peer_id():
-		print(Server.server_connector.get_peer_id(), " sees that other peer: ", peer_id, " has faction: ", faction_name)
 		return
 	var faction: FactionMgr.Factions = FactionMgr.get_faction_from_string(faction_name)
 	match faction:

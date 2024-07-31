@@ -23,4 +23,6 @@ func _ready():
 	Server.player_name_changed.connect(player_data_mgr.on_player_name_changed)
 	Server.server_connection_changed.connect(player_data_mgr.on_server_connection_changed)
 	Server.player_data_received.connect(player_data_mgr.receive_player_data)
+	player_data_mgr.player_active_inv_slot_changed.connect(player_mgr.on_player_equipment_changed)
+	player_data_mgr.player_health_changed.connect(player_mgr.on_player_health_changed)
 

@@ -5,6 +5,7 @@ extends HandItem
 @onready var hurt_box: HurtBox = $SwordMesh/IronSword2/HurtBox
 @onready var iron_sword_mesh = $SwordMesh/IronSword2
 @onready var block_area: BlockArea = $SwordMesh/IronSword2/BlockArea
+var swing_from_right: bool = true
 
 func _ready():
 	grab_node_r = iron_sword_mesh
@@ -17,7 +18,10 @@ func primary_use():
 	super()
 	if animation_player.is_playing():
 		return
-	animation_player.play("swing1")
+	if swing_from_right:
+		animation_player.play("swing1")
+	else:
+		animation_player.play("swing2")
 
 
 func secondary_use():

@@ -14,6 +14,7 @@ func _ready():
 	Server.player_faction_changed.connect(on_player_faction_changed)
 	Server.player_health_updated.connect(on_player_health_changed)
 	Server.respawn_all_players.connect(respawn_players)
+	Server.player_equipped_slot_changed.connect(on_player_equipment_changed)
 
 
 func add_player_character(peer_id: int):
@@ -41,7 +42,7 @@ func delete_all_players():
 
 
 func update_player_name(peer_id: int, new_name: String):
-	print("Updating player name for peer: ", peer_id, " to be ", new_name)
+	#print(peer_id, " new name: ", new_name)
 	var player = get_player(peer_id)
 	if player:
 		player.set_player_name(new_name)
@@ -53,7 +54,6 @@ func on_player_faction_changed(peer_id: int, faction_name: String):
 	var player = get_player(peer_id)
 	if player:
 		player.faction = FactionMgr.get_faction_from_string(faction_name)
-		print("Player ", player.name, " changed faction to: ", faction_name)
 		return
 
 
@@ -64,13 +64,18 @@ func on_player_health_changed(peer_id: int, new_health: int):
 		hp.health = new_health
 
 
+func on_player_equipment_changed(peer_id: int, slot_index: int):
+	var player = get_player(peer_id)
+	if player:
+		player.set_equipment_slot(slot_index)
+
+
 func on_new_map_loaded(_map_name: String):
 	respawn_players()
 
 
 func respawn_players():
 	for p in get_children():
-		print("Respawning player: ", p.name)
 		respawn_player.emit(p)
 
 

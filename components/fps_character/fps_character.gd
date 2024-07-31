@@ -26,6 +26,7 @@ class_name FpsCharacter
 @onready var ragdoll_mgr: RagdollMgr = $RagdollMgr
 @onready var mesh: Node3D = $Knight
 @onready var arms: Node3D = $Arms
+@onready var base_inventory: BaseInventory = $BaseInventory
 
 const mouse_sens: float = 0.25
 const SlideSpeed: float = 10.0
@@ -110,6 +111,8 @@ func _ready():
 	coyote_timer.wait_time = coyote_frames / 60.0
 	coyote_timer.one_shot = true
 	coyote_timer.timeout.connect(on_coyote_timeout)
+	
+	base_inventory.item_equipped.connect(on_inventory_slot_equipped)
 
 
 func _input(event):
@@ -464,3 +467,12 @@ func on_revive():
 	ragdoll_mgr.despawn_ragdoll()
 	standing_col.disabled = false
 	crouching_col.disabled = false
+
+
+func on_inventory_slot_equipped(slot_index: int):
+	if not is_multiplayer_authority(): return
+	Server.player_equipped_slot.rpc_id(1, get_multiplayer_authority(), slot_index)
+
+
+func set_equipment_slot(slot_index: int):
+	base_inventory.set_inventory_slot(slot_index)

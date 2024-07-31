@@ -17,7 +17,7 @@ func _ready():
 
 func on_game_mode_changed(mode_str: String):
 	server_mode = ServerMode.get(mode_str)
-	print("Gamemode: ", ServerMode.keys()[server_mode])
+	#print("Gamemode: ", ServerMode.keys()[server_mode])
 	
 	match server_mode:
 		ServerMode.MODE_PVE:

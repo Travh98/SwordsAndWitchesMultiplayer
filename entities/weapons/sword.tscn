@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bbm7284ux0w7j"]
+[gd_scene load_steps=19 format=3 uid="uid://bbm7284ux0w7j"]
 
 [ext_resource type="Script" path="res://components/fps_character/sword.gd" id="1_lkqp3"]
 [ext_resource type="PackedScene" uid="uid://6ldfl5dpeix1" path="res://assets/weapons/pr_iron_sword.tscn" id="2_pemwx"]
@@ -360,6 +360,50 @@ tracks/2/keys = {
 "values": [false, true, false, false]
 }
 
+[sub_resource type="Animation" id="Animation_k7hfu"]
+resource_name = "swing2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwordMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.197801, 0.00262845, -0.334661), Vector3(-0.065035, 0.00262839, -0.383051), Vector3(-0.327871, 0.00262833, -0.431441), Vector3(0.00167724, 0.00262833, -0.599317), Vector3(0.430176, 0.00262832, -0.318655), Vector3(0.451934, 0.00262832, -0.0739383), Vector3(0.197801, 0.00262845, -0.334661)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwordMesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0260446, 0.0772793, -0.105249), Vector3(-0.331076, 0.637502, 0.335619), Vector3(-0.148493, -0.437634, 1.06368), Vector3(-0.257135, -1.32158, 1.38995), Vector3(-0.257135, -2.41908, 1.38995), Vector3(-0.151515, -2.91277, 0.752112), Vector3(0.0260446, 0.0772793, -0.105249)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SwordMesh/IronSword2/HurtBox")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_active"
+}, {
+"args": [false],
+"method": &"set_active"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_onj8e"]
 _data = {
 "RESET": SubResource("Animation_y7hr4"),
@@ -370,6 +414,7 @@ _data = {
 "parry": SubResource("Animation_5lg7c"),
 "stab": SubResource("Animation_t5v4p"),
 "swing1": SubResource("Animation_hgvfm"),
+"swing2": SubResource("Animation_k7hfu"),
 "test_hold_swing": SubResource("Animation_20v3u")
 }
 
@@ -388,7 +433,7 @@ properties/2/replication_mode = 1
 script = ExtResource("1_lkqp3")
 
 [node name="SwordMesh" type="Node3D" parent="."]
-transform = Transform3D(0.972833, -0.216704, 0.0814513, 0.217427, 0.976074, 0, -0.0795029, 0.0177097, 0.996676, -0.157799, 0.00262845, 0)
+transform = Transform3D(0.972833, -0.216704, 0.0814513, 0.217427, 0.976074, 0, -0.0795029, 0.0177097, 0.996675, -0.157799, 0.00262845, 0)
 
 [node name="IronSword2" parent="SwordMesh" instance=ExtResource("2_pemwx")]
 transform = Transform3D(0.0429093, -0.0838489, 0.995554, -0.00672534, 0.996425, 0.0842121, -0.999056, -0.0103089, 0.042192, 0, 0, 0)
