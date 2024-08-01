@@ -17,11 +17,13 @@ signal player_faction_changed(peer_id: int, faction_name: String)
 signal player_data_received(player_data: Dictionary)
 signal player_health_updated(peer_id: int, new_health: int)
 signal respawn_all_players()
+signal respawn_one_player(peer_id: int)
 signal gamemode_stage_updated(new_stage: String)
 signal game_stage_time_left_updated(time_left: int)
 signal ttt_winner_decided(traitors_won: bool)
 signal player_equipped_slot_changed(peer_id: int, slot_index: int)
 signal player_selected_hat(peer_id: int, file_name: String)
+signal temporary_message(msg: String)
 
 @onready var server_connector: ServerConnector = $ServerConnector
 @onready var game_state_mgr: GameStateMgr = $GameStateMgr
@@ -125,9 +127,14 @@ func player_health_changed(peer_id: int, new_health: int):
 	pass
 
 
-@rpc("call_remote")
+@rpc("call_remote", "reliable")
 func respawn_players():
 	respawn_all_players.emit()
+
+
+@rpc("call_remote", "reliable")
+func respawn_player(peer_id: int):
+	respawn_one_player.emit(peer_id)
 
 
 @rpc("call_remote", "reliable")
@@ -148,7 +155,7 @@ func ttt_team_won(traitors_won: bool):
 	pass
 
 
-@rpc("any_peer", "reliable")
+@rpc("any_peer", "unreliable")
 func player_equipped_slot(peer_id: int, slot_index: int):
 	player_equipped_slot_changed.emit(peer_id, slot_index)
 	pass
@@ -164,3 +171,8 @@ func peer_hat_selected(peer_id: int, file_name: String):
 func set_game_freeze(frozen: bool):
 	GameMgr.on_freeze_game(frozen)
 	pass
+
+
+@rpc("call_remote", "reliable")
+func set_temporary_message(new_msg: String):
+	temporary_message.emit(new_msg)

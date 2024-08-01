@@ -5,7 +5,8 @@ extends HandItem
 @onready var hurt_box: HurtBox = $SwordMesh/IronSword2/HurtBox
 @onready var iron_sword_mesh = $SwordMesh/IronSword2
 @onready var block_area: BlockArea = $SwordMesh/IronSword2/BlockArea
-@onready var swipe_sfx = $SwipeSfx
+@onready var swipe_sfx: AudioStreamPlayer3D = $SwipeSfx
+@onready var parried_sfx: AudioStreamPlayer3D = $ParriedSfx
 
 var swing_from_right: bool = true
 
@@ -60,6 +61,7 @@ func register_user(user: Mob):
 func get_parried():
 	cancel_animation()
 	swipe_sfx.stop()
+	parried_sfx.play()
 	animation_player.play("parried")
 
 

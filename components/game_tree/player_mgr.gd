@@ -15,6 +15,7 @@ func _ready():
 	Server.player_faction_changed.connect(on_player_faction_changed)
 	Server.player_health_updated.connect(on_player_health_changed)
 	Server.respawn_all_players.connect(respawn_players)
+	Server.respawn_one_player.connect(on_respawn_player)
 	Server.player_equipped_slot_changed.connect(on_player_equipment_changed)
 	Server.player_selected_hat.connect(on_player_hat_selected)
 
@@ -88,6 +89,12 @@ func on_new_map_loaded(_map_name: String):
 func respawn_players():
 	for p in get_children():
 		respawn_player.emit(p)
+
+
+func on_respawn_player(peer_id: int):
+	for p in get_children():
+		if p.name.to_int() == peer_id:
+			respawn_player.emit(p)
 
 
 func does_player_exist(peer_id: int):

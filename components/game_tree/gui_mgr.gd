@@ -11,6 +11,7 @@ signal local_player_name_changed(new_name: String)
 @onready var server_info: ServerInfo = $ServerInfo
 @onready var ttt_hud: Control = $TttHud
 @onready var hud_healthbar: HudHealthbar = $HudHealthbar
+@onready var temporary_message: TemporaryMessage = $TemporaryMessage
 
 
 func _ready():
@@ -23,6 +24,7 @@ func _ready():
 	pause_menu.show_settings_menu.connect(show_settings)
 	settings_menu.close_settings.connect(close_settings)
 	settings_menu.hat_selected.connect(on_hat_selected)
+	Server.temporary_message.connect(temporary_message.set_temporary_message)
 
 
 func on_local_name_changed(new_name: String):

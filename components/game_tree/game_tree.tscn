@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://5p4ihhps6f2q"]
+[gd_scene load_steps=19 format=3 uid="uid://5p4ihhps6f2q"]
 
 [ext_resource type="Script" path="res://components/game_tree/game_tree.gd" id="1_wtqql"]
 [ext_resource type="Script" path="res://components/game_tree/player_mgr.gd" id="2_cpy1k"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cc3u6noaco1gf" path="res://ui/gamemode_huds/ttt_hud.tscn" id="12_rfigj"]
 [ext_resource type="PackedScene" uid="uid://d01nsoep2wuio" path="res://ui/crosshair/crosshair.tscn" id="12_xnoje"]
 [ext_resource type="PackedScene" uid="uid://81hqyveu8dnj" path="res://ui/healthbar/hud_healthbar.tscn" id="14_vdr2l"]
+[ext_resource type="PackedScene" uid="uid://c1yb0tyb8qih" path="res://ui/temporary_message.tscn" id="15_cqqku"]
 
 [node name="GameTree" type="Node"]
 script = ExtResource("1_wtqql")
@@ -58,6 +59,8 @@ visible = false
 
 [node name="HudHealthbar" parent="GuiMgr" instance=ExtResource("14_vdr2l")]
 
+[node name="TemporaryMessage" parent="GuiMgr" instance=ExtResource("15_cqqku")]
+
 [node name="LevelMgr" type="Node" parent="."]
 script = ExtResource("9_c775u")
 
@@ -65,7 +68,7 @@ script = ExtResource("9_c775u")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.954252, 0.240988, -0.176995, 0, 0.591951, 0.805974, 0.299002, 0.769103, -0.56487, -28.0456, 119.51, -46.4232)
-fov = 74.2596
+fov = 73.9066
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("5_n6j8m")

@@ -242,6 +242,10 @@ visible = false
 
 [node name="LocomotionDriver" parent="." instance=ExtResource("4_2mgsi")]
 ai_controlled = false
+walking_speed = 3.0
+sprinting_speed = 5.0
+crouching_speed = 2.0
+jump_velocity = 3.0
 
 [node name="InteractController" parent="." node_paths=PackedStringArray("interact_cast") instance=ExtResource("7_p1veb")]
 interact_cast = NodePath("../Neck/Head/Eyes/FpsCharPcam/InteractRaycast")
@@ -307,25 +311,31 @@ transform = Transform3D(1.11114, 2.09364e-08, 3.64931e-08, -2.09364e-08, 1.11114
 transform = Transform3D(1.11114, 3.55271e-15, 1.42109e-14, 0, 1.11114, 2.98023e-08, 0, 2.98023e-08, 1.11114, -7.56519e-09, 0.9167, 0.0501)
 
 [node name="FootMesh" parent="Knight/KnightIkLeg2/KnightIkLeg/Skeleton3D" index="0"]
-transform = Transform3D(1.11114, 2.55795e-13, -1.10134e-12, -2.70006e-13, 1.11107, -0.0122984, 1.08002e-12, 0.0122984, 1.11107, -0.00633889, 0.1037, 0.0358)
+transform = Transform3D(1.10951, -0.026312, 0.0541822, -0.0601948, -0.448678, 1.01474, -0.00215046, -1.01618, -0.449444, -0.00822815, 0.252224, -0.443717)
 
 [node name="ShinMesh" parent="Knight/KnightIkLeg2/KnightIkLeg/Skeleton3D" index="1"]
-transform = Transform3D(1.11114, 1.68799e-08, 5.63924e-08, -1.68799e-08, 1.11114, 3.42727e-07, -5.63919e-08, -3.42727e-07, 1.11115, -0.0063389, 0.1037, 0.0358)
+transform = Transform3D(1.11095, 0.00936624, -0.00296012, -0.00971741, 0.999583, -0.485156, -0.00142644, 0.485158, 0.999635, -0.00822865, 0.252224, -0.443717)
 
 [node name="ThighMesh" parent="Knight/KnightIkLeg2/KnightIkLeg/Skeleton3D" index="2"]
-transform = Transform3D(1.11114, 8.25793e-09, 3.65812e-08, -8.15435e-09, 1.11114, -0.00314544, -3.66042e-08, 0.00314542, 1.11115, -0.00633889, 0.5318, 0.00140001)
+transform = Transform3D(1.11113, -0.00500419, 0.00218607, 0.00504028, 0.768619, -0.802398, 0.00210151, 0.802391, 0.76864, -0.00452838, 0.652363, -0.287742)
 
 [node name="ThighMesh" parent="Knight/KnightIkLeg2/KnightIkLeg/Skeleton3D/ThighMesh" index="0"]
 transform = Transform3D(1, 9.22873e-16, 3.55271e-15, 4.16334e-16, 1, 0, -3.55271e-15, 2.32831e-10, 1, 0, 0, 0)
 
 [node name="FootMesh" parent="Knight/KnightIkLeg3/KnightIkLeg/Skeleton3D" index="0"]
-transform = Transform3D(1.11114, 2.55795e-13, -1.10134e-12, -2.70006e-13, 1.11107, -0.0122984, 1.08002e-12, 0.0122984, 1.11107, -0.00633889, 0.1037, 0.0358)
+transform = Transform3D(0.904261, -0.307482, 0.5678, -0.645687, -0.438915, 0.790615, 0.00550411, -0.973365, -0.535875, -0.225837, 0.226238, 0.23667)
 
 [node name="ShinMesh" parent="Knight/KnightIkLeg3/KnightIkLeg/Skeleton3D" index="1"]
-transform = Transform3D(1.11114, 1.68799e-08, 5.63924e-08, -1.68799e-08, 1.11114, 3.42727e-07, -5.63919e-08, -3.42727e-07, 1.11115, -0.0063389, 0.1037, 0.0358)
+transform = Transform3D(1.05075, 0.352954, 0.0772715, -0.336087, 0.867542, 0.607493, 0.132638, -0.597845, 0.927162, -0.225836, 0.226239, 0.236669)
 
 [node name="ThighMesh" parent="Knight/KnightIkLeg3/KnightIkLeg/Skeleton3D" index="2"]
-transform = Transform3D(1.11114, 8.25793e-09, 3.65812e-08, -8.15435e-09, 1.11114, -0.00314544, -3.66042e-08, 0.00314542, 1.11115, -0.00633889, 0.5318, 0.00140001)
+transform = Transform3D(1.08523, 0.238361, -0.00949145, -0.238487, 1.08307, -0.0686778, -0.00548101, 0.069113, 1.10898, -0.0922425, 0.541679, -0.0223726)
+
+[node name="KnightIkArmL" parent="Knight" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0540752, 1.44757, 0)
+
+[node name="KnightIkArmR" parent="Knight" index="4"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.0648603, 1.44757, -0.0733774)
 
 [node name="PeerNameLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
