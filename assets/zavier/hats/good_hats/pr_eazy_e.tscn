@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhbd1mfbl0cj0"]
+
+[ext_resource type="PackedScene" uid="uid://c3yh6261m4pnr" path="res://assets/zavier/hats/Eazy-E.gltf" id="1_uuffh"]
+
+[node name="Eazy-E" instance=ExtResource("1_uuffh")]

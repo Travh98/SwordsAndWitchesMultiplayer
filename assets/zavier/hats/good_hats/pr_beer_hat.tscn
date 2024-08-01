@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ijml0x2ydhh4"]
+
+[ext_resource type="PackedScene" uid="uid://e8d6bfs7v43e" path="res://assets/zavier/hats/Beer hat.gltf" id="1_ipxls"]
+
+[node name="Beer hat" instance=ExtResource("1_ipxls")]

@@ -10,6 +10,7 @@ signal local_player_name_changed(new_name: String)
 @onready var settings_menu: SettingsMenu = $SettingsMenu
 @onready var server_info: ServerInfo = $ServerInfo
 @onready var ttt_hud: Control = $TttHud
+@onready var hud_healthbar: HudHealthbar = $HudHealthbar
 
 
 func _ready():
@@ -101,3 +102,10 @@ func hide_ttt_hud():
 func on_hat_selected(file_name: String):
 	if Server.server_connector.is_server_connected:
 		Server.peer_hat_selected.rpc_id(1, Server.server_connector.get_peer_id(), file_name)
+	
+
+func assign_local_player(player: Node3D):
+	if player.has_node("HealthComponent"):
+		var hp = player.get_node("HealthComponent")
+		hud_healthbar.assign_health_component(hp)
+		player.speed_calculated.connect(hud_healthbar.speed_updated)

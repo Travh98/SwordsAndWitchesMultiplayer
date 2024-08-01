@@ -45,6 +45,10 @@ export/convert_text_resources_to_binary=false
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/tile-instances/plugin.cfg")
 
+[gui]
+
+theme/custom_font="res://assets/fonts/alkhemikal/Alkhemikal.ttf"
+
 [input]
 
 dialogic_default_action={

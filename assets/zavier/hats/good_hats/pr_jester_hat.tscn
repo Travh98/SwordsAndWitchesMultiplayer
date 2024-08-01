@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj8bruxxrwk25"]
+
+[ext_resource type="PackedScene" uid="uid://bfa8dmt357tnl" path="res://assets/zavier/hats/Jester hat.gltf" id="1_fut2k"]
+
+[node name="Jester hat2" instance=ExtResource("1_fut2k")]

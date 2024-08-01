@@ -158,3 +158,9 @@ func player_equipped_slot(peer_id: int, slot_index: int):
 func peer_hat_selected(peer_id: int, file_name: String):
 	player_selected_hat.emit(peer_id, file_name)
 	pass
+
+
+@rpc("call_remote", "reliable")
+func set_game_freeze(frozen: bool):
+	GameMgr.on_freeze_game(frozen)
+	pass

@@ -42,7 +42,7 @@ func _input(event):
 	if Input.is_action_just_pressed("primary"):
 		if current_inventory_item:
 			if current_inventory_item is Sword:
-				if last_camera_x_delta < 0:
+				if last_camera_x_delta > 0:
 					current_inventory_item.swing_from_right = false
 				else:
 					current_inventory_item.swing_from_right = true
@@ -61,6 +61,10 @@ func _input(event):
 		if current_inventory_item:
 			if current_inventory_item is Sword:
 				current_inventory_item.long_spiral_block()
+	if Input.is_action_just_pressed("fun_attack2"):
+		if current_inventory_item:
+			if current_inventory_item is Sword:
+				current_inventory_item.god_swing()
 
 
 func get_slot_item(index: int) -> HandItem:

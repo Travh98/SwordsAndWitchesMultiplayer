@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpt28d5sjo8pi"]
+[gd_scene load_steps=3 format=3 uid="uid://cpt28d5sjo8pi"]
 
 [ext_resource type="Script" path="res://ui/start_menu/start_menu.gd" id="1_8xm03"]
 [ext_resource type="PackedScene" uid="uid://c0pob3bs25oh0" path="res://ui/credits/credits.tscn" id="2_yeerv"]
-[ext_resource type="AudioStream" uid="uid://b15it7snxtp6p" path="res://assets/music/zavier/zavier_heimat.wav" id="3_hhbia"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -81,5 +80,4 @@ visible = false
 layout_mode = 1
 
 [node name="StartMenuMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_hhbia")
 bus = &"Music"

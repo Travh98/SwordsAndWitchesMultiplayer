@@ -44,6 +44,10 @@ func unpause_game():
 	game_paused = false
 
 
+func on_freeze_game(frozen: bool):
+	get_tree().paused = frozen
+
+
 func is_valid_name(in_name: String) -> bool:
 	if in_name.replace(" ", "").is_empty():
 		return false

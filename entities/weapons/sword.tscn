@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bbm7284ux0w7j"]
+[gd_scene load_steps=21 format=3 uid="uid://bbm7284ux0w7j"]
 
 [ext_resource type="Script" path="res://components/fps_character/sword.gd" id="1_lkqp3"]
 [ext_resource type="PackedScene" uid="uid://6ldfl5dpeix1" path="res://assets/weapons/pr_iron_sword.tscn" id="2_pemwx"]
@@ -50,6 +50,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SwipeSfx:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_pj3ho"]
 resource_name = "down_swing"
@@ -93,6 +105,75 @@ tracks/2/keys = {
 "args": [false],
 "method": &"set_active"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_pfe8c"]
+resource_name = "god_swing"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwordMesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.8, 1, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.5, 2.7, 2.9, 3.1, 3.4, 3.7, 4.5, 4.8, 5, 5.3, 5.6, 6, 6.3, 6.6, 6.9, 7.3, 7.5, 7.7, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0260446, 0.0772793, -0.105249), Vector3(-0.666599, 0.098356, -0.168202), Vector3(-0.197119, 0.0787818, -0.122725), Vector3(0.730698, 0.103819, -0.0378394), Vector3(0.270557, 3.06142, 3.01286), Vector3(-1.17152, 2.94174, -3.06436), Vector3(-1.17152, -3.08268, -3.06436), Vector3(-1.17152, 2.71586, -3.06436), Vector3(-1.17152, -3.08268, -3.06436), Vector3(-1.17152, 2.71586, -3.06436), Vector3(-1.17152, -3.08268, -3.06436), Vector3(-1.17152, 2.71586, -3.06436), Vector3(-1.17152, 2.71586, -3.06436), Vector3(0.137589, -1.33944, 2.18828), Vector3(1.1149, 1.59355, -1.59204), Vector3(-0.27002, 1.41277, -0.996942), Vector3(0.178652, 1.31377, 0.629869), Vector3(0.524622, -2.93129, -3.10716), Vector3(0.524622, -2.93129, -3.10716), Vector3(0.524622, -2.93129, -3.10716), Vector3(1.08484, -1.39362, -0.427287), Vector3(-1.41579, 0.950112, -1.51483), Vector3(-0.685305, -3.07133, 1.22639), Vector3(-0.772199, -0.806738, -2.98983), Vector3(-0.735653, -2.20308, 1.10337), Vector3(-0.884215, -2.38043, -1.2873), Vector3(0.923242, -2.95531, -1.33725), Vector3(0.923242, 2.55028, -1.33725), Vector3(0.923242, 1.75261, -1.33725), Vector3(0.180104, 2.49427, -0.127605), Vector3(-0.0177921, -2.92377, 0.0201119)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwordMesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.8, 1, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.5, 2.7, 2.9, 3.1, 3.4, 3.7, 4.5, 4.8, 5, 5.3, 5.6, 6, 6.3, 6.6, 6.9, 7.3, 7.5, 7.7, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.197801, 0.00262845, -0.334661), Vector3(0.0201213, -0.105808, -0.334661), Vector3(0.0201213, 0.30061, -0.230851), Vector3(0.0201213, 0.654422, -0.174857), Vector3(0.0201213, 1.18591, -0.0769064), Vector3(0.0201213, 1.54327, 0.0974703), Vector3(0.0201213, 1.54327, 0.0974703), Vector3(0.0201213, 1.54327, 0.0974703), Vector3(0.0201213, 1.54327, 0.0974703), Vector3(0.0201213, 1.54327, 0.0974703), Vector3(0.0201213, 1.54327, 0.0974703), Vector3(0.0201213, 1.54327, 0.0974703), Vector3(0.0201213, 1.54327, 0.0974703), Vector3(0.0201213, 0.803122, -0.722531), Vector3(0.0201213, 0.329602, -1.53262), Vector3(0.0201213, 0.575647, -2.2505), Vector3(0.0201213, 0.770383, -2.95812), Vector3(0.0201213, 0.837816, -3.30034), Vector3(0.0201213, 1.06926, -3.91713), Vector3(0.0201213, 1.06926, -3.91713), Vector3(0.0201213, 0.605124, -2.71206), Vector3(0.0201213, 0.242319, -1.73202), Vector3(0.878583, 0.242319, -1.04297), Vector3(1.45861, 0.242319, 0.0397483), Vector3(1.09512, 0.242319, 1.29261), Vector3(-0.420684, 0.242319, 2.12012), Vector3(-1.87462, 0.242319, 0.364564), Vector3(-1.01618, 0.242319, -1.39872), Vector3(0.0356069, 0.242319, -0.780026), Vector3(0.16618, 0.117557, -0.309636), Vector3(0.154656, 0.0719684, -0.286394)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SwordMesh/IronSword2/HurtBox")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.3, 2.5, 5, 6.5, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [true],
+"method": &"set_active"
+}, {
+"args": [true],
+"method": &"set_active"
+}, {
+"args": [true],
+"method": &"set_active"
+}, {
+"args": [true],
+"method": &"set_active"
+}, {
+"args": [true],
+"method": &"set_active"
+}, {
+"args": [false],
+"method": &"set_active"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SwipeSfx:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(-0.1, 0.5, 1.2, 1.4, 1.6, 2.5, 4.8, 5.3, 6, 6.4, 6.6, 7.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, true, true, true, true, true, true, true, true, true]
 }
 
 [sub_resource type="Animation" id="Animation_qvxx7"]
@@ -409,6 +490,7 @@ tracks/2/keys = {
 _data = {
 "RESET": SubResource("Animation_y7hr4"),
 "down_swing": SubResource("Animation_pj3ho"),
+"god_swing": SubResource("Animation_pfe8c"),
 "long_spiral_block": SubResource("Animation_qvxx7"),
 "on_equip": SubResource("Animation_hhfk5"),
 "parried": SubResource("Animation_sxe4n"),
@@ -437,7 +519,7 @@ properties/3/replication_mode = 2
 script = ExtResource("1_lkqp3")
 
 [node name="SwordMesh" type="Node3D" parent="."]
-transform = Transform3D(0.972833, -0.216704, 0.0814513, 0.217427, 0.976074, 0, -0.0795028, 0.0177097, 0.996675, -0.157799, 0.00262845, 0)
+transform = Transform3D(0.972834, -0.216705, 0.0814514, 0.217428, 0.976075, 0, -0.0795029, 0.0177098, 0.996676, -0.157799, 0.00262845, 0)
 
 [node name="IronSword2" parent="SwordMesh" instance=ExtResource("2_pemwx")]
 transform = Transform3D(0.0429093, -0.0838489, 0.995554, -0.00672534, 0.996425, 0.0842121, -0.999056, -0.0103089, 0.042192, 0, 0, 0)

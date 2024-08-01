@@ -4,6 +4,8 @@ class_name FpsCharacter
 ## First Person Player Controller
 ## Made with the help of Lukky's Ultimate FPS Controller tutorial: https://www.youtube.com/watch?v=xIKErMgJ1Yk
 
+signal speed_calculated(new_speed: float)
+
 # Player's child nodes
 @onready var head_pcam: PhantomCamera3D = $Neck/Head/Eyes/FpsCharPcam
 @onready var eyes = $Neck/Head/Eyes
@@ -274,6 +276,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	update_state_info()
+	speed_calculated.emit(velocity.length())
 
 
 func handle_crouch(in_dir: Vector2, delta: float):

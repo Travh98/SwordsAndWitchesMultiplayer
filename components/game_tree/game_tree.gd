@@ -27,4 +27,6 @@ func _ready():
 	player_data_mgr.player_active_inv_slot_changed.connect(player_mgr.on_player_equipment_changed)
 	player_data_mgr.player_health_changed.connect(player_mgr.on_player_health_changed)
 	player_data_mgr.player_hat_selected.connect(player_mgr.on_player_hat_selected)
+	
+	player_mgr.local_player_spawned.connect(gui_mgr.assign_local_player)
 

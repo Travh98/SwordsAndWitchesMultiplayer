@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh6brxctthqa5"]
+
+[ext_resource type="PackedScene" uid="uid://bras4k0i1lgys" path="res://assets/zavier/hats/Party hat Runescape.gltf" id="1_q81i3"]
+
+[node name="Party hat Runescape" instance=ExtResource("1_q81i3")]

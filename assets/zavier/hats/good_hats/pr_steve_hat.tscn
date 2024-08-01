@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkaetnrsibx8c"]
+
+[ext_resource type="PackedScene" uid="uid://buqifpnmsqsl3" path="res://assets/zavier/hats/Steve hat.gltf" id="1_cwrbp"]
+
+[node name="Steve hat" instance=ExtResource("1_cwrbp")]

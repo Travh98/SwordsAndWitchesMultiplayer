@@ -80,3 +80,9 @@ func cancel_animation():
 	hurt_box.active = false
 	animation_player.stop()
 	
+
+func god_swing():
+	if animation_player.is_playing():
+		return
+	swipe_sfx.play()
+	animation_player.play("god_swing")

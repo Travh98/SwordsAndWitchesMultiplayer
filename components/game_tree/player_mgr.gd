@@ -4,6 +4,7 @@ extends Node
 ## Manages player characters
 
 signal respawn_player(player: Node)
+signal local_player_spawned(player: Node3D)
 
 const player_character_scene = preload("res://components/fps_character/fps_character.tscn")
 
@@ -29,6 +30,9 @@ func add_player_character(peer_id: int):
 	player_character.name = str(peer_id)
 	player_character.set_multiplayer_authority(peer_id)
 	add_child(player_character)
+	
+	if peer_id == Server.server_connector.get_peer_id():
+		local_player_spawned.emit(player_character)
 
 
 func remove_player_character(peer_id: int):

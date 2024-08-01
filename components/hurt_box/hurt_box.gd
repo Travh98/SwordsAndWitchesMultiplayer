@@ -52,6 +52,7 @@ func on_body_entered(body: Node3D):
 
 func start_damage():
 	if !is_multiplayer_authority(): return
+	hit_objects.clear()
 	for body in get_overlapping_bodies():
 		damage_body(body)
 

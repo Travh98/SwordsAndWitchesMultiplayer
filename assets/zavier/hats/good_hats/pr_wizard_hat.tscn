@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc0hwushemnm1"]
+
+[ext_resource type="PackedScene" uid="uid://swts4flypn5l" path="res://assets/zavier/hats/Wizard hat.gltf" id="1_bioet"]
+
+[node name="Wizard hat2" instance=ExtResource("1_bioet")]
