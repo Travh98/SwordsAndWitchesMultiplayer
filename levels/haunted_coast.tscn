@@ -83,7 +83,7 @@ navigation_mesh = SubResource("NavigationMesh_xaiyn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="OceanWater" type="MeshInstance3D" parent="NavigationRegion3D/haunted_coast"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.678772, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.69701, 0)
 mesh = SubResource("PlaneMesh_olgt6")
 
 [node name="Lights" type="Node3D" parent="NavigationRegion3D/haunted_coast"]

@@ -245,7 +245,6 @@ ai_controlled = false
 walking_speed = 3.0
 sprinting_speed = 5.0
 crouching_speed = 2.0
-jump_velocity = 3.0
 
 [node name="InteractController" parent="." node_paths=PackedStringArray("interact_cast") instance=ExtResource("7_p1veb")]
 interact_cast = NodePath("../Neck/Head/Eyes/FpsCharPcam/InteractRaycast")
@@ -323,10 +322,10 @@ transform = Transform3D(1.11113, -0.00500419, 0.00218607, 0.00504028, 0.768619, 
 transform = Transform3D(1, 9.22873e-16, 3.55271e-15, 4.16334e-16, 1, 0, -3.55271e-15, 2.32831e-10, 1, 0, 0, 0)
 
 [node name="FootMesh" parent="Knight/KnightIkLeg3/KnightIkLeg/Skeleton3D" index="0"]
-transform = Transform3D(0.904261, -0.307482, 0.5678, -0.645687, -0.438915, 0.790615, 0.00550411, -0.973365, -0.535875, -0.225837, 0.226238, 0.23667)
+transform = Transform3D(0.904262, -0.307482, 0.5678, -0.645687, -0.438915, 0.790615, 0.00550409, -0.973365, -0.535875, -0.225837, 0.226238, 0.23667)
 
 [node name="ShinMesh" parent="Knight/KnightIkLeg3/KnightIkLeg/Skeleton3D" index="1"]
-transform = Transform3D(1.05075, 0.352954, 0.0772715, -0.336087, 0.867542, 0.607493, 0.132638, -0.597845, 0.927162, -0.225836, 0.226239, 0.236669)
+transform = Transform3D(1.05075, 0.352954, 0.0772714, -0.336087, 0.867542, 0.607493, 0.132638, -0.597845, 0.927162, -0.225836, 0.226239, 0.236669)
 
 [node name="ThighMesh" parent="Knight/KnightIkLeg3/KnightIkLeg/Skeleton3D" index="2"]
 transform = Transform3D(1.08523, 0.238361, -0.00949145, -0.238487, 1.08307, -0.0686778, -0.00548101, 0.069113, 1.10898, -0.0922425, 0.541679, -0.0223726)

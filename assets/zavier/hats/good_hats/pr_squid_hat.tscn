@@ -1,8 +1,5 @@
 [gd_scene load_steps=2 format=3 uid="uid://b24ame24vmxwk"]
 
-[ext_resource type="PackedScene" uid="uid://buqifpnmsqsl3" path="res://assets/zavier/hats/Squid hat 2.glb" id="1_26v04"]
+[ext_resource type="PackedScene" uid="uid://buqifpnmsqsl3" path="res://assets/zavier/hats/Squid hat 2.glb" id="1_v6ngb"]
 
-[node name="Squid hat 2" instance=ExtResource("1_26v04")]
-
-[node name="Squid hat" parent="." index="0"]
-transform = Transform3D(0, 0, 0.0168574, 0, 0.0168574, 0, -0.0168574, 0, 0, 0, -0.0231724, 0)
+[node name="Squid hat 2" instance=ExtResource("1_v6ngb")]

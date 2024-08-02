@@ -27,7 +27,13 @@ void fragment() {
 	METALLIC = 0.0;
 	//ROUGHNESS = 0.01 * (1.0 - fresnel);
 	ROUGHNESS = 0.5;
-	vec3 scroll1 = texture(tex, UV * vec2(20, 20) + (direction * TIME * scroll_speed)).xyz;
-	vec3 scroll2 = texture(tex, vec2(UV.x * cos(45) - UV.y * sin(45), UV.y * cos(45) + UV.x * sin(45)) * vec2(20, 20) + (direction2 * TIME * scroll_speed)).xyz;
+	vec3 scroll1 = texture(tex,
+		UV * vec2(40, 40) 
+		+ (direction * TIME * scroll_speed)).xyz;
+	vec3 scroll2 = texture(tex, 
+		vec2(UV.x * cos(45) - UV.y * sin(45), 
+		UV.y * cos(45) + UV.x * sin(45)) 
+		* vec2(40, 40) 
+		+ (direction2 * TIME * scroll_speed)).xyz * 0.25;
 	ALBEDO = (scroll1 + scroll2) / vec3(2, 2, 2);
 }

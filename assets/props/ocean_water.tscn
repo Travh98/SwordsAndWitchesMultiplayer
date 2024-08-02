@@ -29,5 +29,4 @@ subdivide_width = 100
 subdivide_depth = 100
 
 [node name="OceanWater" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -43, 0)
 mesh = SubResource("PlaneMesh_8dh25")
