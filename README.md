@@ -1,18 +1,4 @@
-![game jam starter kit](https://github.com/Travh98/Travh98sGodotGameJamTemplate/assets/36664554/a94f2268-e9bd-4a1d-8c84-3ecb39f04542)
-Travh98's Godot 4 Game Jam Starter Template
+#Swords and Witches - A Godot 4 Multiplayer Project
+This project is the Client project, please see the server here: *add link*
 
-Features:
-- Start Menu
-- UI Elements (fade to black, cinematic bars, fps counter, 3d healthbars)
-- Sample particle effects
-- GameMgr autoload for changing levels
-- HealthComponent, Hurtbox, Interaction System
-- Quest System
-- Sample GridMap meshlib for fast prototyping
-
-Uses Plugins:
-- [Dialogic](https://github.com/dialogic-godot/dialogic)
-- [Phantom Camera](https://github.com/ramokz/phantom-camera)
-
-Credits:
-- Kenney's [Dev textures](https://www.kenney.nl/assets/prototype-textures)
+Here is a video overview for this game: [Showcase of a Multiplayer Game with Dedicated Server in Godot 4](https://www.youtube.com/watch?v=zszz2skKUz4&lc=UgzDu0GG66_xkAw8Jz14AaABAg)
