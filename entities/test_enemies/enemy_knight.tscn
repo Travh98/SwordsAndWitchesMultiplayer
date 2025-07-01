@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://f6kwmpdxk8sd"]
 
 [ext_resource type="PackedScene" uid="uid://c8k2ucbty2xvc" path="res://entities/weapons/punching_arms.tscn" id="1_a0img"]
-[ext_resource type="Script" path="res://entities/test_enemies/enemy_knight.gd" id="1_bhrsq"]
+[ext_resource type="Script" uid="uid://g21358355pgx" path="res://entities/test_enemies/enemy_knight.gd" id="1_bhrsq"]
 [ext_resource type="PackedScene" uid="uid://dcnnd5dfv234e" path="res://assets/characters/pr_knight.tscn" id="2_4hle6"]
 [ext_resource type="PackedScene" uid="uid://bbm7284ux0w7j" path="res://entities/weapons/sword.tscn" id="2_xyrpg"]
 [ext_resource type="PackedScene" uid="uid://dcwvkfruhfcd2" path="res://components/detection_area/detection_area.tscn" id="4_13eau"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://5t2hrtqmhr2n"]
 
 [ext_resource type="Texture2D" uid="uid://dmo6ilbyve0hu" path="res://assets/particles/dust_impact.png" id="1_t3op6"]
-[ext_resource type="Script" path="res://assets/particles/impact_particle.gd" id="2_iwg3d"]
+[ext_resource type="Script" uid="uid://bdph5mfc0m28t" path="res://assets/particles/impact_particle.gd" id="2_iwg3d"]
 
 [sub_resource type="Gradient" id="Gradient_cbnwo"]
 offsets = PackedFloat32Array(0, 0.815789, 1)
@@ -77,8 +77,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7jrhr"]
 _data = {
-"RESET": SubResource("Animation_6e1gn"),
-"impact_particle": SubResource("Animation_j5m4k")
+&"RESET": SubResource("Animation_6e1gn"),
+&"impact_particle": SubResource("Animation_j5m4k")
 }
 
 [node name="ImpactParticle" type="GPUParticles3D"]

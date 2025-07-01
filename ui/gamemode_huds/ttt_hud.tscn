@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cc3u6noaco1gf"]
 
-[ext_resource type="Script" path="res://ui/gamemode_huds/ttt_hud.gd" id="1_m01tg"]
+[ext_resource type="Script" uid="uid://dm4p8e3eck13w" path="res://ui/gamemode_huds/ttt_hud.gd" id="1_m01tg"]
 
 [sub_resource type="Animation" id="Animation_svo7b"]
 length = 0.001
@@ -35,8 +35,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m2diu"]
 _data = {
-"RESET": SubResource("Animation_svo7b"),
-"show_winner": SubResource("Animation_67d88")
+&"RESET": SubResource("Animation_svo7b"),
+&"show_winner": SubResource("Animation_67d88")
 }
 
 [node name="TttHud" type="Control"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6qydmka43s6f"]
 
-[ext_resource type="Script" path="res://ui/healthbar/healthbar_3d.gd" id="1_dty4j"]
+[ext_resource type="Script" uid="uid://bfkeiwlaydh15" path="res://ui/healthbar/healthbar_3d.gd" id="1_dty4j"]
 [ext_resource type="PackedScene" uid="uid://cg84dvapqgecf" path="res://ui/healthbar/healthbar.tscn" id="1_tc0at"]
 
 [node name="Healthbar3D" type="Sprite3D"]

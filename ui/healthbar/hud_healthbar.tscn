@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://81hqyveu8dnj"]
 
-[ext_resource type="Script" path="res://ui/healthbar/hud_healthbar.gd" id="1_2qx4j"]
+[ext_resource type="Script" uid="uid://bqaf4sg8er2uv" path="res://ui/healthbar/hud_healthbar.gd" id="1_2qx4j"]
 [ext_resource type="PackedScene" uid="uid://cg84dvapqgecf" path="res://ui/healthbar/healthbar.tscn" id="2_vvsvl"]
 
 [node name="HudHealthbar" type="Control"]

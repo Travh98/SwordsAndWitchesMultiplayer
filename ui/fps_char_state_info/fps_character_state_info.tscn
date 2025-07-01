@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c0u1u1w315lqq"]
 
-[ext_resource type="Script" path="res://ui/fps_char_state_info/fps_character_state_info.gd" id="1_bbgc2"]
+[ext_resource type="Script" uid="uid://cx8x2c4856374" path="res://ui/fps_char_state_info/fps_character_state_info.gd" id="1_bbgc2"]
 
 [node name="FpsCharacterStateInfo" type="Control"]
 layout_mode = 3

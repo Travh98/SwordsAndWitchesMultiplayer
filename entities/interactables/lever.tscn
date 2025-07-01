@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://jyyi417c2h0v"]
 
-[ext_resource type="Script" path="res://entities/interactables/lever.gd" id="1_3xcmt"]
-[ext_resource type="Script" path="res://components/interactions/interact_area.gd" id="1_v6mr8"]
+[ext_resource type="Script" uid="uid://u8hhisciladm" path="res://entities/interactables/lever.gd" id="1_3xcmt"]
+[ext_resource type="Script" uid="uid://dlq6l340d63lm" path="res://components/interactions/interact_area.gd" id="1_v6mr8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_re54d"]
 size = Vector3(0.5, 0.5, 0.75)
@@ -95,9 +95,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xg722"]
 _data = {
-"RESET": SubResource("Animation_7d3tw"),
-"off_state": SubResource("Animation_kvcqq"),
-"on_state": SubResource("Animation_uiufo")
+&"RESET": SubResource("Animation_7d3tw"),
+&"off_state": SubResource("Animation_kvcqq"),
+&"on_state": SubResource("Animation_uiufo")
 }
 
 [node name="Lever" type="Node3D"]

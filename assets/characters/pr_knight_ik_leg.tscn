@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://b6cs1l5kpvh2h"]
 
 [ext_resource type="PackedScene" uid="uid://dtbuyr2105tay" path="res://assets/characters/KnightIkLeg.glb" id="1_m21ws"]
-[ext_resource type="Script" path="res://components/inverse_kinematics/start_ik.gd" id="2_d6yli"]
-[ext_resource type="Script" path="res://components/inverse_kinematics/ik_target.gd" id="3_ygdku"]
+[ext_resource type="Script" uid="uid://u0jruoh4wbmn" path="res://components/inverse_kinematics/start_ik.gd" id="2_d6yli"]
+[ext_resource type="Script" uid="uid://bha6cu43oaejb" path="res://components/inverse_kinematics/ik_target.gd" id="3_ygdku"]
 [ext_resource type="PackedScene" uid="uid://cv7cqevgeeie" path="res://components/inverse_kinematics/small_sphere_marker_2.tscn" id="4_84af6"]
-[ext_resource type="Script" path="res://components/inverse_kinematics/step_ray.gd" id="5_bnv8a"]
+[ext_resource type="Script" uid="uid://d0m0c88glsrxy" path="res://components/inverse_kinematics/step_ray.gd" id="5_bnv8a"]
 [ext_resource type="PackedScene" uid="uid://dpu07lf6sjeag" path="res://components/inverse_kinematics/small_sphere_marker.tscn" id="6_kbjgo"]
 
 [node name="KnightIkLeg2" instance=ExtResource("1_m21ws")]

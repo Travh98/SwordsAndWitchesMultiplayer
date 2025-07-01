@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dbfklnil5bce8"]
 
-[ext_resource type="Script" path="res://components/muzzle_flashes/bullet_case_ejector.gd" id="1_5pa5k"]
+[ext_resource type="Script" uid="uid://byehel4h7kn77" path="res://components/muzzle_flashes/bullet_case_ejector.gd" id="1_5pa5k"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_53jci"]
 particle_flag_disable_z = true

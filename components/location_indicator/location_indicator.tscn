@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbf86ogudnhaq"]
 
-[ext_resource type="Script" path="res://components/location_indicator/location_indicator.gd" id="1_hjtpj"]
+[ext_resource type="Script" uid="uid://bx2t8g1ravkj2" path="res://components/location_indicator/location_indicator.gd" id="1_hjtpj"]
 [ext_resource type="Material" uid="uid://ogsq7nflvewx" path="res://assets/materials/green_transparent.tres" id="2_7o3ol"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_7x601"]

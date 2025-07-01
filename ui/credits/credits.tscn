@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c0pob3bs25oh0"]
 
-[ext_resource type="Script" path="res://ui/credits/credits.gd" id="1_loddt"]
+[ext_resource type="Script" uid="uid://dqlo2y5bqtxxs" path="res://ui/credits/credits.gd" id="1_loddt"]
 [ext_resource type="Texture2D" uid="uid://vwajed327wom" path="res://assets/sprites/travh98_64.png" id="2_2jxdh"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_6w55e"]

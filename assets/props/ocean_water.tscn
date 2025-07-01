@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dgg3cjkvqk7du"]
 
-[ext_resource type="Shader" path="res://assets/shaders/ocean_waves.gdshader" id="1_qlo1x"]
+[ext_resource type="Shader" uid="uid://i1s8a86rvcco" path="res://assets/shaders/ocean_waves.gdshader" id="1_qlo1x"]
 [ext_resource type="Texture2D" uid="uid://cgbvpouk13lqs" path="res://assets/sprites/frothy_water.png" id="2_8kbkn"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_14pgi"]

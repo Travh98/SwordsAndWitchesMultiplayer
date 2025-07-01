@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bd7qd7k703iji"]
 
-[ext_resource type="Script" path="res://components/player_trigger/player_trigger.gd" id="1_3tdv7"]
-[ext_resource type="Material" path="res://assets/materials/green_transparent.tres" id="1_8g2ia"]
+[ext_resource type="Script" uid="uid://1qcujhpfmbo" path="res://components/player_trigger/player_trigger.gd" id="1_3tdv7"]
+[ext_resource type="Material" uid="uid://ogsq7nflvewx" path="res://assets/materials/green_transparent.tres" id="1_8g2ia"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gj712"]
 

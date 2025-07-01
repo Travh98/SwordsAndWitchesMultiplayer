@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dny33js41rokw"]
 
-[ext_resource type="Script" path="res://assets/castle_meshlib/grid_placer.gd" id="2_t7l6k"]
+[ext_resource type="Script" uid="uid://7y1ycgdfj2jo" path="res://assets/castle_meshlib/grid_placer.gd" id="2_t7l6k"]
 [ext_resource type="PackedScene" uid="uid://cbf86ogudnhaq" path="res://components/location_indicator/location_indicator.tscn" id="3_ktmim"]
 
 [node name="CastleGrid" type="Node3D"]

@@ -1,19 +1,18 @@
 [gd_scene load_steps=27 format=3 uid="uid://cheoq2dxkgi7u"]
 
-[ext_resource type="Script" path="res://components/fps_character/fps_character.gd" id="1_1asp3"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="1_r0lxu"]
+[ext_resource type="Script" uid="uid://cx4xfawcrfcik" path="res://components/fps_character/fps_character.gd" id="1_1asp3"]
 [ext_resource type="PackedScene" uid="uid://c0u1u1w315lqq" path="res://ui/fps_char_state_info/fps_character_state_info.tscn" id="3_xcuqc"]
 [ext_resource type="PackedScene" uid="uid://dicawq3hlqp5e" path="res://components/locomotion_driver/locomotion_driver.tscn" id="4_2mgsi"]
 [ext_resource type="PackedScene" uid="uid://dexa6jq6wkuuy" path="res://components/step_checker/step_checker.tscn" id="4_a0504"]
 [ext_resource type="PackedScene" uid="uid://dfc8fb3pj77jl" path="res://components/interactions/interact_controller.tscn" id="7_p1veb"]
-[ext_resource type="Script" path="res://components/inventory/inventory.gd" id="8_c6u1s"]
+[ext_resource type="Script" uid="uid://bd7e7khm7ykgy" path="res://components/inventory/inventory.gd" id="8_c6u1s"]
 [ext_resource type="PackedScene" uid="uid://c8k2ucbty2xvc" path="res://entities/weapons/punching_arms.tscn" id="9_q017s"]
 [ext_resource type="PackedScene" uid="uid://bbm7284ux0w7j" path="res://entities/weapons/sword.tscn" id="10_6wrfn"]
 [ext_resource type="PackedScene" uid="uid://dcnnd5dfv234e" path="res://assets/characters/pr_knight.tscn" id="11_63vpc"]
-[ext_resource type="Script" path="res://components/health_component/health_component.gd" id="11_mmqlb"]
+[ext_resource type="Script" uid="uid://bgttw0ng1fqxo" path="res://components/health_component/health_component.gd" id="11_mmqlb"]
 [ext_resource type="PackedScene" uid="uid://dwl8phfdklrse" path="res://assets/zavier/pr_bow.tscn" id="12_l3t4f"]
 [ext_resource type="PackedScene" uid="uid://b6qydmka43s6f" path="res://ui/healthbar/healthbar_3d.tscn" id="13_8dm2f"]
-[ext_resource type="Script" path="res://components/ragdoll/ragdoll_mgr.gd" id="14_0id14"]
+[ext_resource type="Script" uid="uid://3roiq8lelwa0" path="res://components/ragdoll/ragdoll_mgr.gd" id="14_0id14"]
 [ext_resource type="AudioStream" uid="uid://diuumwga3u3sq" path="res://assets/sfx/SlideStart.wav" id="15_llrk2"]
 [ext_resource type="AudioStream" uid="uid://2uaetttg7wry" path="res://assets/sfx/player_death.wav" id="16_duvpp"]
 [ext_resource type="AudioStream" uid="uid://il5bhws4jpa" path="res://assets/sfx/hit_hurt.wav" id="17_daaee"]
@@ -52,6 +51,9 @@ height = 1.8
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a12wd"]
 radius = 0.25
 height = 1.3
+
+[sub_resource type="Resource" id="Resource_6q3ql"]
+metadata/__load_path__ = "res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd"
 
 [sub_resource type="Animation" id="Animation_7g0d3"]
 length = 0.001
@@ -166,10 +168,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bjicv"]
 _data = {
-"RESET": SubResource("Animation_7g0d3"),
-"heavy_landing": SubResource("Animation_2fcpc"),
-"jump": SubResource("Animation_phewf"),
-"landing": SubResource("Animation_l6rgd")
+&"RESET": SubResource("Animation_7g0d3"),
+&"heavy_landing": SubResource("Animation_2fcpc"),
+&"jump": SubResource("Animation_phewf"),
+&"landing": SubResource("Animation_l6rgd")
 }
 
 [node name="FpsCharacter" type="CharacterBody3D"]
@@ -200,7 +202,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 [node name="Eyes" type="Node3D" parent="Neck/Head"]
 
 [node name="FpsCharPcam" type="Node3D" parent="Neck/Head/Eyes"]
-script = ExtResource("1_r0lxu")
+script = SubResource("Resource_6q3ql")
 priority_override = false
 priority = 0
 follow_mode = 0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://5aejtxo203gd"]
 
-[ext_resource type="Script" path="res://components/effects/sea_splash_timed_spawner.gd" id="1_sxhbd"]
+[ext_resource type="Script" uid="uid://c2mmimxrornkf" path="res://components/effects/sea_splash_timed_spawner.gd" id="1_sxhbd"]
 
 [node name="SeaSplashTimedSpawner" type="Node3D"]
 script = ExtResource("1_sxhbd")

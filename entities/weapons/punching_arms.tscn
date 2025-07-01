@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://c8k2ucbty2xvc"]
 
-[ext_resource type="Script" path="res://entities/weapons/punching_arm_test.gd" id="1_twjcu"]
+[ext_resource type="Script" uid="uid://bf374a7fapsqs" path="res://entities/weapons/punching_arm_test.gd" id="1_twjcu"]
 [ext_resource type="PackedScene" uid="uid://sboyc7632ei8" path="res://components/hurt_box/hurt_box.tscn" id="3_1rgyr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_op78k"]
@@ -139,10 +139,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f7pot"]
 _data = {
-"RESET": SubResource("Animation_oibjy"),
-"left_punch": SubResource("Animation_hi6xx"),
-"punch2": SubResource("Animation_sk6rc"),
-"right_punch": SubResource("Animation_pgik3")
+&"RESET": SubResource("Animation_oibjy"),
+&"left_punch": SubResource("Animation_hi6xx"),
+&"punch2": SubResource("Animation_sk6rc"),
+&"right_punch": SubResource("Animation_pgik3")
 }
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mecic"]

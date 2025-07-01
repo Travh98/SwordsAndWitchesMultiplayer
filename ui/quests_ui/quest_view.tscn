@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhmrwbr1yugno"]
 
 [ext_resource type="PackedScene" uid="uid://cbxh713lj7flm" path="res://ui/quests_ui/quest_hud_info.tscn" id="1_8vskn"]
-[ext_resource type="Script" path="res://ui/quests_ui/quest_view.gd" id="1_ox0rx"]
+[ext_resource type="Script" uid="uid://dhno8xnppohdl" path="res://ui/quests_ui/quest_view.gd" id="1_ox0rx"]
 
 [node name="QuestView" type="Control"]
 layout_mode = 3

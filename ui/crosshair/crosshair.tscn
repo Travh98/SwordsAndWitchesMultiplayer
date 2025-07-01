@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d01nsoep2wuio"]
 
-[ext_resource type="Script" path="res://ui/crosshair/crosshair.gd" id="1_2ruls"]
+[ext_resource type="Script" uid="uid://pmljes3m25wr" path="res://ui/crosshair/crosshair.gd" id="1_2ruls"]
 [ext_resource type="Texture2D" uid="uid://bm5hp20v01253" path="res://assets/sprites/crosshair2.png" id="1_78jno"]
 [ext_resource type="Texture2D" uid="uid://cc0fqmppunm30" path="res://assets/sprites/damage_vignette.png" id="3_8ocy0"]
 
@@ -36,8 +36,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g0npu"]
 _data = {
-"RESET": SubResource("Animation_hij41"),
-"take_damage": SubResource("Animation_mu555")
+&"RESET": SubResource("Animation_hij41"),
+&"take_damage": SubResource("Animation_mu555")
 }
 
 [node name="Crosshair" type="Control"]

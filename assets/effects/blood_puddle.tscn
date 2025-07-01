@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ics0udvvkybi"]
 
-[ext_resource type="Script" path="res://assets/effects/blood_puddle.gd" id="1_s8s60"]
+[ext_resource type="Script" uid="uid://fm4svluhci8l" path="res://assets/effects/blood_puddle.gd" id="1_s8s60"]
 [ext_resource type="Texture2D" uid="uid://bhbybj5b82rb" path="res://assets/effects/puddle.png" id="1_ydmrg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_321ad"]
@@ -67,9 +67,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uxsp0"]
 _data = {
-"RESET": SubResource("Animation_bvuqa"),
-"on_spawn": SubResource("Animation_uwyi5"),
-"wash_away": SubResource("Animation_l8xm7")
+&"RESET": SubResource("Animation_bvuqa"),
+&"on_spawn": SubResource("Animation_uwyi5"),
+&"wash_away": SubResource("Animation_l8xm7")
 }
 
 [node name="BloodPuddle" type="Area3D"]

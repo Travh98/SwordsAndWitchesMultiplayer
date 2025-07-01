@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://clcdrmfwr6u7k"]
 
-[ext_resource type="Script" path="res://entities/weapons/gun.gd" id="1_50rj6"]
+[ext_resource type="Script" uid="uid://bgqal4vajyy7v" path="res://entities/weapons/gun.gd" id="1_50rj6"]
 [ext_resource type="Material" uid="uid://dkvgc2g23ecj2" path="res://assets/materials/pink.tres" id="1_l0o1l"]
 [ext_resource type="AudioStream" uid="uid://dqv23qojx2lmi" path="res://assets/sfx/RifleSfx/rifle_fire1.wav" id="3_efhq4"]
 [ext_resource type="PackedScene" uid="uid://cbxpl2i75qjxk" path="res://assets/weapons/pr_walnut_rifle.tscn" id="3_tl1pk"]

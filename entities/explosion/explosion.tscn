@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://2mf6drtrrffb"]
 
-[ext_resource type="Script" path="res://entities/explosion/explosion.gd" id="1_0ht7y"]
+[ext_resource type="Script" uid="uid://dv5mjngdin8o" path="res://entities/explosion/explosion.gd" id="1_0ht7y"]
 [ext_resource type="Texture2D" uid="uid://dmvyj6wgq7fa7" path="res://assets/sprites/explosion.png" id="1_o62k4"]
 [ext_resource type="AudioStream" uid="uid://dg1h350bqi1d4" path="res://assets/sfx/explosion.wav" id="3_esfi3"]
 
@@ -78,8 +78,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_463ca"]
 _data = {
-"RESET": SubResource("Animation_qm8nt"),
-"explode": SubResource("Animation_w2tpg")
+&"RESET": SubResource("Animation_qm8nt"),
+&"explode": SubResource("Animation_w2tpg")
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gshi1"]

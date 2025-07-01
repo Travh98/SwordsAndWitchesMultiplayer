@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcnnd5dfv234e"]
 
 [ext_resource type="PackedScene" uid="uid://c7rbbdcld2axn" path="res://assets/characters/Knight.glb" id="1_1pner"]
-[ext_resource type="Script" path="res://assets/characters/faction_mesh_color.gd" id="2_knmsb"]
+[ext_resource type="Script" uid="uid://mp6bioncb5dd" path="res://assets/characters/faction_mesh_color.gd" id="2_knmsb"]
 [ext_resource type="PackedScene" uid="uid://b6cs1l5kpvh2h" path="res://assets/characters/pr_knight_ik_leg.tscn" id="3_kqckk"]
 [ext_resource type="PackedScene" uid="uid://cwr6178bwd3ri" path="res://assets/characters/pr_knight_ik_arm.tscn" id="4_3w88r"]
 

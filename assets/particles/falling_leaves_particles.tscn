@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dj3efd6nelsuv" path="res://assets/particles/maple_leaf.png" id="1_7qxtl"]
 
 [sub_resource type="Curve" id="Curve_6rxfn"]
-min_value = -1.0
+_limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 

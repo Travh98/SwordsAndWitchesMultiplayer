@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://ctyx8nd0kba84"]
 
 [ext_resource type="PackedScene" uid="uid://c7rbbdcld2axn" path="res://assets/characters/Knight.glb" id="1_63xqm"]
-[ext_resource type="Script" path="res://assets/characters/faction_mesh_color.gd" id="1_yh2sr"]
-[ext_resource type="Script" path="res://components/effects/ragdoll.gd" id="3_tkkbs"]
+[ext_resource type="Script" uid="uid://mp6bioncb5dd" path="res://assets/characters/faction_mesh_color.gd" id="1_yh2sr"]
+[ext_resource type="Script" uid="uid://v7f5y7121qg1" path="res://components/effects/ragdoll.gd" id="3_tkkbs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cnfn5"]
 radius = 0.0409546

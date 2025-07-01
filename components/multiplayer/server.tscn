@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://ccbgo0olx5j7p"]
 
-[ext_resource type="Script" path="res://components/multiplayer/server.gd" id="1_oov04"]
+[ext_resource type="Script" uid="uid://drtecysnaiy6a" path="res://components/multiplayer/server.gd" id="1_oov04"]
 [ext_resource type="PackedScene" uid="uid://dttma5gja5lgk" path="res://components/multiplayer/server_connector.tscn" id="2_375pb"]
-[ext_resource type="Script" path="res://components/multiplayer/npc_mgr.gd" id="3_0q7if"]
-[ext_resource type="Script" path="res://components/multiplayer/game_state_mgr.gd" id="4_nid5g"]
-[ext_resource type="Script" path="res://components/multiplayer/ttt_game_mode.gd" id="5_hl0in"]
+[ext_resource type="Script" uid="uid://pibv4gsr3lyr" path="res://components/multiplayer/npc_mgr.gd" id="3_0q7if"]
+[ext_resource type="Script" uid="uid://b0w716xfqv0fa" path="res://components/multiplayer/game_state_mgr.gd" id="4_nid5g"]
+[ext_resource type="Script" uid="uid://dr6hv0oycde6q" path="res://components/multiplayer/ttt_game_mode.gd" id="5_hl0in"]
 
 [node name="Server" type="Node"]
 script = ExtResource("1_oov04")

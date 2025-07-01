@@ -1,9 +1,9 @@
 [gd_scene load_steps=22 format=3 uid="uid://bbm7284ux0w7j"]
 
-[ext_resource type="Script" path="res://components/fps_character/sword.gd" id="1_lkqp3"]
+[ext_resource type="Script" uid="uid://pahygc3cmlud" path="res://components/fps_character/sword.gd" id="1_lkqp3"]
 [ext_resource type="PackedScene" uid="uid://6ldfl5dpeix1" path="res://assets/weapons/pr_iron_sword.tscn" id="2_pemwx"]
 [ext_resource type="PackedScene" uid="uid://sboyc7632ei8" path="res://components/hurt_box/hurt_box.tscn" id="3_sfal1"]
-[ext_resource type="Script" path="res://entities/weapons/block_area.gd" id="4_v28mk"]
+[ext_resource type="Script" uid="uid://bai26x4lh2wj7" path="res://entities/weapons/block_area.gd" id="4_v28mk"]
 [ext_resource type="AudioStream" uid="uid://dqvee50osj2oy" path="res://assets/sfx/sword_swipe.wav" id="5_knjwi"]
 [ext_resource type="AudioStream" uid="uid://cs466nkgau3mr" path="res://assets/sfx/parry_sound.wav" id="6_k2mdg"]
 
@@ -566,17 +566,17 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_onj8e"]
 _data = {
-"RESET": SubResource("Animation_y7hr4"),
-"down_swing": SubResource("Animation_pj3ho"),
-"god_swing": SubResource("Animation_pfe8c"),
-"long_spiral_block": SubResource("Animation_qvxx7"),
-"on_equip": SubResource("Animation_hhfk5"),
-"parried": SubResource("Animation_sxe4n"),
-"parry": SubResource("Animation_5lg7c"),
-"stab": SubResource("Animation_t5v4p"),
-"swing1": SubResource("Animation_hgvfm"),
-"swing2": SubResource("Animation_k7hfu"),
-"test_hold_swing": SubResource("Animation_20v3u")
+&"RESET": SubResource("Animation_y7hr4"),
+&"down_swing": SubResource("Animation_pj3ho"),
+&"god_swing": SubResource("Animation_pfe8c"),
+&"long_spiral_block": SubResource("Animation_qvxx7"),
+&"on_equip": SubResource("Animation_hhfk5"),
+&"parried": SubResource("Animation_sxe4n"),
+&"parry": SubResource("Animation_5lg7c"),
+&"stab": SubResource("Animation_t5v4p"),
+&"swing1": SubResource("Animation_hgvfm"),
+&"swing2": SubResource("Animation_k7hfu"),
+&"test_hold_swing": SubResource("Animation_20v3u")
 }
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_72pak"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c6jdandmwrh7t"]
 
 [ext_resource type="PackedScene" uid="uid://cjbkrjimolek1" path="res://components/health_component/health_component.tscn" id="1_1qquc"]
-[ext_resource type="Script" path="res://entities/punching_bag/punching_bag.gd" id="1_c1kmp"]
+[ext_resource type="Script" uid="uid://detlefgsmg4ot" path="res://entities/punching_bag/punching_bag.gd" id="1_c1kmp"]
 [ext_resource type="PackedScene" uid="uid://b6qydmka43s6f" path="res://ui/healthbar/healthbar_3d.tscn" id="3_22qbx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mehtg"]
@@ -44,8 +44,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jnr83"]
 _data = {
-"RESET": SubResource("Animation_l40f3"),
-"red_damage": SubResource("Animation_f40rm")
+&"RESET": SubResource("Animation_l40f3"),
+&"red_damage": SubResource("Animation_f40rm")
 }
 
 [node name="PunchingBag" type="RigidBody3D"]

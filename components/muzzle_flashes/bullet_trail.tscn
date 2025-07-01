@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://74n6ht5nu0c"]
 
 [ext_resource type="Material" uid="uid://bn6lu4kpvpr7w" path="res://assets/materials/emissive_bullet_trail.tres" id="1_kjsl1"]
-[ext_resource type="Script" path="res://components/muzzle_flashes/bullet_trail.gd" id="1_rvndr"]
+[ext_resource type="Script" uid="uid://fp6inwdb17fv" path="res://components/muzzle_flashes/bullet_trail.gd" id="1_rvndr"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_63a12"]
 material = ExtResource("1_kjsl1")

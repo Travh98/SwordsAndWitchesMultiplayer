@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://burqpli5w1k1u"]
 
-[ext_resource type="Material" path="res://assets/materials/green_transparent.tres" id="1_jr0nq"]
-[ext_resource type="Script" path="res://components/camera_control_area/camera_control_area.gd" id="1_tavye"]
+[ext_resource type="Material" uid="uid://ogsq7nflvewx" path="res://assets/materials/green_transparent.tres" id="1_jr0nq"]
+[ext_resource type="Script" uid="uid://ct1oy3lfd6y5w" path="res://components/camera_control_area/camera_control_area.gd" id="1_tavye"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qi7n2"]
 size = Vector3(2, 2, 2)

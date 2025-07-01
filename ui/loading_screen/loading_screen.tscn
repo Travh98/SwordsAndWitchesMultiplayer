@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bbryprglbck8s"]
 
 [ext_resource type="Texture2D" uid="uid://vwajed327wom" path="res://assets/sprites/travh98_64.png" id="1_p0v6u"]
-[ext_resource type="Script" path="res://ui/loading_screen/loading_screen.gd" id="1_qnx3f"]
+[ext_resource type="Script" uid="uid://vp8j54q7fvw5" path="res://ui/loading_screen/loading_screen.gd" id="1_qnx3f"]
 
 [sub_resource type="Animation" id="Animation_k6a66"]
 length = 0.001
@@ -36,8 +36,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xmmpk"]
 _data = {
-"RESET": SubResource("Animation_k6a66"),
-"spin_loading": SubResource("Animation_pjgvp")
+&"RESET": SubResource("Animation_k6a66"),
+&"spin_loading": SubResource("Animation_pjgvp")
 }
 
 [node name="LoadingScreen" type="Control"]

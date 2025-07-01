@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dexa6jq6wkuuy"]
 
-[ext_resource type="Script" path="res://components/step_checker/step_checker.gd" id="1_5j5dr"]
+[ext_resource type="Script" uid="uid://t8qafcucfp2t" path="res://components/step_checker/step_checker.gd" id="1_5j5dr"]
 
 [node name="StepChecker" type="Node3D"]
 top_level = true

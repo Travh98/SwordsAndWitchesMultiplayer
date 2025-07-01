@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dskfrr0y6b4ic"]
 
 [ext_resource type="Texture2D" uid="uid://yofspgksmdo2" path="res://assets/effects/sea_splash.png" id="1_5i20c"]
-[ext_resource type="Script" path="res://assets/effects/sea_splash.gd" id="2_8no1d"]
+[ext_resource type="Script" uid="uid://coepshms6tmku" path="res://assets/effects/sea_splash.gd" id="2_8no1d"]
 [ext_resource type="Texture2D" uid="uid://br64cy13uclcg" path="res://assets/effects/cloud_ball.png" id="2_uidau"]
 
 [sub_resource type="Animation" id="Animation_27ob6"]
@@ -75,8 +75,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cxik4"]
 _data = {
-"RESET": SubResource("Animation_27ob6"),
-"sea_splash": SubResource("Animation_u7d1e")
+&"RESET": SubResource("Animation_27ob6"),
+&"sea_splash": SubResource("Animation_u7d1e")
 }
 
 [sub_resource type="Gradient" id="Gradient_66ni8"]

@@ -138,10 +138,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v37hg"]
 _data = {
-"RESET": SubResource("Animation_tccoc"),
-"rechamber": SubResource("Animation_136jk"),
-"reload": SubResource("Animation_1yctr"),
-"shoot": SubResource("Animation_wr8y2")
+&"RESET": SubResource("Animation_tccoc"),
+&"rechamber": SubResource("Animation_136jk"),
+&"reload": SubResource("Animation_1yctr"),
+&"shoot": SubResource("Animation_wr8y2")
 }
 
 [node name="WalnutRifle2" instance=ExtResource("1_ubaiv")]

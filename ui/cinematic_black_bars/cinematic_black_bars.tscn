@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cpmvetmfobl24"]
 
-[ext_resource type="Script" path="res://ui/cinematic_black_bars/cinematic_black_bars.gd" id="1_sqhdk"]
+[ext_resource type="Script" uid="uid://dlhuqdlclg2vq" path="res://ui/cinematic_black_bars/cinematic_black_bars.gd" id="1_sqhdk"]
 
 [sub_resource type="Animation" id="Animation_j72f2"]
 length = 0.001
@@ -85,9 +85,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5m1es"]
 _data = {
-"RESET": SubResource("Animation_j72f2"),
-"hide_black_bars": SubResource("Animation_tpfmf"),
-"show_black_bars": SubResource("Animation_qnag7")
+&"RESET": SubResource("Animation_j72f2"),
+&"hide_black_bars": SubResource("Animation_tpfmf"),
+&"show_black_bars": SubResource("Animation_qnag7")
 }
 
 [node name="CinematicBlackBars" type="Control"]

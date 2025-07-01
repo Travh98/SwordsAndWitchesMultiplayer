@@ -1,8 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbxh713lj7flm"]
 
-[ext_resource type="Script" path="res://ui/quests_ui/quest_hud_info.gd" id="1_p0jkr"]
+[ext_resource type="Script" uid="uid://d2wvq4k87xmix" path="res://ui/quests_ui/quest_hud_info.gd" id="1_p0jkr"]
 [ext_resource type="PackedScene" uid="uid://du38b5soobc08" path="res://ui/quests_ui/quest_task_checkbox.tscn" id="2_ugrtd"]
-
 
 [node name="QuestHudInfo" type="Control"]
 layout_mode = 3

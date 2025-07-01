@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwr6178bwd3ri"]
 
 [ext_resource type="PackedScene" uid="uid://2f525o02bpsu" path="res://assets/characters/KnightIkArm.glb" id="1_qgxeo"]
-[ext_resource type="Script" path="res://components/inverse_kinematics/start_ik.gd" id="2_ccifo"]
-[ext_resource type="Script" path="res://components/inverse_kinematics/ik_arm.gd" id="2_tt62v"]
+[ext_resource type="Script" uid="uid://u0jruoh4wbmn" path="res://components/inverse_kinematics/start_ik.gd" id="2_ccifo"]
+[ext_resource type="Script" uid="uid://dktkl52b6001s" path="res://components/inverse_kinematics/ik_arm.gd" id="2_tt62v"]
 
 [node name="KnightIkArm" node_paths=PackedStringArray("skele_ik", "default_target") instance=ExtResource("1_qgxeo")]
 script = ExtResource("2_tt62v")
